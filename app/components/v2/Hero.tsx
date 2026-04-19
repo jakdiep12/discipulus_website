@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
       <div className="relative w-full aspect-video sm:aspect-auto sm:h-[65vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
         <div
           ref={videoWrapRef}
-          className="absolute inset-x-0 -top-[15%] h-[130%] will-change-transform"
+          className="absolute inset-x-0 inset-y-0 sm:inset-y-auto sm:-top-[15%] sm:h-[130%] will-change-transform"
         >
           <video
             ref={videoRef}

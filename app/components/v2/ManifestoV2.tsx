@@ -37,7 +37,7 @@ const ManifestoImage: React.FC = () => {
   const ref = useParallax<HTMLDivElement>(0.3, 80);
   return (
     <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-4 lg:mb-5 media-glow">
-      <div ref={ref} className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform">
+      <div ref={ref} className="absolute inset-x-0 inset-y-0 sm:inset-y-auto sm:-top-[20%] sm:h-[140%] will-change-transform">
         <Image
           src="/manifesto3.png"
           alt="Discipulus manifesto"
@@ -55,7 +55,7 @@ const headlineClass =
 const bodyClass =
   "text-[0.98rem] lg:text-[1.02rem] text-white/70 max-w-[640px] leading-[1.65] mb-2 font-light";
 const sectionClass =
-  "relative overflow-hidden min-h-[40vh] sm:min-h-[50vh] py-5 border-b border-white/[0.05]";
+  "relative overflow-hidden sm:min-h-[50vh] py-8 sm:py-5 border-b border-white/[0.05]";
 
 // ---- Section 1 content ----
 const s1Headline = [
@@ -183,7 +183,7 @@ const ManifestoV2: React.FC = () => (
     <StorySection
       totalWords={s3TotalWords}
       runway={0.9}
-      className="relative overflow-hidden min-h-[40vh] sm:min-h-[50vh] border-b border-white/[0.05]"
+      className="relative overflow-hidden sm:min-h-[50vh] border-b border-white/[0.05]"
     >
       <NumberMark n="3" />
       <ManifestoImage />

@@ -61,9 +61,14 @@ class ScrollManager {
       const rect = item.el.getBoundingClientRect();
       // Skip elements far from the viewport
       if (rect.bottom < -vh || rect.top > vh * 2) return;
-      const adjustedSpeed = isMobile ? 1 + (item.speed - 1) * 0.5 : item.speed;
+      if (isMobile) {
+        // Mobile browsers resize the viewport as the address bar hides/shows,
+        // which makes parallax offsets jump — keep content still instead.
+        item.el.style.transform = "translate3d(0, 0, 0)";
+        return;
+      }
       const delta = vh / 2 - rect.top - rect.height / 2;
-      let offset = delta * (1 - adjustedSpeed);
+      let offset = delta * (1 - item.speed);
       if (item.maxOffset !== undefined) {
         const cap = item.maxOffset;
         offset = Math.max(-cap, Math.min(cap, offset));
@@ -77,6 +82,16 @@ class ScrollManager {
         // Fully off screen — snap to end state so it stays readable when back-scrolling.
         const finished = rect.bottom < 0 ? item.totalWords : 0;
         item.el.style.setProperty("--reveal-count", String(finished));
+        return;
+      }
+      if (isMobile) {
+        // Mobile: reveal all words as soon as section enters the viewport.
+        // The scroll-paced reveal is frustrating with flick-scrolling and
+        // short viewports, so we just fade everything in quickly.
+        const start = vh * 0.9;
+        const end = vh * 0.5;
+        const raw = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+        item.el.style.setProperty("--reveal-count", String(raw * item.totalWords));
         return;
       }
       // Start revealing when the top of the section reaches 85% of viewport,
