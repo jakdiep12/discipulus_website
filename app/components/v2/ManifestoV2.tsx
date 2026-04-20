@@ -36,7 +36,7 @@ const NumberMark: React.FC<{ n: string }> = ({ n }) => {
 const ManifestoImage: React.FC = () => {
   const ref = useParallax<HTMLDivElement>(0.3, 80);
   return (
-    <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-4 lg:mb-5 media-glow">
+    <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-6 sm:mb-4 lg:mb-5 media-glow">
       <div ref={ref} className="absolute inset-x-0 inset-y-0 sm:inset-y-auto sm:-top-[20%] sm:h-[140%] will-change-transform">
         <Image
           src="/manifesto3.png"
@@ -51,9 +51,9 @@ const ManifestoImage: React.FC = () => {
 };
 
 const headlineClass =
-  "font-freight text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.12] text-white max-w-[760px] mb-6 sm:mb-7";
+  "font-freight text-[clamp(1.75rem,4.2vw,3rem)] font-semibold leading-[1.2] sm:leading-[1.12] text-white max-w-[760px] mb-6 sm:mb-7";
 const bodyClass =
-  "text-[1rem] text-white/70 max-w-[640px] leading-[1.7] mb-4 sm:mb-5 font-light";
+  "text-[1rem] text-white/70 max-w-[640px] leading-[1.8] sm:leading-[1.7] mb-5 sm:mb-5 font-light";
 const sectionClass =
   "relative overflow-hidden sm:min-h-[60vh] py-16 sm:py-20 lg:py-24 border-b border-white/[0.05]";
 
@@ -259,7 +259,7 @@ const ManifestoV2: React.FC = () => (
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden inline-block bg-white text-navy px-6 py-2.5 text-[0.78rem] font-bold tracking-widest uppercase hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc self-start"
+            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc self-start"
           >
             <span className="relative z-10">Apply now</span>
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />

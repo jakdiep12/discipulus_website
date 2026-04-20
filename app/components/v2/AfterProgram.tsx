@@ -27,7 +27,7 @@ const AfterProgram: React.FC = () => (
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           After the program
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
+        <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           After You Leave The Program.
         </h2>
       </Reveal>

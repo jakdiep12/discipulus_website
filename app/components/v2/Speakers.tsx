@@ -51,7 +51,7 @@ const SpeakerCard: React.FC<{ speaker: typeof speakers[number] }> = ({ speaker }
 
         {/* Back — info card with link */}
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 flex flex-col items-center justify-center p-6 text-center border border-white/10">
-          <div className="font-sans text-[0.95rem] font-semibold tracking-tight text-white mb-1">
+          <div className="font-sans text-[1rem] sm:text-[0.95rem] font-semibold tracking-tight text-white mb-1">
             {speaker.name}
           </div>
           <a
@@ -89,11 +89,11 @@ const Speakers: React.FC = () => (
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Selected Past Speakers
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
+        <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           Selected Past Speakers.
         </h2>
       </Reveal>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-3 md:gap-4">
         {speakers.map((s, i) => (
           <Reveal key={s.name} delay={(i % 8) * 80} offset="sm">
             <SpeakerCard speaker={s} />

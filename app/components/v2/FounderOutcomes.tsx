@@ -123,7 +123,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
 
       {/* Bottom content — founder name (always) + company + desc (hover only) */}
       <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-        <div className="font-sans text-[0.9rem] sm:text-[0.95rem] font-semibold tracking-tight text-white leading-tight">
+        <div className="font-sans text-[1rem] sm:text-[0.95rem] font-semibold tracking-tight text-white leading-tight">
           {founder.name}
         </div>
         <div
@@ -162,7 +162,7 @@ const FounderOutcomes: React.FC = () => {
           <p className="font-mono text-[0.75rem] text-navy/50 tracking-[0.14em] uppercase mb-3">
             Cohort
           </p>
-          <h2 className="font-freight text-[2.1rem] font-normal leading-tight max-w-[520px] text-navy underline-reveal underline-reveal-dark mb-8 sm:mb-10">
+          <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight max-w-[520px] text-navy underline-reveal underline-reveal-dark mb-8 sm:mb-10">
             Featured Cohort Founders.
           </h2>
         </Reveal>

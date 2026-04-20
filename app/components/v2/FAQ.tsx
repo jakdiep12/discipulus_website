@@ -43,7 +43,7 @@ const FAQItem: React.FC<{ faq: typeof faqs[number]; index: number }> = ({ faq, i
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="w-full flex justify-between items-start gap-4 py-5 sm:py-6 min-h-[44px] text-left group"
+          className="w-full flex justify-between items-start gap-4 py-5 sm:py-6 min-h-[56px] sm:min-h-[44px] text-left group"
           aria-expanded={open}
           aria-label={faq.q}
         >
@@ -94,7 +94,7 @@ const FAQ: React.FC = () => (
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Common questions
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
+        <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           Frequently asked questions.
         </h2>
       </Reveal>

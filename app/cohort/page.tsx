@@ -18,7 +18,7 @@ export default function CohortPage() {
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
       <NavbarV2 />
       <CohortHero />
-      <section className="py-16 sm:py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
           <Reveal>
             <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">

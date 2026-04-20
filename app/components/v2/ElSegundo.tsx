@@ -40,7 +40,7 @@ const ElSegundo: React.FC = () => (
         <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-5">
           Why <span className="el-segundo">El&nbsp;Segundo</span>
         </p>
-        <h2 className="font-freight text-[1.9rem] font-normal leading-tight text-white mb-4 underline-reveal">
+        <h2 className="font-freight text-[1.7rem] sm:text-[1.9rem] font-normal leading-tight text-white mb-4 underline-reveal">
           The new center of gravity for American hard tech.
         </h2>
         <WordReveal className="text-[0.9375rem] sm:text-[1rem] text-white/65 leading-[1.65] mt-3" speed={30}>El Segundo is home to a growing cluster of defense, aerospace, and deep tech companies. The Cohort plugs founders directly into this physical ecosystem — the actual people and buildings where the work is happening.</WordReveal>

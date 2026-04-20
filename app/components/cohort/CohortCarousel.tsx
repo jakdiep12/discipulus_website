@@ -35,7 +35,7 @@ const PhotoSet: React.FC<{ onSelect: (src: string) => void }> = ({ onSelect }) =
       <button
         key={i}
         onClick={() => onSelect(src)}
-        className="h-[120px] sm:h-[200px] md:h-[260px] lg:h-[320px] shrink-0 relative w-[120px] sm:w-[200px] md:w-[260px] lg:w-[320px] overflow-hidden group cursor-zoom-in"
+        className="h-[160px] sm:h-[200px] md:h-[260px] lg:h-[320px] shrink-0 relative w-[160px] sm:w-[200px] md:w-[260px] lg:w-[320px] overflow-hidden group cursor-zoom-in"
       >
         <Image
           src={src}

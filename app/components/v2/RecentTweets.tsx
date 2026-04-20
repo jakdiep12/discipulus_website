@@ -21,7 +21,7 @@ const RecentTweets: React.FC = () => (
         as="h2"
         speed={55}
         delay={120}
-        className="font-freight text-[2.1rem] font-normal text-white mb-7 tracking-tight"
+        className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal text-white mb-7 tracking-tight"
       >
         From the timeline.
       </WordReveal>

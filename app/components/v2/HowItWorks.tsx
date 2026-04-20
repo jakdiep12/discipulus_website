@@ -18,7 +18,7 @@ const HowItWorks: React.FC = () => (
         <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
           How it works
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-3 underline-reveal">
+        <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal text-white mb-3 underline-reveal">
           From day one to Demo Day and beyond.
         </h2>
       </Reveal>

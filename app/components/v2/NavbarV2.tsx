@@ -56,17 +56,17 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex justify-between items-center px-6 py-4 border-b border-white/5">
+        <div className="flex justify-between items-center px-6 py-5 border-b border-white/5">
           <Image
-            src="/Discipulus - Logo Small.png"
+            src="/Discipulus - Logo.png"
             alt="Discipulus Ventures"
-            width={36}
-            height={36}
-            className="h-[36px] w-auto"
+            width={480}
+            height={78}
+            className="h-[28px] w-auto"
           />
           <button
             onClick={() => setMenuOpen(false)}
-            className="p-2 text-white/80 hover:text-white transition-colors duration-300 ease-8vc min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="p-2 -mr-2 text-white/80 hover:text-white transition-colors duration-300 ease-8vc min-h-[48px] min-w-[48px] flex items-center justify-center"
             aria-label="Close menu"
           >
             <svg
@@ -92,9 +92,9 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`font-sans text-[1.5rem] font-medium tracking-tight transition-all duration-500 ease-8vc-out py-3 border-b border-white/5 flex items-center justify-between group ${
+              className={`font-sans text-[1.25rem] font-medium tracking-tight transition-all duration-500 ease-8vc-out py-4 min-h-[56px] border-b border-white/5 flex items-center justify-between group ${
                 menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
-              } ${pathname === link.href ? "text-white" : "text-white/70 hover:text-white"}`}
+              } ${pathname === link.href ? "text-white" : "text-white/75 hover:text-white"}`}
               style={{ transitionDelay: menuOpen ? `${120 + i * 70}ms` : "0ms" }}
             >
               <span>{link.label}</span>
@@ -107,7 +107,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className={`mt-6 bg-white text-navy px-6 py-4 text-[0.82rem] font-bold tracking-widest uppercase text-center transition-all duration-500 ease-8vc-out hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] ${
+            className={`block w-full mt-8 bg-white text-navy px-6 py-5 text-[0.9rem] font-bold tracking-widest uppercase text-center min-h-[56px] transition-all duration-500 ease-8vc-out hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] ${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
             style={{ transitionDelay: menuOpen ? `${120 + navLinks.length * 70}ms` : "0ms" }}
@@ -116,7 +116,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
           </a>
 
           <p
-            className={`mt-auto font-mono text-[0.68rem] text-white/30 tracking-[0.16em] uppercase transition-opacity duration-500 ${
+            className={`mt-auto font-mono text-[0.72rem] text-white/30 tracking-[0.16em] uppercase transition-opacity duration-500 ${
               menuOpen ? "opacity-100" : "opacity-0"
             }`}
             style={{ transitionDelay: menuOpen ? "500ms" : "0ms" }}
@@ -130,23 +130,17 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
 
   return (
     <>
-      <nav className={`flex justify-between items-center px-4 sm:px-6 lg:px-12 py-3 sm:py-4 z-50 ${
+      <nav className={`flex justify-between items-center px-5 sm:px-6 lg:px-12 py-4 sm:py-4 min-h-[64px] sm:min-h-0 z-50 ${
         transparent ? "bg-gradient-to-b from-black/50 via-black/25 to-transparent pb-10" : "sticky top-0 bg-navy/95 backdrop-blur-xl border-b border-white/5"
       }`}>
-        <Link href="/">
+        <Link href="/" className="flex items-center">
           <Image
             src="/Discipulus - Logo.png"
             alt="Discipulus Ventures"
             width={480}
             height={78}
-            className="h-[40px] md:h-[56px] lg:h-[78px] w-auto hidden sm:block"
-          />
-          <Image
-            src="/Discipulus - Logo Small.png"
-            alt="Discipulus Ventures"
-            width={40}
-            height={40}
-            className="h-[36px] w-auto sm:hidden"
+            className="h-[28px] sm:h-[40px] md:h-[56px] lg:h-[78px] w-auto"
+            priority
           />
         </Link>
         <div className="flex gap-4 lg:gap-7 items-center">
@@ -176,13 +170,13 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
           {/* Hamburger button — mobile only */}
           <button
             onClick={() => setMenuOpen(true)}
-            className="md:hidden flex flex-col justify-center items-center gap-[5px] p-3 min-w-[44px] min-h-[44px]"
+            className="md:hidden flex flex-col justify-center items-center gap-[6px] p-3 -mr-3 min-w-[48px] min-h-[48px]"
             aria-label="Open menu"
             aria-expanded={menuOpen}
           >
-            <span className="block w-6 h-[2px] bg-white/90" />
-            <span className="block w-6 h-[2px] bg-white/90" />
-            <span className="block w-6 h-[2px] bg-white/90" />
+            <span className="block w-7 h-[2px] bg-white/90" />
+            <span className="block w-7 h-[2px] bg-white/90" />
+            <span className="block w-7 h-[2px] bg-white/90" />
           </button>
         </div>
       </nav>

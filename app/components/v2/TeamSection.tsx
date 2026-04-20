@@ -75,13 +75,13 @@ interface TeamCardProps {
 const TeamCard: React.FC<TeamCardProps> = ({ member, size = "lg" }) => {
   const nameSize =
     size === "lg"
-      ? "text-base md:text-lg"
-      : "text-[0.78rem] sm:text-[0.85rem] md:text-[0.95rem]";
+      ? "text-[1rem] sm:text-base md:text-lg"
+      : "text-[0.95rem] sm:text-[0.85rem] md:text-[0.95rem]";
   const roleSize =
     size === "lg"
-      ? "text-[0.78rem] md:text-[0.85rem]"
-      : "text-[0.66rem] sm:text-[0.72rem] md:text-[0.78rem]";
-  const padding = size === "lg" ? "p-4 md:p-5" : "p-2.5 md:p-3.5";
+      ? "text-[0.82rem] sm:text-[0.78rem] md:text-[0.85rem]"
+      : "text-[0.72rem] sm:text-[0.72rem] md:text-[0.78rem]";
+  const padding = size === "lg" ? "p-4 md:p-5" : "p-3 md:p-3.5";
   const iconSize = size === "lg" ? 18 : 14;
 
   return (
@@ -145,16 +145,16 @@ const TeamSection: React.FC = () => (
     />
     <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
-        <h2 className="font-freight text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center text-white mb-10 sm:mb-14">
+        <h2 className="font-freight text-[2.25rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center text-white mb-10 sm:mb-14">
           Our Team.
         </h2>
       </Reveal>
 
       {/* Principals */}
-      <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-14 sm:mb-16">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-14 sm:mb-16">
         {principals.map((p, i) => (
           <Reveal key={p.name} delay={i * 120}>
-            <div className="w-72 sm:w-80">
+            <div className="w-full max-w-[20rem] sm:w-80">
               <TeamCard member={p} size="lg" />
             </div>
           </Reveal>
@@ -163,12 +163,12 @@ const TeamSection: React.FC = () => (
 
       {/* Advisors */}
       <Reveal>
-        <h3 className="font-freight text-2xl md:text-3xl font-semibold text-center text-white/80 mb-6 sm:mb-8">
+        <h3 className="font-freight text-[1.65rem] sm:text-2xl md:text-3xl font-semibold text-center text-white/80 mb-6 sm:mb-8">
           Advisors
         </h3>
       </Reveal>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
         {advisors.map((a, i) => (
           <Reveal key={a.name} delay={i * 80}>
             <TeamCard member={a} size="sm" />
