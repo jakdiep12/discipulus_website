@@ -38,7 +38,7 @@ const ElSegundo: React.FC = () => (
     <div className="max-w-[1200px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start relative z-10">
       <Parallax speed={0.08}>
         <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-5">
-          Why El Segundo
+          Why <span className="el-segundo">El&nbsp;Segundo</span>
         </p>
         <h2 className="font-freight text-[1.9rem] font-normal leading-tight text-white mb-4 underline-reveal">
           The new center of gravity for American hard tech.

@@ -22,13 +22,13 @@ export default function CohortPage() {
         <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
           <Reveal>
             <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
-              Fall 2026 Cohort · El Segundo, CA
+              Fall 2026 Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
             </p>
             <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mb-5">
               Discipulus Cohort
             </h1>
             <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[520px] leading-[1.65]">
-              Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
+              Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
             </p>
           </Reveal>
         </div>

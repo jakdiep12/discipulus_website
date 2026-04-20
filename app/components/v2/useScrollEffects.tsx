@@ -153,21 +153,45 @@ export const WordReveal: React.FC<{
   }, []);
 
   const Tag = as as React.ElementType;
-  return (
-    <Tag ref={ref} className={className}>
-      {words.map((word, i) => (
+  const rendered: React.ReactNode[] = [];
+  let i = 0;
+  while (i < words.length) {
+    const w = words[i];
+    const next = words[i + 1];
+    const isElSegundo = /^El$/.test(w) && next && /^Segundo[.,!?:;]?$/.test(next);
+    const delayMs = visible ? `${delay + i * speed}ms` : "0ms";
+    const commonStyle = {
+      opacity: visible ? 1 : 0,
+      transform: visible ? "translateY(0)" : "translateY(4px)",
+      transitionDelay: delayMs,
+    } as const;
+    if (isElSegundo) {
+      rendered.push(
         <span
           key={i}
-          className="inline-block transition-all duration-300 ease-8vc-out"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(4px)",
-            transitionDelay: visible ? `${delay + i * speed}ms` : "0ms",
-          }}
+          className="el-segundo inline-block transition-all duration-300 ease-8vc-out"
+          style={commonStyle}
         >
-          {word}{i < words.length - 1 ? "\u00A0" : ""}
+          {w}&nbsp;{next}{i + 2 < words.length ? "\u00A0" : ""}
         </span>
-      ))}
+      );
+      i += 2;
+      continue;
+    }
+    rendered.push(
+      <span
+        key={i}
+        className="inline-block transition-all duration-300 ease-8vc-out"
+        style={commonStyle}
+      >
+        {w}{i < words.length - 1 ? "\u00A0" : ""}
+      </span>
+    );
+    i += 1;
+  }
+  return (
+    <Tag ref={ref} className={className}>
+      {rendered}
     </Tag>
   );
 };

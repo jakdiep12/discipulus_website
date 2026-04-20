@@ -51,7 +51,7 @@ const FounderCard: React.FC<FounderCardProps> = ({ founder, onHover, defaultHove
           src={founder.imageUrl}
           alt={founder.name}
           fill
-          className={`object-cover ${founder.grayscale ? "grayscale" : ""}`}
+          className="object-cover"
         />
       </div>
 
@@ -83,7 +83,7 @@ const FounderCard: React.FC<FounderCardProps> = ({ founder, onHover, defaultHove
                 alt={`${founder.name}'s company logo`}
                 width={128}
                 height={48}
-                className={`object-contain filter brightness-0 invert ${{
+                className={`object-contain ${{
                   xsmall: 'max-h-6',
                   small: 'max-h-8',
                   large: 'max-h-16',

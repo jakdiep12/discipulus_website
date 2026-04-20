@@ -4,13 +4,22 @@ import React from "react";
 import Image from "next/image";
 import { Reveal, WordReveal } from "./useScrollEffects";
 
-const articles = [
+const articles: Array<{
+  outlet: string;
+  logo: string;
+  title: string;
+  date: string;
+  preview: React.ReactNode;
+  url: string;
+}> = [
   {
     outlet: "Forbes",
     logo: "/news/forbes.png",
     title: "Silicon Valley's 'Gundo' Bros Are Building A Y Combinator For Military Tech",
     date: "February 10, 2025",
-    preview: "Inside the El Segundo Cohort building the next generation of defense tech founders.",
+    preview: (
+      <>Inside the <span className="el-segundo">El&nbsp;Segundo</span> Cohort building the next generation of defense tech founders.</>
+    ),
     url: "https://www.forbes.com/sites/davidjeans/2025/02/10/silicon-valley-gundo-bros-ycombinator/",
   },
   {
@@ -26,7 +35,9 @@ const articles = [
     logo: "/news/labj.png",
     title: "Military Culture in Tech?",
     date: "June 23, 2025",
-    preview: "How El Segundo is becoming the center of gravity for American hard tech.",
+    preview: (
+      <>How <span className="el-segundo">El&nbsp;Segundo</span> is becoming the center of gravity for American hard tech.</>
+    ),
     url: "https://labusinessjournal.com/featured/military-culture-in-tech/",
   },
 ];
@@ -59,7 +70,7 @@ const Press: React.FC = () => (
                   alt={`${a.outlet} logo`}
                   width={180}
                   height={36}
-                  className="h-[30px] sm:h-[34px] w-auto object-contain brightness-0 opacity-65 group-hover:opacity-90 transition-opacity duration-300"
+                  className="h-[30px] sm:h-[34px] w-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </Reveal>

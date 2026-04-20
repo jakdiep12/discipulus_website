@@ -18,7 +18,7 @@ const PhotoSet = () => (
           alt={`Cohort photo ${i + 1}`}
           fill
           sizes="270px"
-          className="object-cover opacity-70 grayscale-[0.15] group-hover:opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-8vc"
+          className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-8vc"
         />
       </div>
     ))}

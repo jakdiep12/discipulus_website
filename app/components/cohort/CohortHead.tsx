@@ -49,7 +49,7 @@ const CohortHead: React.FC = () => {
           Discipulus Cohort
         </h1>
         <div className="flex flex-col pt-1 md:pt-2 font-regular text-sm sm:text-md 2xl:text-lg max-w-[400px] md:max-w-[550px] text-center text-[#eee] sm:px-4 leading-tight">
-          Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
+          Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
         </div>
         <div className="flex flex-col items-center justify-center pt-4">
           <Link href='https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q'>

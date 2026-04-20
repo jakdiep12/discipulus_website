@@ -9,11 +9,10 @@ interface SpeakerCardProps {
   name: string;
   title: string;
   imageUrl: string;
-  grayscale?: boolean;
   imagePosition?: string;
 }
 
-const SpeakerCard: React.FC<SpeakerCardProps> = ({ name, title, imageUrl, grayscale, imagePosition }) => {
+const SpeakerCard: React.FC<SpeakerCardProps> = ({ name, title, imageUrl, imagePosition }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -32,7 +31,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ name, title, imageUrl, graysc
           src={imageUrl} 
           alt={name} 
           fill 
-          className={`object-cover ${grayscale ? "grayscale" : ""}`}
+          className="object-cover"
           style={imagePosition ? { objectPosition: imagePosition } : undefined}
         />
       </div>
@@ -92,26 +91,22 @@ const speakers = [
     name: "Dan Piemont",
     title: "Founder of Long Wall",
     imageUrl: "/speakers/danpiemont.jpeg",
-    grayscale: true,
     imagePosition: "center top",
   },
   {
     name: "Shaun Maguire",
     title: "Partner at Sequoia Capital",
     imageUrl: "/speakers/shaun maguire.png",
-    grayscale: true,
   },
   {
     name: "Saif Khawaja",
     title: "Founder of Shinkei Systems",
     imageUrl: "/speakers/saif.png",
-    grayscale: true,
   },
   {
     name: "Kevin Hartz",
     title: "General Partner at A*",
     imageUrl: "/speakers/kevinhartz.jpg",
-    grayscale: true,
   },
   // Row 3 (was 2nd row)
   {
@@ -193,7 +188,6 @@ const SpeakerGrid: React.FC = () => {
                 name={speaker.name}
                 title={speaker.title}
                 imageUrl={speaker.imageUrl}
-                grayscale={speaker.grayscale}
                 imagePosition={speaker.imagePosition}
               />
             ))}

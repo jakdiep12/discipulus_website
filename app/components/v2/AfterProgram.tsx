@@ -4,7 +4,7 @@ import React from "react";
 import { Reveal } from "./useScrollEffects";
 
 const bullets: React.ReactNode[] = [
-  "Get mentorship from mission-aligned unicorn founders in El Segundo",
+  <>Get mentorship from mission-aligned unicorn founders in <span className="el-segundo">El&nbsp;Segundo</span></>,
   <>
     Clear plan to raise a funding round with help from{" "}
     <a
@@ -17,7 +17,7 @@ const bullets: React.ReactNode[] = [
     </a>{" "}
     and in-person access to 100+ top investors through the Demo Day for the American Interest
   </>,
-  "Become an El Segundo insider and get to know the key players in the ecosystem",
+  <>Become an <span className="el-segundo">El&nbsp;Segundo</span> insider and get to know the key players in the ecosystem</>,
 ];
 
 const AfterProgram: React.FC = () => (

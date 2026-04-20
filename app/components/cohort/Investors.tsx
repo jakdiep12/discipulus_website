@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 
-const logoClass = "w-auto hover:cursor-pointer duration-500 hover:opacity-75 filter brightness-0 invert";
+const logoClass = "w-auto hover:cursor-pointer duration-500 hover:opacity-75";
 
 const InvestorLogoSet = () => (
   <>

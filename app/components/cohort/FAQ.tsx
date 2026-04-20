@@ -18,7 +18,7 @@ const FAQ: React.FC = () => {
             <AccordionItem value="item-1" className="!border-b-0">
               <AccordionTrigger className="text-lg md:text-xl font-semibold text-white text-left">Who is the Cohort for?</AccordionTrigger>
               <AccordionContent className="w-full text-gray-300 text-sm md:text-base font-normal">
-                We welcome founders in the early stages of building or seriously exploring building hard tech and software for the national interest. We seek individuals driven by a unique set of values that motivates them to solve the West&apos;s hardest problems and attracts them to the culture of El Segundo.
+                We welcome founders in the early stages of building or seriously exploring building hard tech and software for the national interest. We seek individuals driven by a unique set of values that motivates them to solve the West&apos;s hardest problems and attracts them to the culture of <span className="el-segundo">El&nbsp;Segundo</span>.
                 <br/><br/>
                 We&apos;ve worked with student founders, full-time founders, and those balancing full-time jobs, so we don&apos;t exclude any particular persona.
               </AccordionContent>
@@ -26,7 +26,7 @@ const FAQ: React.FC = () => {
             <AccordionItem value="item-2" className="!border-b-0">
               <AccordionTrigger className="text-lg md:text-xl font-semibold text-white text-left">What&apos;s the timeline and commitment?</AccordionTrigger>
               <AccordionContent className="w-full text-gray-300 text-sm md:text-base font-normal">
-                The in-person part of the program runs for two fully paid weeks in El Segundo, CA, with attendance required for the entire duration. Other programming will be provided both before and after the Cohort. Founders will also be invited to yearly retreats with other founders.
+                The in-person part of the program runs for two fully paid weeks in <span className="el-segundo">El&nbsp;Segundo</span>, CA, with attendance required for the entire duration. Other programming will be provided both before and after the Cohort. Founders will also be invited to yearly retreats with other founders.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="!border-b-0">
@@ -56,7 +56,7 @@ const FAQ: React.FC = () => {
             <AccordionItem value="item-7" className="!border-b-0">
               <AccordionTrigger className="text-lg md:text-xl font-semibold text-white text-left">Do you accept applicants from outside the U.S.?</AccordionTrigger>
               <AccordionContent className="w-full text-gray-300 text-sm md:text-base font-normal">
-                Yes, we welcome international applicants. However, please note that the in-person program requires travel to El Segundo, CA for two weeks.
+                Yes, we welcome international applicants. However, please note that the in-person program requires travel to <span className="el-segundo">El&nbsp;Segundo</span>, CA for two weeks.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

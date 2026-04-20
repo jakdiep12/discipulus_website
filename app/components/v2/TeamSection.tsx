@@ -91,7 +91,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, size = "lg" }) => {
           src={member.img}
           alt={member.name}
           fill
-          className="object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-500 ease-8vc group-hover:scale-[1.03]"
+          className="object-cover transition-all duration-500 ease-8vc group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 50vw, 320px"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

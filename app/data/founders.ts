@@ -9,7 +9,6 @@ export interface Founder {
     companyLogoText?: string;
     companyLogoEmoji?: string;
     companyLogoFont?: string;
-    grayscale?: boolean;
     companyLogoSize?: 'xsmall' | 'small' | 'default' | 'large';
     companyLogoPadding?: boolean;
     companyLogoMarginBottom?: 'default' | 'less';
@@ -72,7 +71,6 @@ export const founders: Founder[] = [
       companyLogo: "/companies/actinide.png",
       companyLink: "https://www.actinideinc.com/",
       companyDescription: "Building America's isotope refinery.",
-      grayscale: true,
       hidden: true,
     },
     {
@@ -83,7 +81,6 @@ export const founders: Founder[] = [
       companyLink: "https://www.1autechnologies.com/",
       companyDescription: "Next-generation photonic systems.",
       testimonial: "Jakob is a patriot, whose intense dynamism throughout the program was infectious. Beyond the Cohort, DVs mix of industry acumen and extensive network has allowed us to grow quickly without compromising our core mission. Can't wait to see what's next for El Segundo!",
-      grayscale: true,
       companyLogoSize: 'xsmall',
     },
     {
@@ -94,7 +91,6 @@ export const founders: Founder[] = [
       companyLink: "https://tex.pro/",
       companyDescription: "Intelligence for equipment procurement & sales.",
       testimonial: "From day one, Discipulus brought together founders who were deeply mission-aligned and serious about building enduring American companies. That alignment created trust, speed, and an uncommon sense of purpose. It's rare to find a program that pushes this hard while staying true to first principles.",
-      grayscale: true,
       companyLogoSize: 'large',
       companyLogoPadding: true,
     },

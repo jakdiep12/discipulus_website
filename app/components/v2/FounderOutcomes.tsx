@@ -87,7 +87,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
         alt={founder.name}
         fill
         className={`object-cover transition-all duration-500 ease-8vc ${
-          hovered ? "grayscale-0 scale-[1.02]" : "grayscale"
+          hovered ? "scale-[1.02]" : ""
         }`}
       />
       {/* Color-shift tint on hover — warm cream glow */}
