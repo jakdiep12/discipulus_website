@@ -5,7 +5,6 @@ import Schedule from "../components/v2/Schedule";
 import HowItWorks from "../components/v2/HowItWorks";
 import ElSegundo from "../components/v2/ElSegundo";
 import FAQ from "../components/v2/FAQ";
-import CTASection from "../components/v2/CTASection";
 import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
@@ -33,7 +32,6 @@ export default function ExperiencePage() {
       <HowItWorks />
       <ElSegundo />
       <FAQ />
-      <CTASection />
       <FooterV2 />
     </div>
   );

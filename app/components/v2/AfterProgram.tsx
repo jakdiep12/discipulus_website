@@ -21,8 +21,17 @@ const bullets: React.ReactNode[] = [
 ];
 
 const AfterProgram: React.FC = () => (
-  <section className="py-20 sm:py-24">
-    <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+  <section className="relative py-20 sm:py-24 overflow-hidden">
+    {/* Splotch — muted purple / deep blue atmospheric wash */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      style={{
+        background:
+          "radial-gradient(540px 480px at 85% 15%, rgba(116,94,160,0.13), transparent 72%), radial-gradient(520px 460px at 10% 85%, rgba(60,100,170,0.12), transparent 72%)",
+      }}
+    />
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           After the program

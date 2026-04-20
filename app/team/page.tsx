@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import NavbarV2 from "../components/v2/NavbarV2";
 import TeamSection from "../components/v2/TeamSection";
-import CTASection from "../components/v2/CTASection";
 import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function TeamPage() {
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />
       <TeamSection />
-      <CTASection />
       <FooterV2 />
     </div>
   );

@@ -12,8 +12,17 @@ const scheduleItems = [
 ];
 
 const Schedule: React.FC = () => (
-  <section id="experience" className="py-20 sm:py-24 bg-[#0c1424]">
-    <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+  <section id="experience" className="relative py-20 sm:py-24 bg-[#0c1424] overflow-hidden">
+    {/* Splotch — dark teal atmospheric wash */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
+      style={{
+        background:
+          "radial-gradient(560px 480px at 15% 20%, rgba(40,110,140,0.14), transparent 72%), radial-gradient(540px 460px at 85% 85%, rgba(90,60,140,0.12), transparent 72%)",
+      }}
+    />
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
         <Reveal>
           <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">

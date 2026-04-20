@@ -5,56 +5,132 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordReveal } from "./useScrollEffects";
 
+const ParticlesSVG = () => (
+  <svg
+    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[55%] opacity-[0.05] pointer-events-none"
+    viewBox="0 0 1200 400"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet"
+    aria-hidden
+  >
+    <g fill="white">
+      <circle cx="80" cy="60" r="1.1"><animate attributeName="cy" values="60;54;66;60" dur="8s" repeatCount="indefinite" /></circle>
+      <circle cx="200" cy="120" r=".7"><animate attributeName="cy" values="120;114;126;120" dur="6s" repeatCount="indefinite" /></circle>
+      <circle cx="340" cy="80" r=".9"><animate attributeName="cy" values="80;73;87;80" dur="7s" repeatCount="indefinite" /></circle>
+      <circle cx="480" cy="200" r="1.2"><animate attributeName="cy" values="200;193;207;200" dur="9s" repeatCount="indefinite" /></circle>
+      <circle cx="600" cy="100" r=".6"><animate attributeName="cy" values="100;94;106;100" dur="5s" repeatCount="indefinite" /></circle>
+      <circle cx="720" cy="300" r="1"><animate attributeName="cy" values="300;294;306;300" dur="7.5s" repeatCount="indefinite" /></circle>
+      <circle cx="850" cy="150" r=".8"><animate attributeName="cy" values="150;143;157;150" dur="6.5s" repeatCount="indefinite" /></circle>
+      <circle cx="960" cy="250" r="1.1"><animate attributeName="cy" values="250;243;257;250" dur="8.5s" repeatCount="indefinite" /></circle>
+      <circle cx="1100" cy="90" r=".5"><animate attributeName="cy" values="90;84;96;90" dur="5.5s" repeatCount="indefinite" /></circle>
+      <circle cx="150" cy="320" r=".9"><animate attributeName="cy" values="320;314;326;320" dur="7s" repeatCount="indefinite" /></circle>
+      <circle cx="400" cy="340" r=".7"><animate attributeName="cy" values="340;334;346;340" dur="6s" repeatCount="indefinite" /></circle>
+      <circle cx="550" cy="280" r="1.1"><animate attributeName="cy" values="280;273;287;280" dur="8s" repeatCount="indefinite" /></circle>
+    </g>
+  </svg>
+);
+
 const FooterV2: React.FC = () => (
-  <footer className="px-6 sm:px-6 lg:px-12 py-6 sm:py-3 flex flex-col sm:flex-row justify-between items-center gap-5 sm:gap-3 border-t border-white/[0.05]">
-    <Reveal offset="sm">
-      <Image
-        src="/Discipulus - Logo.png"
-        alt="Discipulus Ventures"
-        width={160}
-        height={20}
-        className="h-[22px] sm:h-[20px] w-auto opacity-40 sm:opacity-35 hover:opacity-70 transition-opacity duration-500 ease-8vc"
-      />
-    </Reveal>
-    <Reveal delay={100} offset="sm">
-      <div className="flex gap-6 sm:gap-5 flex-wrap justify-center items-center">
-        <Link href="/#about" className="text-white/40 sm:text-white/25 text-[0.9375rem] sm:text-[0.74rem] tracking-wide hover:text-white transition-colors duration-200 ease-8vc">
-          About
-        </Link>
-        <Link href="/cohort" className="text-white/40 sm:text-white/25 text-[0.9375rem] sm:text-[0.74rem] tracking-wide hover:text-white transition-colors duration-200 ease-8vc">
-          Cohort
-        </Link>
-        <Link href="/team" className="text-white/40 sm:text-white/25 text-[0.9375rem] sm:text-[0.74rem] tracking-wide hover:text-white transition-colors duration-200 ease-8vc">
-          Team
-        </Link>
-        <Link href="/cookies" className="text-white/40 sm:text-white/25 text-[0.9375rem] sm:text-[0.74rem] tracking-wide hover:text-white transition-colors duration-200 ease-8vc">
-          Cookies
-        </Link>
-        <span className="hidden sm:inline text-white/10">|</span>
-        <div className="flex gap-4 sm:gap-3 items-center">
-          <a href="https://x.com/discipulusvent" target="_blank" rel="noopener noreferrer" className="opacity-25 hover:opacity-100 hover:scale-125 transition-all duration-300 ease-8vc">
-            <Image src="/social/x.png" alt="Discipulus Ventures on X" width={16} height={16} className="w-[16px] h-[16px] invert" />
+  <footer className="relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-2 to-navy pointer-events-none" />
+    {/* Splotch — atmospheric wash for the close */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      style={{
+        background:
+          "radial-gradient(560px 480px at 20% 20%, rgba(60,100,170,0.13), transparent 72%), radial-gradient(520px 460px at 85% 85%, rgba(116,94,160,0.12), transparent 72%)",
+      }}
+    />
+    <ParticlesSVG />
+
+    {/* CTA — Build the Future with Discipulus. */}
+    <section className="relative py-20 sm:py-24 text-center">
+      <WordReveal
+        as="h2"
+        speed={55}
+        className="font-freight text-[clamp(1.9rem,3.4vw,2.6rem)] font-normal leading-tight text-white mb-8 px-6 sm:px-0 tracking-tight"
+      >
+        Build the Future with Discipulus.
+      </WordReveal>
+      <Reveal delay={500}>
+        <div className="flex flex-col sm:flex-row gap-3.5 items-center justify-center relative z-10">
+          <a
+            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative overflow-hidden bg-white text-navy px-7 py-4 sm:py-3 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc inline-flex items-center justify-center"
+          >
+            <span className="relative z-10">Join us</span>
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
           </a>
-          <a href="https://www.linkedin.com/company/discipulus-ventures" target="_blank" rel="noopener noreferrer" className="opacity-25 hover:opacity-100 hover:scale-125 transition-all duration-300 ease-8vc">
-            <Image src="/social/linkedin.png" alt="Discipulus Ventures on LinkedIn" width={16} height={16} className="w-[16px] h-[16px] invert" />
-          </a>
-          <a href="http://discipulusventures.substack.com/" target="_blank" rel="noopener noreferrer" className="opacity-25 hover:opacity-100 hover:scale-125 transition-all duration-300 ease-8vc">
-            <Image src="/social/substack.png" alt="Discipulus Ventures on Substack" width={16} height={16} className="w-[16px] h-[16px] invert" />
+          <a
+            href="mailto:jakob.diepenbrock@discipulusventures.com"
+            className="text-white/70 sm:text-white/60 px-7 py-4 sm:py-3 text-[0.875rem] sm:text-[0.8rem] tracking-wider border border-white/15 sm:border-white/10 min-h-[52px] sm:min-h-0 hover:text-white hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300 ease-8vc inline-flex items-center justify-center"
+          >
+            Contact us
           </a>
         </div>
+      </Reveal>
+    </section>
+
+    {/* Brand — logo, socials, copyright */}
+    <section className="relative px-6 sm:px-10 lg:px-16 pb-10 sm:pb-12 pt-6 border-t border-white/[0.05]">
+      <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-6 sm:gap-7">
+        <Reveal offset="sm">
+          <Image
+            src="/Discipulus - Logo.png"
+            alt="Discipulus Ventures"
+            width={220}
+            height={28}
+            className="h-[26px] sm:h-[28px] w-auto opacity-80"
+            priority={false}
+          />
+        </Reveal>
+
+        <Reveal delay={100} offset="sm">
+          <div className="flex items-center gap-6 sm:gap-7">
+            <a
+              href="https://x.com/discipulusvent"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Discipulus Ventures on X"
+              className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
+            >
+              <Image src="/social/x.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/discipulus-ventures"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Discipulus Ventures on LinkedIn"
+              className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
+            >
+              <Image src="/social/linkedin.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+            </a>
+            <a
+              href="http://discipulusventures.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Discipulus Ventures on Substack"
+              className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
+            >
+              <Image src="/social/substack.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal delay={200} offset="sm">
+          <div className="font-mono text-[0.7rem] text-white/40 tracking-wider text-center leading-relaxed">
+            <span className="block">© 2026 Discipulus Ventures</span>
+            <span className="block">All Rights Reserved.</span>
+            <Link href="/cookies" className="inline-block mt-2 hover:text-white/70 transition-colors duration-200">
+              Cookie Policy
+            </Link>
+          </div>
+        </Reveal>
       </div>
-    </Reveal>
-    <Reveal delay={200} offset="sm">
-      <div className="font-mono text-[0.64rem] text-white/25 tracking-wider text-center sm:text-right leading-relaxed">
-        <WordReveal as="span" speed={30} className="block">
-          © 2026 Discipulus Ventures
-        </WordReveal>
-        <WordReveal as="span" speed={30} delay={150} className="block">
-          All Rights Reserved.
-        </WordReveal>
-        <Link href="/cookies" className="hover:text-white/60 transition-colors duration-200">Cookie Policy</Link>
-      </div>
-    </Reveal>
+    </section>
   </footer>
 );
 

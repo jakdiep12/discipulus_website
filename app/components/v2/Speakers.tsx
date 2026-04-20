@@ -2,17 +2,30 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Reveal, WordReveal } from "./useScrollEffects";
+import { Reveal } from "./useScrollEffects";
 
-const speakers = [
-  { name: "Augustus Doricko", title: "Founder of Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/" },
-  { name: "Tom Mueller", title: "Founder of Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/" },
-  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/" },
-  { name: "Katherine Boyle", title: "General Partner at a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/" },
-  { name: "Dan Piemont", title: "Founder of Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/" },
-  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/" },
-  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/" },
-  { name: "Kevin Hartz", title: "General Partner at A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/" },
+interface Speaker {
+  name: string;
+  title: string;
+  topic: string;
+  img?: string;
+  url: string;
+  // Optional path to a firm/company logo to render in the card corner.
+  // If the asset is missing the <img> will hide itself via onError.
+  logo?: string;
+  logoAlt?: string;
+}
+
+const speakers: Speaker[] = [
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoAlt: "Anduril Industries" },
+  { name: "Augustus Doricko", title: "Founder of Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.png", logoAlt: "Rainmaker" },
+  { name: "Tom Mueller", title: "Founder of Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png", logoAlt: "Impulse Space" },
+  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png", logoAlt: "Valar Atomics" },
+  { name: "Katherine Boyle", title: "General Partner at a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png", logoAlt: "a16z" },
+  { name: "Dan Piemont", title: "Founder of Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/", logo: "/logos/longwall.png", logoAlt: "Long Wall" },
+  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/", logo: "/logos/sequoia.png", logoAlt: "Sequoia Capital" },
+  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/", logo: "/logos/shinkei.png", logoAlt: "Shinkei Systems" },
+  { name: "Kevin Hartz", title: "General Partner at A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/", logo: "/logos/astar.png", logoAlt: "A*" },
   { name: "Delian Asparouhov", title: "Founder of Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://foundersfund.com/" },
   { name: "Chris Power", title: "Founder of Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/" },
   { name: "Nathan Mintz", title: "Founder of CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.epirusinc.com/" },
@@ -23,7 +36,7 @@ const speakers = [
   { name: "Josh Manchester", title: "General Partner at Champion Hill Ventures", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/" },
 ];
 
-const SpeakerCard: React.FC<{ speaker: typeof speakers[number] }> = ({ speaker }) => {
+const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
   const [flipped, setFlipped] = useState(false);
 
   return (
@@ -38,15 +51,34 @@ const SpeakerCard: React.FC<{ speaker: typeof speakers[number] }> = ({ speaker }
           flipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
-        {/* Front — full-bleed photo */}
-        <div className="absolute inset-0 [backface-visibility:hidden]">
-          <Image
-            src={speaker.img}
-            alt={speaker.name}
-            fill
-            className="object-cover border border-white/10"
-          />
+        {/* Front — full-bleed photo (or styled placeholder when photo missing) */}
+        <div className="absolute inset-0 [backface-visibility:hidden] bg-gradient-to-br from-[#1a2339] to-[#0a1120] border border-white/10">
+          {speaker.img ? (
+            <Image
+              src={speaker.img}
+              alt={speaker.name}
+              fill
+              className="object-cover grayscale"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              <span className="font-freight text-white/85 text-[1.35rem] sm:text-[1.5rem] leading-tight tracking-tight text-center">
+                {speaker.name}
+              </span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          {speaker.logo && (
+            <div className="absolute top-3 left-3 right-3 flex items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={speaker.logo}
+                alt={speaker.logoAlt ?? ""}
+                className="max-w-[70%] h-[18px] sm:h-[20px] w-auto object-contain object-left opacity-90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+                onError={(e) => { e.currentTarget.style.display = "none"; }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Back — info card with link */}
@@ -78,10 +110,10 @@ const Speakers: React.FC = () => (
     {/* Splotch — muted purple atmospheric wash */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0"
+      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
       style={{
         background:
-          "radial-gradient(55% 45% at 80% 20%, rgba(116,94,160,0.07), transparent 70%), radial-gradient(45% 40% at 15% 90%, rgba(40,110,140,0.05), transparent 70%)",
+          "radial-gradient(600px 500px at 80% 20%, rgba(116,94,160,0.13), transparent 70%), radial-gradient(520px 460px at 15% 90%, rgba(40,110,140,0.11), transparent 70%)",
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

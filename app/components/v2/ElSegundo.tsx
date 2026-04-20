@@ -5,9 +5,10 @@ import { Reveal, Parallax, WordReveal } from "./useScrollEffects";
 
 const TopoSVG = () => (
   <svg
-    className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none"
+    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55%] h-[55%] opacity-[0.03] pointer-events-none"
     viewBox="0 0 1200 600"
     xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet"
   >
     <g stroke="white" strokeWidth=".5" fill="none" opacity=".5">
       <ellipse cx="600" cy="300" rx="480" ry="240" />

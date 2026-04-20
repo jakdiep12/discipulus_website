@@ -108,33 +108,33 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
 
       {/* Company logo — default state, top of card, in color */}
       <div
-        className={`absolute top-4 sm:top-5 left-4 sm:left-5 right-4 sm:right-5 flex items-center transition-opacity duration-300 ease-8vc ${
+        className={`absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center transition-opacity duration-300 ease-8vc ${
           hovered ? "opacity-0" : "opacity-100"
         }`}
       >
         <Image
           src={founder.logo}
           alt={`${founder.company} logo`}
-          width={120}
-          height={28}
-          className="h-[22px] sm:h-[26px] w-auto object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+          width={180}
+          height={42}
+          className="w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
         />
       </div>
 
       {/* Bottom content — founder name (always) + company + desc (hover only) */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-        <div className="font-sans text-[1rem] sm:text-[0.95rem] font-semibold tracking-tight text-white leading-tight">
+      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+        <div className="font-sans text-[1.25rem] sm:text-[1.4rem] font-semibold tracking-tight text-white leading-tight">
           {founder.name}
         </div>
         <div
           className={`overflow-hidden transition-all duration-400 ease-8vc-out ${
-            hovered ? "max-h-[96px] opacity-100 mt-1.5" : "max-h-0 opacity-0"
+            hovered ? "max-h-[140px] opacity-100 mt-2" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="text-[0.78rem] text-white/85 font-semibold tracking-tight mb-1">
+          <div className="text-[1rem] text-white/85 font-semibold tracking-tight mb-1.5">
             {founder.company}
           </div>
-          <p className="text-[0.875rem] text-white/65 leading-relaxed">
+          <p className="text-[1.05rem] text-white/65 leading-relaxed">
             {founder.desc}
           </p>
         </div>
@@ -182,8 +182,8 @@ const FounderOutcomes: React.FC = () => {
                   key={founder.name}
                   className="min-w-0 pl-0"
                   style={{
-                    flexBasis: isMobile ? "85%" : "calc(33.333% - 1.25rem)",
-                    marginRight: "1.25rem",
+                    flexBasis: isMobile ? "90%" : "calc(50% - 1rem)",
+                    marginRight: "2rem",
                   }}
                 >
                   <FounderCard founder={founder} />

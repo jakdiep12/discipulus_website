@@ -137,10 +137,10 @@ const TeamSection: React.FC = () => (
     {/* Splotch — dark teal atmospheric wash */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0"
+      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
       style={{
         background:
-          "radial-gradient(55% 45% at 10% 20%, rgba(40,110,140,0.06), transparent 72%), radial-gradient(50% 45% at 90% 80%, rgba(90,60,140,0.05), transparent 72%)",
+          "radial-gradient(560px 480px at 10% 20%, rgba(40,110,140,0.14), transparent 72%), radial-gradient(520px 460px at 90% 80%, rgba(90,60,140,0.12), transparent 72%)",
       }}
     />
     <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">

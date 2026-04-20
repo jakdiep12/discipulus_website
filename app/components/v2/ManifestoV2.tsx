@@ -140,10 +140,10 @@ const ManifestoV2: React.FC = () => (
       {/* Splotch — deep blue atmospheric wash */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
         style={{
           background:
-            "radial-gradient(50% 45% at 20% 30%, rgba(60,100,170,0.055), transparent 72%), radial-gradient(45% 40% at 85% 80%, rgba(90,60,140,0.04), transparent 72%)",
+            "radial-gradient(540px 480px at 20% 30%, rgba(60,100,170,0.13), transparent 72%), radial-gradient(500px 460px at 85% 80%, rgba(90,60,140,0.11), transparent 72%)",
         }}
       />
       <NumberMark n="1" />
@@ -174,10 +174,10 @@ const ManifestoV2: React.FC = () => (
       {/* Splotch — muted purple atmospheric wash */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
         style={{
           background:
-            "radial-gradient(55% 50% at 80% 20%, rgba(116,94,160,0.07), transparent 72%), radial-gradient(45% 40% at 15% 85%, rgba(40,110,140,0.05), transparent 72%)",
+            "radial-gradient(560px 520px at 80% 20%, rgba(116,94,160,0.14), transparent 72%), radial-gradient(520px 460px at 15% 85%, rgba(40,110,140,0.12), transparent 72%)",
         }}
       />
       <NumberMark n="2" />
@@ -210,10 +210,10 @@ const ManifestoV2: React.FC = () => (
       {/* Splotch — dark teal atmospheric wash */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
         style={{
           background:
-            "radial-gradient(55% 45% at 15% 25%, rgba(40,110,140,0.06), transparent 72%), radial-gradient(50% 45% at 85% 85%, rgba(60,100,170,0.05), transparent 72%)",
+            "radial-gradient(560px 500px at 15% 25%, rgba(40,110,140,0.14), transparent 72%), radial-gradient(540px 480px at 85% 85%, rgba(60,100,170,0.12), transparent 72%)",
         }}
       />
       <NumberMark n="3" />

@@ -6,7 +6,6 @@ import LogoMarquee from "./components/v2/LogoMarquee";
 import ManifestoV2 from "./components/v2/ManifestoV2";
 import Press from "./components/v2/Press";
 import RecentTweets from "./components/v2/RecentTweets";
-import CTASection from "./components/v2/CTASection";
 import FooterV2 from "./components/v2/FooterV2";
 
 const HomeV2: React.FC = () => {
@@ -23,7 +22,6 @@ const HomeV2: React.FC = () => {
       <Press />
       <RecentTweets />
       {/* 5. Close */}
-      <CTASection />
       <FooterV2 />
     </div>
     </PortalIntro>

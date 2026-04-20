@@ -4,7 +4,6 @@ import NavbarV2 from "../components/v2/NavbarV2";
 import FounderOutcomes from "../components/v2/FounderOutcomes";
 import Press from "../components/v2/Press";
 import LogoMarquee from "../components/v2/LogoMarquee";
-import CTASection from "../components/v2/CTASection";
 import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
@@ -29,7 +28,6 @@ export default function CohortPage() {
       <FounderOutcomes />
       <Press />
       <LogoMarquee />
-      <CTASection />
       <FooterV2 />
     </div>
   );
