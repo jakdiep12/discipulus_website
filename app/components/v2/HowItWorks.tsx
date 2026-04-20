@@ -4,8 +4,8 @@ import React from "react";
 import { Reveal, WordReveal } from "./useScrollEffects";
 
 const steps = [
-  { num: "01", title: "Apply", desc: "We select ~10 founders per cohort for technical depth, mission alignment, and intensity." },
-  { num: "02", title: "Arrive", desc: "Move into the El Segundo house. Meet your cohort — the people you'll build alongside for 10 days." },
+  { num: "01", title: "Apply", desc: "We select ~10 founders per Cohort for technical depth, mission alignment, and intensity." },
+  { num: "02", title: "Arrive", desc: "Move into the El Segundo house. Meet your Cohort — the people you'll build alongside for 10 days." },
   { num: "03", title: "Train", desc: "Daily sessions with unicorn founders and defense operators. Office hours. Peer pressure that compounds." },
   { num: "04", title: "Demo Day", desc: "Present to 100+ investors at the Demo Day for the American Interest. Walk out funded." },
   { num: "05", title: "For life", desc: "Ongoing mentorship, fundraising support, and lifetime access to the El Segundo network." },
@@ -29,10 +29,10 @@ const HowItWorks: React.FC = () => (
               <div className="font-mono text-[0.65rem] sm:text-[0.58rem] text-white/40 tracking-widest mb-3">
                 {s.num}
               </div>
-              <div className="font-freight text-base font-medium text-white mb-2">
+              <div className="font-sans text-[0.95rem] font-semibold tracking-tight text-white mb-2">
                 {s.title}
               </div>
-              <WordReveal className="text-[0.74rem] text-white/60 leading-relaxed" as="div" speed={30}>{s.desc}</WordReveal>
+              <WordReveal className="text-[0.875rem] text-white/65 leading-[1.6]" as="div" speed={30}>{s.desc}</WordReveal>
             </Reveal>
             {i < steps.length - 1 && (
               <span className="hidden lg:block absolute -right-[7px] top-1/2 -translate-y-1/2 text-white/20 text-sm z-10">

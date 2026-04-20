@@ -21,20 +21,20 @@ const bullets: React.ReactNode[] = [
 ];
 
 const AfterProgram: React.FC = () => (
-  <section className="py-5">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+  <section className="py-20 sm:py-24">
+    <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
-        <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
+        <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           After the program
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-3 underline-reveal">
+        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           After You Leave The Program.
         </h2>
       </Reveal>
-      <ul className="flex flex-col gap-3 max-w-3xl">
+      <ul className="flex flex-col gap-5 max-w-3xl">
         {bullets.map((text, i) => (
           <Reveal key={i} delay={i * 100} offset="sm">
-            <li className="flex items-start gap-3 text-[0.92rem] lg:text-[0.98rem] text-white/75 leading-[1.6] font-light">
+            <li className="flex items-start gap-3 text-[0.9375rem] sm:text-[1rem] text-white/75 leading-[1.7] font-light">
               <span className="text-white/40 mt-1.5 text-xs shrink-0">●</span>
               <span>{text}</span>
             </li>

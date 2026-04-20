@@ -43,11 +43,11 @@ const FAQItem: React.FC<{ faq: typeof faqs[number]; index: number }> = ({ faq, i
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="w-full flex justify-between items-start gap-4 py-3 sm:py-3.5 min-h-[44px] text-left group"
+          className="w-full flex justify-between items-start gap-4 py-5 sm:py-6 min-h-[44px] text-left group"
           aria-expanded={open}
           aria-label={faq.q}
         >
-          <span className="font-freight text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] font-medium text-white group-hover:text-white/90 transition-colors duration-300 pr-4">
+          <span className="font-sans text-[0.95rem] sm:text-[1rem] font-medium text-white group-hover:text-white/90 transition-colors duration-300 pr-4">
             {faq.q}
           </span>
           <span
@@ -63,11 +63,11 @@ const FAQItem: React.FC<{ faq: typeof faqs[number]; index: number }> = ({ faq, i
         </button>
         <div
           className={`overflow-hidden transition-all duration-500 ease-8vc-out ${
-            open ? "max-h-[500px] opacity-100 pb-2.5 sm:pb-3" : "max-h-0 opacity-0"
+            open ? "max-h-[500px] opacity-100 pb-5 sm:pb-6" : "max-h-0 opacity-0"
           }`}
         >
           <WordReveal
-            className="text-[0.85rem] sm:text-[0.88rem] text-white/50 leading-relaxed max-w-[640px] pr-4 sm:pr-8"
+            className="text-[0.9375rem] sm:text-[1rem] text-white/55 leading-[1.65] max-w-[640px] pr-4 sm:pr-8"
             speed={20}
           >
             {faq.a}
@@ -79,13 +79,22 @@ const FAQItem: React.FC<{ faq: typeof faqs[number]; index: number }> = ({ faq, i
 };
 
 const FAQ: React.FC = () => (
-  <section className="py-5">
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+  <section className="relative py-20 sm:py-24 overflow-hidden">
+    {/* Splotch — deep blue atmospheric wash */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0"
+      style={{
+        background:
+          "radial-gradient(50% 45% at 25% 30%, rgba(60,100,170,0.05), transparent 70%), radial-gradient(50% 40% at 85% 85%, rgba(90,60,140,0.045), transparent 72%)",
+      }}
+    />
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
-        <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
+        <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Common questions
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-3 underline-reveal">
+        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           Frequently asked questions.
         </h2>
       </Reveal>

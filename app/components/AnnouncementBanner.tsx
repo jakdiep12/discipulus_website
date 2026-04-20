@@ -14,7 +14,7 @@ const AnnouncementBanner: React.FC = () => {
       >
         <div className="max-w-6xl mx-auto flex flex-row items-center justify-center gap-3 sm:gap-6 text-center">
           <div className="text-white text-[0.65rem] sm:text-base text-center">
-            APPLICATIONS LIVE: Apply to the Spring Cohort now!
+            APPLICATIONS LIVE: Apply to the Fall Cohort now!
           </div>
         </div>
       </motion.div>

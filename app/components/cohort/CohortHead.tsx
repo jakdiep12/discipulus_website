@@ -57,8 +57,8 @@ const CohortHead: React.FC = () => {
               Apply now
             </div>
           </Link>
-          <div className="text-white text-sm mt-2">
-            April 7 - 16, 2026
+          <div className="text-white text-sm mt-2 font-sans">
+            Fall 2026
           </div>
         </div>
       </div>

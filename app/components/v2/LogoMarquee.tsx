@@ -3,29 +3,30 @@
 import React from "react";
 import Image from "next/image";
 import { investors } from "@/app/data/investors";
-import { WordReveal, useParallax } from "./useScrollEffects";
+import { WordReveal } from "./useScrollEffects";
 
 const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
   <a
     href={v.href}
     target="_blank"
     rel="noreferrer"
-    className="flex items-center justify-center shrink-0 px-8 sm:px-12 md:px-16"
+    className="flex items-center justify-center shrink-0 px-8 sm:px-10 md:px-12"
   >
     <Image
       src={v.src}
       alt={v.id}
       width={220}
-      height={40}
-      className="h-[30px] sm:h-[40px] md:h-[52px] w-auto opacity-90 brightness-0 invert shrink-0 group-hover:opacity-60 hover:!opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
+      height={22}
+      className="h-[16px] sm:h-[20px] md:h-[22px] w-auto opacity-80 brightness-0 invert shrink-0 hover:opacity-100 transition-opacity duration-300 ease-8vc"
     />
   </a>
 );
 
 const LogoMarquee: React.FC = () => {
-  const stripRef = useParallax<HTMLDivElement>(0.6, 50);
   return (
-    <section className="relative py-10 sm:py-14 overflow-hidden group border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy">
+    <section
+      className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy"
+    >
       {/* Ambient glow accents */}
       <div
         aria-hidden
@@ -40,18 +41,18 @@ const LogoMarquee: React.FC = () => {
         <WordReveal
           as="p"
           speed={35}
-          className="font-mono text-[0.9rem] sm:text-[1rem] text-white/80 tracking-[0.2em] uppercase text-center mb-6 font-semibold"
+          className="font-sans text-[0.72rem] sm:text-[0.78rem] text-[#e8dcc8]/80 tracking-[0.2em] uppercase text-center mb-7 font-semibold"
         >
           Cohort companies funded by
         </WordReveal>
 
-        {/* Edge fades */}
+        {/* Edge fades — clip logo bleed against section boundary */}
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-navy to-transparent z-10" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-navy to-transparent z-10" />
 
-        <div ref={stripRef} className="will-change-transform">
+        <div className="overflow-hidden">
           <div
-            className="flex items-center animate-investor-scroll group-hover:[animation-play-state:paused]"
+            className="flex items-center animate-investor-scroll"
             style={{ width: "max-content" }}
           >
             {investors.map((v) => <LogoItem key={`a-${v.id}`} v={v} />)}

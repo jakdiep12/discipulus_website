@@ -18,16 +18,16 @@ export default function CohortPage() {
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
       <NavbarV2 />
       <CohortHero />
-      <section className="py-5">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+      <section className="py-16 sm:py-20">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
           <Reveal>
-            <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
-              Spring 2026 Cohort · El Segundo, CA
+            <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
+              Fall 2026 Cohort · El Segundo, CA
             </p>
-            <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mb-3">
+            <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mb-5">
               Discipulus Cohort
             </h1>
-            <p className="text-[0.92rem] text-white/60 max-w-[520px] leading-relaxed">
+            <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[520px] leading-[1.65]">
               Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
             </p>
           </Reveal>

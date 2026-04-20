@@ -1,5 +1,7 @@
 "use client";
 
+// TODO (Jakob feedback): curate "cool tweets" to embed here — waiting on
+// the list of tweet URLs before implementing the embed refresh.
 import React, { useEffect, useRef } from "react";
 import { tweets } from "@/app/data/tweets";
 import { Reveal, WordReveal } from "./useScrollEffects";
@@ -46,12 +48,12 @@ const RecentTweets: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative py-5 bg-navy">
-      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="relative py-16 sm:py-20 bg-navy">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
         <WordReveal
           as="p"
           speed={35}
-          className="font-mono text-[0.72rem] text-white/40 tracking-[0.16em] uppercase mb-2 font-semibold"
+          className="font-mono text-[0.75rem] text-white/40 tracking-[0.16em] uppercase mb-3 font-semibold"
         >
           Signal
         </WordReveal>
@@ -59,11 +61,11 @@ const RecentTweets: React.FC = () => {
           as="h2"
           speed={55}
           delay={120}
-          className="font-freight text-[2.1rem] font-normal text-white mb-3 tracking-tight"
+          className="font-freight text-[2.1rem] font-normal text-white mb-7 tracking-tight"
         >
           From the timeline.
         </WordReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {tweets.map((tweet, index) => (
             <Reveal key={tweet.id} delay={index * 100} offset="sm">
               <div

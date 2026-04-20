@@ -92,7 +92,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`font-freight text-[2rem] font-normal tracking-tight transition-all duration-500 ease-8vc-out py-3 border-b border-white/5 flex items-center justify-between group ${
+              className={`font-sans text-[1.5rem] font-medium tracking-tight transition-all duration-500 ease-8vc-out py-3 border-b border-white/5 flex items-center justify-between group ${
                 menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
               } ${pathname === link.href ? "text-white" : "text-white/70 hover:text-white"}`}
               style={{ transitionDelay: menuOpen ? `${120 + i * 70}ms` : "0ms" }}

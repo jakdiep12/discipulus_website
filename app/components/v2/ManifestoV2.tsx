@@ -51,11 +51,11 @@ const ManifestoImage: React.FC = () => {
 };
 
 const headlineClass =
-  "font-freight text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.12] text-white max-w-[760px] mb-3";
+  "font-freight text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.12] text-white max-w-[760px] mb-6 sm:mb-7";
 const bodyClass =
-  "text-[0.98rem] lg:text-[1.02rem] text-white/70 max-w-[640px] leading-[1.65] mb-2 font-light";
+  "text-[1rem] text-white/70 max-w-[640px] leading-[1.7] mb-4 sm:mb-5 font-light";
 const sectionClass =
-  "relative overflow-hidden sm:min-h-[50vh] py-8 sm:py-5 border-b border-white/[0.05]";
+  "relative overflow-hidden sm:min-h-[60vh] py-16 sm:py-20 lg:py-24 border-b border-white/[0.05]";
 
 // ---- Section 1 content ----
 const s1Headline = [
@@ -133,8 +133,17 @@ const ManifestoV2: React.FC = () => (
       runway={0.9}
       className={sectionClass}
     >
+      {/* Splotch — deep blue atmospheric wash */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(50% 45% at 20% 30%, rgba(60,100,170,0.055), transparent 72%), radial-gradient(45% 40% at 85% 80%, rgba(90,60,140,0.04), transparent 72%)",
+        }}
+      />
       <NumberMark n="1" />
-      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 w-full">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full">
         <StoryText
           bits={s1Headline}
           offset={0}
@@ -158,8 +167,17 @@ const ManifestoV2: React.FC = () => (
       runway={0.8}
       className={`${sectionClass} bg-[#0a1120]`}
     >
+      {/* Splotch — muted purple atmospheric wash */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(55% 50% at 80% 20%, rgba(116,94,160,0.07), transparent 72%), radial-gradient(45% 40% at 15% 85%, rgba(40,110,140,0.05), transparent 72%)",
+        }}
+      />
       <NumberMark n="2" />
-      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 w-full">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full">
         <StoryText
           bits={s2Headline}
           offset={0}
@@ -174,7 +192,7 @@ const ManifestoV2: React.FC = () => (
         <StoryText
           bits={s2Bodies[1]}
           offset={s2BodyOffsets.totals[1]}
-          className="text-[1.02rem] text-white/85 max-w-[640px] leading-[1.65] italic"
+          className="text-[1rem] text-white/85 max-w-[640px] leading-[1.7] italic mt-1"
         />
       </div>
     </StorySection>
@@ -183,11 +201,20 @@ const ManifestoV2: React.FC = () => (
     <StorySection
       totalWords={s3TotalWords}
       runway={0.9}
-      className="relative overflow-hidden sm:min-h-[50vh] border-b border-white/[0.05]"
+      className="relative overflow-hidden sm:min-h-[60vh] pb-16 sm:pb-20 lg:pb-24 border-b border-white/[0.05]"
     >
+      {/* Splotch — dark teal atmospheric wash */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(55% 45% at 15% 25%, rgba(40,110,140,0.06), transparent 72%), radial-gradient(50% 45% at 85% 85%, rgba(60,100,170,0.05), transparent 72%)",
+        }}
+      />
       <NumberMark n="3" />
       <ManifestoImage />
-      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 w-full pb-5">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full pb-6 sm:pb-8 pt-6 sm:pt-8">
         <StoryText
           bits={s3Headline}
           offset={0}
@@ -199,7 +226,7 @@ const ManifestoV2: React.FC = () => (
           offset={s3HeadlineWords}
           className={bodyClass}
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-4 mb-5 max-w-[980px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8 sm:mt-10 mb-10 sm:mb-12 max-w-[980px]">
           {archetypes.map((a, i) => (
             <div key={a.title}>
               <StoryText
@@ -213,12 +240,12 @@ const ManifestoV2: React.FC = () => (
                 ]}
                 offset={s3ArchetypeOffsets[i]}
                 as="div"
-                className="font-freight text-[1.5rem] font-semibold text-[#e8dcc8] mb-1.5"
+                className="font-sans text-[0.78rem] font-semibold text-[#e8dcc8] tracking-[0.18em] uppercase mb-2"
               />
               <StoryText
                 bits={[a.desc]}
                 offset={s3ArchetypeOffsets[i] + 1}
-                className="text-[0.92rem] text-white/65 leading-[1.55] font-light"
+                className="text-[0.875rem] text-white/65 leading-[1.6] font-light"
               />
             </div>
           ))}
@@ -238,7 +265,7 @@ const ManifestoV2: React.FC = () => (
             speed={30}
             className="font-mono text-[0.72rem] text-white/40 tracking-[0.16em] uppercase font-medium flex items-center gap-2"
           >
-            Applications open now for Spring Cohort
+            Applications open now for Fall Cohort
           </WordReveal>
         </div>
       </div>

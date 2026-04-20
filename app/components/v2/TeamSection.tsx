@@ -96,7 +96,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, size = "lg" }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className={`absolute bottom-0 left-0 right-0 ${padding} text-white`}>
-          <h3 className={`font-freight font-semibold ${nameSize} leading-tight mb-0.5`}>
+          <h3 className={`font-sans font-semibold ${nameSize} leading-tight mb-0.5 tracking-tight`}>
             {member.name}
           </h3>
           <div className="flex items-center justify-between gap-2">
@@ -133,16 +133,25 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, size = "lg" }) => {
 };
 
 const TeamSection: React.FC = () => (
-  <section id="team" className="py-5">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
+  <section id="team" className="relative py-20 sm:py-24 overflow-hidden">
+    {/* Splotch — dark teal atmospheric wash */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0"
+      style={{
+        background:
+          "radial-gradient(55% 45% at 10% 20%, rgba(40,110,140,0.06), transparent 72%), radial-gradient(50% 45% at 90% 80%, rgba(90,60,140,0.05), transparent 72%)",
+      }}
+    />
+    <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
-        <h2 className="font-freight text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center text-white mb-5">
+        <h2 className="font-freight text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center text-white mb-10 sm:mb-14">
           Our Team.
         </h2>
       </Reveal>
 
       {/* Principals */}
-      <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6">
+      <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-14 sm:mb-16">
         {principals.map((p, i) => (
           <Reveal key={p.name} delay={i * 120}>
             <div className="w-72 sm:w-80">
@@ -154,12 +163,12 @@ const TeamSection: React.FC = () => (
 
       {/* Advisors */}
       <Reveal>
-        <h3 className="font-freight text-2xl md:text-3xl font-semibold text-center text-white/80 mb-3">
+        <h3 className="font-freight text-2xl md:text-3xl font-semibold text-center text-white/80 mb-6 sm:mb-8">
           Advisors
         </h3>
       </Reveal>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3 max-w-3xl md:max-w-none mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
         {advisors.map((a, i) => (
           <Reveal key={a.name} delay={i * 80}>
             <TeamCard member={a} size="sm" />

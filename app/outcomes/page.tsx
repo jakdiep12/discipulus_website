@@ -9,7 +9,7 @@ import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
   title: "Cohort — Discipulus Ventures",
-  description: "What happened to the founders who came through. Every company below was trained through a Discipulus cohort.",
+  description: "What happened to the founders who came through. Every company below was trained through a Discipulus Cohort.",
 };
 
 export default function CohortPage() {
@@ -20,7 +20,7 @@ export default function CohortPage() {
       <div className="relative w-full aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden">
         <Image
           src="/FoundingFathers.png"
-          alt="Discipulus cohort founders in front of the American flag"
+          alt="Discipulus Cohort founders in front of the American flag"
           fill
           className="object-cover object-center"
           priority

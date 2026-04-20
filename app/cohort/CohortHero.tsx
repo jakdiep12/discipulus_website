@@ -11,7 +11,7 @@ export const CohortHero: React.FC = () => {
       <div ref={ref} className="absolute inset-x-0 -top-[20%] h-[140%] will-change-transform">
         <Image
           src="/FoundingFathers.png"
-          alt="Discipulus cohort founders in front of the American flag"
+          alt="Discipulus Cohort founders in front of the American flag"
           fill
           className="object-cover object-center"
           priority

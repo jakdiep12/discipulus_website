@@ -43,7 +43,7 @@ const ElSegundo: React.FC = () => (
         <h2 className="font-freight text-[1.9rem] font-normal leading-tight text-white mb-4 underline-reveal">
           The new center of gravity for American hard tech.
         </h2>
-        <WordReveal className="text-[0.85rem] text-white/60 leading-relaxed mt-3" speed={30}>El Segundo is home to a growing cluster of defense, aerospace, and deep tech companies. The cohort plugs founders directly into this physical ecosystem — the actual people and buildings where the work is happening.</WordReveal>
+        <WordReveal className="text-[0.9375rem] sm:text-[1rem] text-white/65 leading-[1.65] mt-3" speed={30}>El Segundo is home to a growing cluster of defense, aerospace, and deep tech companies. The Cohort plugs founders directly into this physical ecosystem — the actual people and buildings where the work is happening.</WordReveal>
       </Parallax>
       <div>
         <p className="font-mono text-[0.6rem] text-white/30 tracking-[0.12em] uppercase mb-3">
@@ -60,7 +60,7 @@ const ElSegundo: React.FC = () => (
                 i < companies.length - 1 ? "border-b border-white/5" : ""
               }`}
             >
-              <span className="font-freight text-[0.82rem] sm:text-[0.88rem] font-medium text-white group-hover:text-white transition-colors duration-300">
+              <span className="font-sans text-[0.82rem] sm:text-[0.88rem] font-semibold text-white group-hover:text-white transition-colors duration-300">
                 {c.name}
               </span>
               <span className="text-[0.7rem] text-white/20 group-hover:text-white/50 font-light transition-colors duration-300">

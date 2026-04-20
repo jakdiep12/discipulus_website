@@ -86,34 +86,55 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
         src={founder.headshot}
         alt={founder.name}
         fill
-        className="object-cover grayscale group-hover:grayscale-[0.3] transition-all duration-500 ease-8vc"
+        className={`object-cover transition-all duration-500 ease-8vc ${
+          hovered ? "grayscale-0 scale-[1.02]" : "grayscale"
+        }`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+      {/* Color-shift tint on hover — warm cream glow */}
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-8vc ${
+          hovered ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(232,220,200,0.18) 0%, rgba(116,94,160,0.12) 60%, rgba(6,12,26,0.55) 100%)",
+        }}
+      />
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-8vc ${
+          hovered ? "opacity-0" : "opacity-100"
+        } bg-gradient-to-t from-black/60 via-black/10 to-transparent`}
+      />
 
-      {/* Name — always visible */}
+      {/* Company logo — default state, top of card, in color */}
+      <div
+        className={`absolute top-4 sm:top-5 left-4 sm:left-5 right-4 sm:right-5 flex items-center transition-opacity duration-300 ease-8vc ${
+          hovered ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <Image
+          src={founder.logo}
+          alt={`${founder.company} logo`}
+          width={120}
+          height={28}
+          className="h-[22px] sm:h-[26px] w-auto object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+        />
+      </div>
+
+      {/* Bottom content — founder name (always) + company + desc (hover only) */}
       <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-        <div className="font-freight text-base sm:text-lg font-semibold text-white leading-tight">
+        <div className="font-sans text-[0.9rem] sm:text-[0.95rem] font-semibold tracking-tight text-white leading-tight">
           {founder.name}
         </div>
-        {/* Company + desc — revealed on hover */}
         <div
           className={`overflow-hidden transition-all duration-400 ease-8vc-out ${
-            hovered ? "max-h-[80px] opacity-100 mt-1.5" : "max-h-0 opacity-0"
+            hovered ? "max-h-[96px] opacity-100 mt-1.5" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="flex items-center gap-2 mb-1">
-            <Image
-              src={founder.logo}
-              alt={`${founder.company} logo`}
-              width={64}
-              height={16}
-              className="h-[14px] w-auto object-contain brightness-0 invert opacity-70"
-            />
-            <span className="text-[0.72rem] text-white/60 font-medium">
-              {founder.company}
-            </span>
+          <div className="text-[0.78rem] text-white/85 font-semibold tracking-tight mb-1">
+            {founder.company}
           </div>
-          <p className="text-[0.75rem] text-white/50 leading-relaxed">
+          <p className="text-[0.875rem] text-white/65 leading-relaxed">
             {founder.desc}
           </p>
         </div>
@@ -133,15 +154,15 @@ const FounderOutcomes: React.FC = () => {
   }, []);
 
   return (
-    <section id="outcomes" className="relative py-5 text-navy">
+    <section id="outcomes" className="relative py-20 sm:py-24 text-navy">
       <div className="absolute inset-0 bg-gradient-to-b from-navy via-cream via-[12%] to-cream pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy to-cream pointer-events-none" />
-      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal>
-          <p className="font-mono text-[0.72rem] text-navy/50 tracking-[0.14em] uppercase mb-2">
+          <p className="font-mono text-[0.75rem] text-navy/50 tracking-[0.14em] uppercase mb-3">
             Cohort
           </p>
-          <h2 className="font-freight text-[2.1rem] font-normal leading-tight max-w-[520px] text-navy underline-reveal underline-reveal-dark mb-3">
+          <h2 className="font-freight text-[2.1rem] font-normal leading-tight max-w-[520px] text-navy underline-reveal underline-reveal-dark mb-8 sm:mb-10">
             Featured Cohort Founders.
           </h2>
         </Reveal>
@@ -161,8 +182,8 @@ const FounderOutcomes: React.FC = () => {
                   key={founder.name}
                   className="min-w-0 pl-0"
                   style={{
-                    flexBasis: isMobile ? "85%" : "calc(33.333% - 0.5rem)",
-                    marginRight: "0.5rem",
+                    flexBasis: isMobile ? "85%" : "calc(33.333% - 1.25rem)",
+                    marginRight: "1.25rem",
                   }}
                 >
                   <FounderCard founder={founder} />

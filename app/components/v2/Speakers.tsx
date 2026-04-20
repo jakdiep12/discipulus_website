@@ -51,19 +51,19 @@ const SpeakerCard: React.FC<{ speaker: typeof speakers[number] }> = ({ speaker }
 
         {/* Back — info card with link */}
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 flex flex-col items-center justify-center p-6 text-center border border-white/10">
-          <div className="font-freight text-lg font-medium text-white mb-1">
+          <div className="font-sans text-[0.95rem] font-semibold tracking-tight text-white mb-1">
             {speaker.name}
           </div>
           <a
             href={speaker.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.74rem] text-white/50 mb-4 font-medium underline underline-offset-2 decoration-white/20 hover:text-white/80 hover:decoration-white/50 transition-colors duration-200"
+            className="text-[0.875rem] text-white/55 mb-4 font-medium underline underline-offset-2 decoration-white/20 hover:text-white/80 hover:decoration-white/50 transition-colors duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {speaker.title}
           </a>
-          <div className="text-[0.78rem] text-white/40 leading-relaxed italic font-light max-w-[200px]">
+          <div className="text-[0.875rem] text-white/45 leading-relaxed italic font-light max-w-[200px]">
             {speaker.topic}
           </div>
         </div>
@@ -73,18 +73,27 @@ const SpeakerCard: React.FC<{ speaker: typeof speakers[number] }> = ({ speaker }
 };
 
 const Speakers: React.FC = () => (
-  <section id="speakers" className="relative py-5">
+  <section id="speakers" className="relative py-20 sm:py-24">
     <div className="absolute inset-0 bg-gradient-to-b from-navy via-navy-2 to-navy pointer-events-none" />
-    <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+    {/* Splotch — muted purple atmospheric wash */}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0"
+      style={{
+        background:
+          "radial-gradient(55% 45% at 80% 20%, rgba(116,94,160,0.07), transparent 70%), radial-gradient(45% 40% at 15% 90%, rgba(40,110,140,0.05), transparent 70%)",
+      }}
+    />
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <Reveal>
-        <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
+        <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Selected Past Speakers
         </p>
-        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-3 underline-reveal">
+        <h2 className="font-freight text-[2.1rem] font-normal text-white mb-8 underline-reveal">
           Selected Past Speakers.
         </h2>
       </Reveal>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-px sm:bg-white/5 sm:border sm:border-white/5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
         {speakers.map((s, i) => (
           <Reveal key={s.name} delay={(i % 8) * 80} offset="sm">
             <SpeakerCard speaker={s} />

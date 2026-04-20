@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Hero text — below the video, on solid navy */}
-      <div className="px-4 sm:px-6 lg:px-12 pt-8 pb-4 relative z-10">
+      <div className="px-6 sm:px-10 lg:px-16 pt-12 sm:pt-14 pb-14 sm:pb-16 relative z-10">
         <div className="max-w-[1200px] mx-auto">
           <WordReveal
             as="p"
