@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { investors } from "@/app/data/investors";
 import { WordReveal } from "./useScrollEffects";
 
-const LogoItem: React.FC<{ v: typeof investors[number]; keyPrefix: string }> = ({ v, keyPrefix }) => (
+const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
   <a
-    key={`${keyPrefix}-${v.id}`}
     href={v.href}
     target="_blank"
     rel="noreferrer"
@@ -25,12 +24,80 @@ const LogoItem: React.FC<{ v: typeof investors[number]; keyPrefix: string }> = (
   </a>
 );
 
+/**
+ * Infinite marquee — measures a single copy of the logo strip in pixels
+ * and animates the track by exactly that distance so the seam lands on
+ * identical content frame-for-frame. Uses the Web Animations API so the
+ * animation driver can't round the percentage off or fall out of phase
+ * when the viewport is wider than one strip.
+ */
 const LogoMarquee: React.FC = () => {
-  // Three identical copies + a -33.333% translation guarantees the loop
-  // reset is seamless at every viewport width — the visible slice is
-  // always backed by another copy regardless of where we are in the cycle.
-  const copies = ["a", "b", "c"] as const;
+  const stripRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
 
+  useEffect(() => {
+    const strip = stripRef.current;
+    const track = trackRef.current;
+    if (!strip || !track) return;
+
+    let animation: Animation | null = null;
+    let raf = 0;
+
+    const start = () => {
+      const width = strip.getBoundingClientRect().width;
+      if (width < 10) {
+        // Images haven't laid out yet — try again next frame.
+        raf = requestAnimationFrame(start);
+        return;
+      }
+      animation?.cancel();
+      // ~60 pixels per second gives a calm, readable pace.
+      const duration = (width / 60) * 1000;
+      animation = track.animate(
+        [
+          { transform: "translate3d(0, 0, 0)" },
+          { transform: `translate3d(${-width}px, 0, 0)` },
+        ],
+        {
+          duration,
+          iterations: Infinity,
+          easing: "linear",
+        }
+      );
+      setReady(true);
+    };
+
+    // Wait for images to load so the strip width is final.
+    const imgs = Array.from(strip.querySelectorAll("img"));
+    let pending = imgs.filter((img) => !img.complete).length;
+    if (pending === 0) {
+      start();
+    } else {
+      const done = () => {
+        pending -= 1;
+        if (pending <= 0) start();
+      };
+      imgs.forEach((img) => {
+        if (img.complete) return;
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+      });
+    }
+
+    const onResize = () => start();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      animation?.cancel();
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  // Render the strip twice — one measured, one a seamless continuation.
+  // Web Animations drives the track by the measured strip's pixel width,
+  // so the restart lands exactly on the duplicate. No gap, no jump.
   return (
     <section className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy">
       {/* Ambient glow accents */}
@@ -56,10 +123,20 @@ const LogoMarquee: React.FC = () => {
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-navy to-transparent z-10" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-navy to-transparent z-10" />
 
-        <div className="flex items-center animate-marquee will-change-transform w-max">
-          {copies.map((k) =>
-            investors.map((v) => <LogoItem key={`${k}-${v.id}`} keyPrefix={k} v={v} />)
-          )}
+        <div
+          ref={trackRef}
+          className="flex items-center w-max will-change-transform"
+          style={{ opacity: ready ? 1 : 0, transition: "opacity 300ms ease" }}
+        >
+          <div ref={stripRef} className="flex items-center shrink-0">
+            {investors.map((v) => <LogoItem key={`a-${v.id}`} v={v} />)}
+          </div>
+          <div className="flex items-center shrink-0" aria-hidden="true">
+            {investors.map((v) => <LogoItem key={`b-${v.id}`} v={v} />)}
+          </div>
+          <div className="flex items-center shrink-0" aria-hidden="true">
+            {investors.map((v) => <LogoItem key={`c-${v.id}`} v={v} />)}
+          </div>
         </div>
       </div>
     </section>
