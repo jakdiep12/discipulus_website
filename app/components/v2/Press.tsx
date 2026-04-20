@@ -4,22 +4,13 @@ import React from "react";
 import Image from "next/image";
 import { Reveal, WordReveal } from "./useScrollEffects";
 
-const articles: Array<{
-  outlet: string;
-  logo: string;
-  title: string;
-  date: string;
-  preview: React.ReactNode;
-  url: string;
-}> = [
+const articles = [
   {
     outlet: "Forbes",
     logo: "/news/forbes.png",
     title: "Silicon Valley's 'Gundo' Bros Are Building A Y Combinator For Military Tech",
     date: "February 10, 2025",
-    preview: (
-      <>Inside the <span className="el-segundo">El&nbsp;Segundo</span> Cohort building the next generation of defense tech founders.</>
-    ),
+    preview: "Inside the El Segundo Cohort building the next generation of defense tech founders.",
     url: "https://www.forbes.com/sites/davidjeans/2025/02/10/silicon-valley-gundo-bros-ycombinator/",
   },
   {
@@ -35,9 +26,7 @@ const articles: Array<{
     logo: "/news/labj.png",
     title: "Military Culture in Tech?",
     date: "June 23, 2025",
-    preview: (
-      <>How <span className="el-segundo">El&nbsp;Segundo</span> is becoming the center of gravity for American hard tech.</>
-    ),
+    preview: "How El Segundo is becoming the center of gravity for American hard tech.",
     url: "https://labusinessjournal.com/featured/military-culture-in-tech/",
   },
 ];

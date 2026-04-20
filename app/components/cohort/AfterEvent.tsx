@@ -33,9 +33,9 @@ const AfterEvent: React.FC = () => {
         >
           <ul className='flex flex-col gap-4'>
                           {[
-                <span key="mentorship">Get mentorship from mission-aligned unicorn founders in <span className="el-segundo">El&nbsp;Segundo</span></span>,
+                "Get mentorship from mission-aligned unicorn founders in El Segundo",
                 <span key="hf0">Clear plan to raise a funding round with help from <a href="https://www.hf0.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 underline">HF0</a> and in-person access to 100+ top investors through the Demo Day for the American Interest</span>,
-                <span key="insider">Become an <span className="el-segundo">El&nbsp;Segundo</span> insider and get to know the key players in the ecosystem</span>
+                "Become an El Segundo insider and get to know the key players in the ecosystem"
               ].map((text, index) => (
               <motion.li
                 key={index}
