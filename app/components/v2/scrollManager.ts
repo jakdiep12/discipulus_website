@@ -84,16 +84,9 @@ class ScrollManager {
         item.el.style.setProperty("--reveal-count", String(finished));
         return;
       }
-      if (isMobile) {
-        // Mobile: reveal all words as soon as section enters the viewport.
-        // The scroll-paced reveal is frustrating with flick-scrolling and
-        // short viewports, so we just fade everything in quickly.
-        const start = vh * 0.9;
-        const end = vh * 0.5;
-        const raw = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
-        item.el.style.setProperty("--reveal-count", String(raw * item.totalWords));
-        return;
-      }
+      // StorySection handles mobile directly with a time-based reveal,
+      // so nothing registers here on mobile.
+      if (isMobile) return;
       // Start revealing when the top of the section reaches 85% of viewport,
       // finish by the time the section has scrolled (runway) viewports past.
       const start = vh * 0.85;

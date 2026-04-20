@@ -130,9 +130,10 @@ export const WordReveal: React.FC<{
   children: string;
   className?: string;
   speed?: number;
-  tag?: "p" | "h1" | "h2" | "h3" | "div" | "span" | "blockquote";
-}> = ({ children, className = "", speed = 40, tag = "p" }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  delay?: number;
+  as?: "p" | "h1" | "h2" | "h3" | "h4" | "div" | "span" | "blockquote";
+}> = ({ children, className = "", speed = 40, delay = 0, as = "p" }) => {
+  const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const words = children.split(" ");
 
@@ -151,8 +152,9 @@ export const WordReveal: React.FC<{
     return () => obs.disconnect();
   }, []);
 
+  const Tag = as as React.ElementType;
   return (
-    <div ref={ref} className={className} role="text" data-tag={tag}>
+    <Tag ref={ref} className={className}>
       {words.map((word, i) => (
         <span
           key={i}
@@ -160,13 +162,13 @@ export const WordReveal: React.FC<{
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(4px)",
-            transitionDelay: visible ? `${i * speed}ms` : "0ms",
+            transitionDelay: visible ? `${delay + i * speed}ms` : "0ms",
           }}
         >
           {word}{i < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}
-    </div>
+    </Tag>
   );
 };
 

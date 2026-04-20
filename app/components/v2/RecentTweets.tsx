@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { tweets } from "@/app/data/tweets";
-import { Reveal } from "./useScrollEffects";
+import { Reveal, WordReveal } from "./useScrollEffects";
 
 declare global {
   interface Window {
@@ -48,14 +48,21 @@ const RecentTweets: React.FC = () => {
   return (
     <section className="relative py-5 bg-navy">
       <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
-        <Reveal>
-          <p className="font-mono text-[0.72rem] text-white/30 tracking-[0.14em] uppercase mb-2">
-            Signal
-          </p>
-          <h2 className="font-freight text-[2.1rem] font-normal text-white mb-3 underline-reveal">
-            From the timeline.
-          </h2>
-        </Reveal>
+        <WordReveal
+          as="p"
+          speed={35}
+          className="font-mono text-[0.72rem] text-white/40 tracking-[0.16em] uppercase mb-2 font-semibold"
+        >
+          Signal
+        </WordReveal>
+        <WordReveal
+          as="h2"
+          speed={55}
+          delay={120}
+          className="font-freight text-[2.1rem] font-normal text-white mb-3 tracking-tight"
+        >
+          From the timeline.
+        </WordReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {tweets.map((tweet, index) => (
             <Reveal key={tweet.id} delay={index * 100} offset="sm">

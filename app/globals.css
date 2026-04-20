@@ -161,3 +161,28 @@ body::before {
 .animate-photo-scroll {
   animation: investor-scroll 60s linear infinite;
 }
+
+/* Subtle breathing glow — use on CTAs to invite a tap */
+@keyframes breath-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.0); }
+  50%      { box-shadow: 0 0 28px 0 rgba(255, 255, 255, 0.25); }
+}
+.breath-glow {
+  animation: breath-glow 3.6s ease-in-out infinite;
+}
+
+/* Blink caret for "live" indicators */
+@keyframes caret-blink {
+  0%, 60%  { opacity: 1; }
+  61%, 100% { opacity: 0; }
+}
+.caret-blink::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 1em;
+  margin-left: 0.35em;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: caret-blink 1.1s steps(1) infinite;
+}

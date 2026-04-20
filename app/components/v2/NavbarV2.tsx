@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -17,7 +18,115 @@ const navLinks = [
 
 const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
+  const menuOverlay = (
+    <div
+      className={`fixed inset-0 z-[9999] md:hidden transition-opacity duration-300 ease-8vc ${
+        menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+      }`}
+      aria-hidden={!menuOpen}
+    >
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-navy/95 backdrop-blur-md"
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Sliding panel from the right */}
+      <div
+        className={`absolute top-0 right-0 h-full w-full max-w-[420px] bg-gradient-to-b from-navy via-navy-2 to-navy border-l border-white/10 flex flex-col transition-transform duration-[450ms] ease-8vc-out shadow-[-20px_0_60px_rgba(0,0,0,0.5)] ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center px-6 py-4 border-b border-white/5">
+          <Image
+            src="/Discipulus - Logo Small.png"
+            alt="Discipulus Ventures"
+            width={36}
+            height={36}
+            className="h-[36px] w-auto"
+          />
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="p-2 text-white/80 hover:text-white transition-colors duration-300 ease-8vc min-h-[44px] min-w-[44px] flex items-center justify-center"
+            aria-label="Close menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <nav className="flex flex-col flex-1 px-6 py-8 gap-1">
+          {navLinks.map((link, i) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`font-freight text-[2rem] font-normal tracking-tight transition-all duration-500 ease-8vc-out py-3 border-b border-white/5 flex items-center justify-between group ${
+                menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+              } ${pathname === link.href ? "text-white" : "text-white/70 hover:text-white"}`}
+              style={{ transitionDelay: menuOpen ? `${120 + i * 70}ms` : "0ms" }}
+            >
+              <span>{link.label}</span>
+              <span className="text-white/30 group-hover:text-white group-hover:translate-x-1 transition-all duration-300 ease-8vc">→</span>
+            </Link>
+          ))}
+
+          <a
+            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className={`mt-6 bg-white text-navy px-6 py-4 text-[0.82rem] font-bold tracking-widest uppercase text-center transition-all duration-500 ease-8vc-out hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] ${
+              menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+            }`}
+            style={{ transitionDelay: menuOpen ? `${120 + navLinks.length * 70}ms` : "0ms" }}
+          >
+            Apply Now
+          </a>
+
+          <p
+            className={`mt-auto font-mono text-[0.68rem] text-white/30 tracking-[0.16em] uppercase transition-opacity duration-500 ${
+              menuOpen ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: menuOpen ? "500ms" : "0ms" }}
+          >
+            10-Day Founder Residency · El Segundo, CA
+          </p>
+        </nav>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -58,9 +167,10 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white text-navy px-5 py-2 text-[0.76rem] font-bold tracking-widest uppercase hover:opacity-90 transition-opacity duration-200 ease-8vc hidden md:block"
+            className="group relative overflow-hidden bg-white text-navy px-5 py-2 text-[0.76rem] font-bold tracking-widest uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc hidden md:inline-block"
           >
-            Apply Now
+            <span className="relative z-10">Apply Now</span>
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
           </a>
 
           {/* Hamburger button — mobile only */}
@@ -68,66 +178,16 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             onClick={() => setMenuOpen(true)}
             className="md:hidden flex flex-col justify-center items-center gap-[5px] p-3 min-w-[44px] min-h-[44px]"
             aria-label="Open menu"
+            aria-expanded={menuOpen}
           >
-            <span className="block w-6 h-[2px] bg-white/80" />
-            <span className="block w-6 h-[2px] bg-white/80" />
-            <span className="block w-6 h-[2px] bg-white/80" />
+            <span className="block w-6 h-[2px] bg-white/90" />
+            <span className="block w-6 h-[2px] bg-white/90" />
+            <span className="block w-6 h-[2px] bg-white/90" />
           </button>
         </div>
       </nav>
 
-      {/* Full-screen mobile menu overlay */}
-      <div
-        className={`fixed inset-0 z-[100] bg-navy flex flex-col transition-opacity duration-300 ease-8vc ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Close button */}
-        <div className="flex justify-end px-6 py-4">
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="p-2 text-white/80 hover:text-white transition-colors duration-300 ease-8vc"
-            aria-label="Close menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
-              height="28"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Nav links */}
-        <div className="flex flex-col items-center justify-center flex-1 gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-white/80 text-2xl font-medium tracking-wide hover:text-white transition-colors duration-300 ease-8vc"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <a
-            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 bg-white text-navy px-8 py-3 text-[0.82rem] font-bold tracking-widest uppercase hover:opacity-90 transition-opacity duration-200 ease-8vc"
-          >
-            Apply Now
-          </a>
-        </div>
-      </div>
+      {mounted ? createPortal(menuOverlay, document.body) : null}
     </>
   );
 };

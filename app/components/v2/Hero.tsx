@@ -4,13 +4,6 @@ import React, { useRef, useEffect, useState } from "react";
 import NavbarV2 from "./NavbarV2";
 import { Reveal, WordReveal, useParallax } from "./useScrollEffects";
 
-const metaItems = [
-  { label: "Residency", value: "10 days, in-person" },
-  { label: "Cohort Size", value: "~10 founders" },
-  { label: "Speakers", value: "Unicorn founders & operators" },
-  { label: "Demo Day", value: "100+ investors" },
-];
-
 const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useParallax<HTMLDivElement>(0.3, 100);
@@ -81,31 +74,37 @@ const Hero: React.FC = () => {
       {/* Hero text — below the video, on solid navy */}
       <div className="px-4 sm:px-6 lg:px-12 pt-8 pb-4 relative z-10">
         <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
-              10-Day Founder Residency · El Segundo, CA
-            </p>
-          </Reveal>
+          <WordReveal
+            as="p"
+            speed={30}
+            className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2"
+          >
+            {"10-Day Founder Residency \u00B7 El Segundo, CA"}
+          </WordReveal>
 
-          <Reveal delay={80}>
-            <h1 className="font-freight text-[clamp(1.75rem,5.5vw,4.6rem)] font-normal leading-[1.1] text-white max-w-[760px] mb-5 tracking-tight">
-              Cultivating a visionary vanguard of founders solving America&apos;s hardest problems in El Segundo.
-            </h1>
-          </Reveal>
+          <WordReveal
+            as="h1"
+            speed={55}
+            delay={200}
+            className="font-freight text-[clamp(1.75rem,5.5vw,4.6rem)] font-normal leading-[1.1] text-white max-w-[760px] mb-5 tracking-tight"
+          >
+            {"Cultivating a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
+          </WordReveal>
 
-          <Reveal delay={240}>
+          <Reveal delay={900}>
             <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
               <a
                 href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white text-navy px-7 py-3.5 text-[0.8rem] font-semibold tracking-widest uppercase text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] transition-all duration-300 ease-8vc"
+                className="group relative overflow-hidden bg-white text-navy px-7 py-3.5 text-[0.8rem] font-semibold tracking-widest uppercase text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc"
               >
-                Apply now
+                <span className="relative z-10">Apply now</span>
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
               </a>
               <a
                 href="/cohort"
-                className="text-white/60 px-7 py-3.5 text-[0.8rem] tracking-wider border border-white/10 text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center hover:text-white hover:border-white/20 transition-all duration-300 ease-8vc"
+                className="text-white/60 px-7 py-3.5 text-[0.8rem] tracking-wider border border-white/10 text-center w-full sm:w-auto min-h-[44px] flex items-center justify-center hover:text-white hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300 ease-8vc"
               >
                 Learn more
               </a>

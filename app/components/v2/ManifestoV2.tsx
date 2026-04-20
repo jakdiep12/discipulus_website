@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useParallax } from "./useScrollEffects";
+import { useParallax, WordReveal } from "./useScrollEffects";
 import { StorySection, StoryText, countWords } from "./StoryText";
 
 const archetypes = [
@@ -228,13 +228,18 @@ const ManifestoV2: React.FC = () => (
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-navy px-6 py-2.5 text-[0.78rem] font-bold tracking-widest uppercase hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(255,255,255,0.18)] transition-all duration-300 ease-8vc self-start"
+            className="group relative overflow-hidden inline-block bg-white text-navy px-6 py-2.5 text-[0.78rem] font-bold tracking-widest uppercase hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc self-start"
           >
-            Apply now
+            <span className="relative z-10">Apply now</span>
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
           </a>
-          <p className="font-mono text-[0.72rem] text-white/30 tracking-[0.14em] uppercase">
+          <WordReveal
+            as="p"
+            speed={30}
+            className="font-mono text-[0.72rem] text-white/40 tracking-[0.16em] uppercase font-medium flex items-center gap-2"
+          >
             Applications open now for Spring Cohort
-          </p>
+          </WordReveal>
         </div>
       </div>
     </StorySection>

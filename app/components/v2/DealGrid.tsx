@@ -26,7 +26,7 @@ const DealGrid: React.FC = () => (
               <div className="font-freight text-[1.45rem] text-white font-medium mb-1 group-hover:text-white transition-colors duration-300">
                 {d.value}
               </div>
-              <WordReveal className="text-[0.78rem] text-white/60 leading-relaxed" tag="div" speed={35}>{d.desc}</WordReveal>
+              <WordReveal className="text-[0.78rem] text-white/60 leading-relaxed" as="div" speed={35}>{d.desc}</WordReveal>
             </Reveal>
           </div>
         ))}

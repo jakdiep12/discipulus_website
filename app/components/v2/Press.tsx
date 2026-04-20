@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Reveal } from "./useScrollEffects";
+import { Reveal, WordReveal } from "./useScrollEffects";
 
 const articles = [
   {
@@ -36,11 +36,13 @@ const Press: React.FC = () => (
     <div className="absolute inset-0 bg-gradient-to-b from-navy via-cream via-[12%] to-cream pointer-events-none" />
     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy to-cream pointer-events-none" />
     <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
-      <Reveal>
-        <p className="font-mono text-[0.72rem] text-navy/50 tracking-[0.14em] uppercase mb-3">
-          In the press
-        </p>
-      </Reveal>
+      <WordReveal
+        as="p"
+        speed={35}
+        className="font-mono text-[0.72rem] text-navy/60 tracking-[0.16em] uppercase mb-3 font-semibold"
+      >
+        In the press
+      </WordReveal>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-navy/[0.07] border border-navy/[0.07]">
         {articles.map((a, i) => (
           <a
@@ -60,9 +62,16 @@ const Press: React.FC = () => (
                   className="h-[30px] sm:h-[34px] w-auto object-contain brightness-0 opacity-65 group-hover:opacity-90 transition-opacity duration-300"
                 />
               </div>
-              <div className="font-freight text-[1.05rem] text-navy leading-snug font-medium mb-1.5 group-hover:underline underline-offset-2 decoration-navy/30 transition-all duration-300">
-                {a.title}
-              </div>
+            </Reveal>
+            <WordReveal
+              as="div"
+              speed={28}
+              delay={i * 120 + 120}
+              className="font-freight text-[1.05rem] text-navy leading-snug font-medium mb-1.5 group-hover:underline underline-offset-2 decoration-navy/30 transition-all duration-300"
+            >
+              {a.title}
+            </WordReveal>
+            <Reveal delay={i * 120 + 200}>
               {/* Preview snippet — appears on hover */}
               <div className="text-[0.75rem] text-navy/40 leading-relaxed mb-2 max-h-0 overflow-hidden group-hover:max-h-[60px] group-active:max-h-[60px] transition-all duration-500 ease-8vc-out">
                 {a.preview}

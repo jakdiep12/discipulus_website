@@ -32,7 +32,7 @@ const HowItWorks: React.FC = () => (
               <div className="font-freight text-base font-medium text-white mb-2">
                 {s.title}
               </div>
-              <WordReveal className="text-[0.74rem] text-white/60 leading-relaxed" tag="div" speed={30}>{s.desc}</WordReveal>
+              <WordReveal className="text-[0.74rem] text-white/60 leading-relaxed" as="div" speed={30}>{s.desc}</WordReveal>
             </Reveal>
             {i < steps.length - 1 && (
               <span className="hidden lg:block absolute -right-[7px] top-1/2 -translate-y-1/2 text-white/20 text-sm z-10">

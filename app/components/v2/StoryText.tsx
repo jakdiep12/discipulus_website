@@ -79,7 +79,42 @@ export const StorySection: React.FC<StorySectionProps> = ({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    return scrollManager.registerStory(el, totalWords, runway);
+
+    if (typeof window === "undefined") return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      el.style.setProperty("--reveal-count", String(totalWords));
+      return;
+    }
+
+    // Mobile: time-based word-by-word generation on viewport entry.
+    // Desktop: scroll-paced reveal via scrollManager.
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (!isMobile) {
+      return scrollManager.registerStory(el, totalWords, runway);
+    }
+
+    let rafId: number | null = null;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        obs.disconnect();
+        const start = performance.now();
+        const duration = Math.max(900, totalWords * 45);
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          el.style.setProperty("--reveal-count", String(t * totalWords));
+          if (t < 1) rafId = requestAnimationFrame(tick);
+        };
+        rafId = requestAnimationFrame(tick);
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, [totalWords, runway]);
 
   return (
