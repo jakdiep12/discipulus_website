@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { investors } from "@/app/data/investors";
 import { WordReveal } from "./useScrollEffects";
@@ -25,16 +25,14 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
 );
 
 /**
- * Infinite marquee — measures a single copy of the logo strip in pixels
- * and animates the track by exactly that distance so the seam lands on
- * identical content frame-for-frame. Uses the Web Animations API so the
- * animation driver can't round the percentage off or fall out of phase
- * when the viewport is wider than one strip.
+ * Infinite marquee — measures the first copy's pixel width (via
+ * ResizeObserver so it updates once the images actually lay out) and
+ * animates the track by that exact distance. Three copies guarantee
+ * the viewport always has content to the right of the translation.
  */
 const LogoMarquee: React.FC = () => {
   const stripRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const strip = stripRef.current;
@@ -42,62 +40,40 @@ const LogoMarquee: React.FC = () => {
     if (!strip || !track) return;
 
     let animation: Animation | null = null;
-    let raf = 0;
+    let lastWidth = 0;
 
-    const start = () => {
+    const apply = () => {
       const width = strip.getBoundingClientRect().width;
-      if (width < 10) {
-        // Images haven't laid out yet — try again next frame.
-        raf = requestAnimationFrame(start);
-        return;
-      }
+      if (width < 10) return; // not laid out yet — wait for the next observation
+      if (Math.abs(width - lastWidth) < 1 && animation?.playState === "running") return;
+      lastWidth = width;
       animation?.cancel();
-      // ~60 pixels per second gives a calm, readable pace.
+      // ~60 pixels per second → calm, readable pace.
       const duration = (width / 60) * 1000;
       animation = track.animate(
         [
           { transform: "translate3d(0, 0, 0)" },
           { transform: `translate3d(${-width}px, 0, 0)` },
         ],
-        {
-          duration,
-          iterations: Infinity,
-          easing: "linear",
-        }
+        { duration, iterations: Infinity, easing: "linear" }
       );
-      setReady(true);
     };
 
-    // Wait for images to load so the strip width is final.
-    const imgs = Array.from(strip.querySelectorAll("img"));
-    let pending = imgs.filter((img) => !img.complete).length;
-    if (pending === 0) {
-      start();
-    } else {
-      const done = () => {
-        pending -= 1;
-        if (pending <= 0) start();
-      };
-      imgs.forEach((img) => {
-        if (img.complete) return;
-        img.addEventListener("load", done, { once: true });
-        img.addEventListener("error", done, { once: true });
-      });
-    }
+    // Initial attempt — may run before images load (width = 0) and retry
+    // on the next ResizeObserver callback.
+    apply();
 
-    const onResize = () => start();
-    window.addEventListener("resize", onResize);
+    const ro = new ResizeObserver(() => apply());
+    ro.observe(strip);
+    window.addEventListener("resize", apply);
 
     return () => {
       animation?.cancel();
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
+      ro.disconnect();
+      window.removeEventListener("resize", apply);
     };
   }, []);
 
-  // Render the strip twice — one measured, one a seamless continuation.
-  // Web Animations drives the track by the measured strip's pixel width,
-  // so the restart lands exactly on the duplicate. No gap, no jump.
   return (
     <section className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy">
       {/* Ambient glow accents */}
@@ -126,7 +102,6 @@ const LogoMarquee: React.FC = () => {
         <div
           ref={trackRef}
           className="flex items-center w-max will-change-transform"
-          style={{ opacity: ready ? 1 : 0, transition: "opacity 300ms ease" }}
         >
           <div ref={stripRef} className="flex items-center shrink-0">
             {investors.map((v) => <LogoItem key={`a-${v.id}`} v={v} />)}
