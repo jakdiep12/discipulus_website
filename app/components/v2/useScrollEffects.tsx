@@ -132,10 +132,7 @@ export const WordReveal: React.FC<{
   speed?: number;
   delay?: number;
   as?: "p" | "h1" | "h2" | "h3" | "h4" | "div" | "span" | "blockquote";
-  /** When true, "El Segundo" is rendered as one joined word with the
-   *  manifesto-cream emphasis. Used on the hero tagline only. */
-  emphasizeElSegundo?: boolean;
-}> = ({ children, className = "", speed = 40, delay = 0, as = "p", emphasizeElSegundo = false }) => {
+}> = ({ children, className = "", speed = 40, delay = 0, as = "p" }) => {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const words = children.split(" ");
@@ -168,15 +165,12 @@ export const WordReveal: React.FC<{
       transitionDelay: delayMs,
     } as const;
     const isElSegundo =
-      emphasizeElSegundo &&
-      /^El$/.test(w) &&
-      next &&
-      /^Segundo[.,!?:;]?$/.test(next);
+      /^El$/.test(w) && next && /^Segundo[.,!?:;]?$/.test(next);
     if (isElSegundo) {
       rendered.push(
         <span
           key={i}
-          className="inline-block font-semibold text-[#e8dcc8] transition-all duration-300 ease-8vc-out"
+          className="el-segundo inline-block transition-all duration-300 ease-8vc-out"
           style={commonStyle}
         >
           {w}&nbsp;{next}{i + 2 < words.length ? "\u00A0" : ""}

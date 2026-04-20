@@ -94,7 +94,11 @@ const s1BodyOffsets = s1Bodies.reduce<{ offset: number; totals: number[] }>(
 const s1TotalWords = s1BodyOffsets.offset;
 
 // ---- Section 2 content ----
-const s2Headline = ["We are creating this ecosystem in El Segundo, CA."];
+const s2Headline: (string | React.ReactElement)[] = [
+  "We are creating this ecosystem in ",
+  <span key="es-s2" className="el-segundo">El&nbsp;Segundo</span>,
+  ", CA.",
+];
 const s2Bodies: (string | React.ReactElement)[][] = [
   [
     "We are building an exclusive, tight-knit network of the West\u2019s smartest, most value-driven individuals and giving them a home to build solutions to our nation\u2019s most important problems, surrounded by people who can greatly accelerate their impact.",

@@ -86,7 +86,6 @@ const Hero: React.FC = () => {
             as="h1"
             speed={55}
             delay={200}
-            emphasizeElSegundo
             className="font-freight text-[clamp(1.75rem,5.5vw,4.6rem)] font-normal leading-[1.1] text-white max-w-[760px] mb-5 tracking-tight"
           >
             {"Cultivating a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
