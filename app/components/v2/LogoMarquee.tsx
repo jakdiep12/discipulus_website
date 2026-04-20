@@ -5,8 +5,9 @@ import Image from "next/image";
 import { investors } from "@/app/data/investors";
 import { WordReveal } from "./useScrollEffects";
 
-const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
+const LogoItem: React.FC<{ v: typeof investors[number]; keyPrefix: string }> = ({ v, keyPrefix }) => (
   <a
+    key={`${keyPrefix}-${v.id}`}
     href={v.href}
     target="_blank"
     rel="noreferrer"
@@ -25,10 +26,13 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
 );
 
 const LogoMarquee: React.FC = () => {
+  // Three identical copies + a -33.333% translation guarantees the loop
+  // reset is seamless at every viewport width — the visible slice is
+  // always backed by another copy regardless of where we are in the cycle.
+  const copies = ["a", "b", "c"] as const;
+
   return (
-    <section
-      className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy"
-    >
+    <section className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy">
       {/* Ambient glow accents */}
       <div
         aria-hidden
@@ -52,14 +56,10 @@ const LogoMarquee: React.FC = () => {
         <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-navy to-transparent z-10" />
         <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-navy to-transparent z-10" />
 
-        <div className="overflow-hidden">
-          <div
-            className="flex items-center animate-investor-scroll"
-            style={{ width: "max-content" }}
-          >
-            {investors.map((v) => <LogoItem key={`a-${v.id}`} v={v} />)}
-            {investors.map((v) => <LogoItem key={`b-${v.id}`} v={v} />)}
-          </div>
+        <div className="flex items-center animate-marquee will-change-transform w-max">
+          {copies.map((k) =>
+            investors.map((v) => <LogoItem key={`${k}-${v.id}`} keyPrefix={k} v={v} />)
+          )}
         </div>
       </div>
     </section>
