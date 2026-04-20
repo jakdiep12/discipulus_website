@@ -231,7 +231,7 @@ const ManifestoV2: React.FC = () => (
             className="group relative overflow-hidden inline-block bg-white text-navy px-6 py-2.5 text-[0.78rem] font-bold tracking-widest uppercase hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc self-start"
           >
             <span className="relative z-10">Apply now</span>
-            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
           </a>
           <WordReveal
             as="p"

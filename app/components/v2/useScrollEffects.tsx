@@ -90,7 +90,7 @@ export const Reveal: React.FC<{
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[600ms] ease-8vc-out ${
+      className={`transition-all [transition-duration:600ms] ease-8vc-out ${
         visible
           ? "opacity-100 translate-y-0 translate-x-0 scale-100"
           : hidden

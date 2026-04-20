@@ -52,7 +52,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
 
       {/* Sliding panel from the right */}
       <div
-        className={`absolute top-0 right-0 h-full w-full max-w-[420px] bg-gradient-to-b from-navy via-navy-2 to-navy border-l border-white/10 flex flex-col transition-transform duration-[450ms] ease-8vc-out shadow-[-20px_0_60px_rgba(0,0,0,0.5)] ${
+        className={`absolute top-0 right-0 h-full w-full max-w-[420px] bg-gradient-to-b from-navy via-navy-2 to-navy border-l border-white/10 flex flex-col transition-transform [transition-duration:450ms] ease-8vc-out shadow-[-20px_0_60px_rgba(0,0,0,0.5)] ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -170,7 +170,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             className="group relative overflow-hidden bg-white text-navy px-5 py-2 text-[0.76rem] font-bold tracking-widest uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc hidden md:inline-block"
           >
             <span className="relative z-10">Apply Now</span>
-            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
           </a>
 
           {/* Hamburger button — mobile only */}

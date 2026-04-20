@@ -47,7 +47,7 @@ const CTASection: React.FC = () => (
         className="group relative overflow-hidden bg-white text-navy px-5 sm:px-7 py-3 text-[0.72rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc inline-block"
       >
         <span className="relative z-10">Join us</span>
-        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform duration-[900ms] ease-8vc-out" />
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
       </a>
       <a
         href="mailto:jakob.diepenbrock@discipulusventures.com"
