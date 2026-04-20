@@ -3,6 +3,7 @@ export const investors = [
     id: "palmer",
     src: "/logos/palmer.png",
     href: "https://palmerluckey.com/",
+    dark: true,
   },
   {
     id: "a16z",
@@ -18,45 +19,54 @@ export const investors = [
     id: "championhill",
     src: "/logos/champion.png",
     href: "https://www.championhillventures.com/",
+    dark: true,
   },
   {
     id: "lux",
     src: "/logos/lux.png",
     href: "https://www.luxcapital.com/",
+    dark: true,
   },
   {
     id: "bedrock",
     src: "/logos/bedrock.png",
     href: "https://www.bedrockcap.com/",
+    dark: true,
   },
   {
     id: "8090",
     src: "/logos/8090.png",
     href: "https://www.8090industries.com/",
+    dark: true,
   },
   {
     id: "xyz",
     src: "/logos/xyz.png",
     href: "https://www.xyz.vc/",
+    dark: true,
   },
   {
     id: "lowercarbon",
     src: "/logos/lowercarbon.png",
     href: "https://lowercarboncapital.com/",
+    dark: true,
   },
   {
     id: "crv",
     src: "/logos/crv.png",
     href: "https://www.crv.com/",
+    dark: true,
   },
   {
     id: "longjourneyventures",
     src: "/logos/longjourneyventures.png",
     href: "https://www.longjourney.vc/",
+    dark: true,
   },
   {
     id: "signalfire",
     src: "/logos/signalfire.png",
     href: "https://signalfire.com/",
+    dark: true,
   },
 ];
