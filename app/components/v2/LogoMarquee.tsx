@@ -75,7 +75,7 @@ const LogoMarquee: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative isolate z-0 py-14 sm:py-16 overflow-hidden border-y border-white/[0.08] bg-gradient-to-b from-navy via-[#0a1328] to-navy">
+    <section className="relative isolate z-0 py-14 sm:py-16 overflow-hidden bg-gradient-to-b from-navy via-[#0a1328] to-navy">
       {/* Ambient glow accents */}
       <div
         aria-hidden

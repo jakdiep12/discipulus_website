@@ -125,11 +125,16 @@ const Speakers: React.FC = () => (
           Selected Past Speakers.
         </h2>
       </Reveal>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-3 md:gap-4">
+      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
         {speakers.map((s, i) => (
-          <Reveal key={s.name} delay={(i % 8) * 80} offset="sm">
-            <SpeakerCard speaker={s} />
-          </Reveal>
+          <div
+            key={s.name}
+            className="w-[calc(50%-0.375rem)] md:w-[calc(25%-0.75rem)]"
+          >
+            <Reveal delay={(i % 8) * 80} offset="sm">
+              <SpeakerCard speaker={s} />
+            </Reveal>
+          </div>
         ))}
       </div>
     </div>

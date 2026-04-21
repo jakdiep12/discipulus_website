@@ -55,7 +55,7 @@ const headlineClass =
 const bodyClass =
   "text-[1rem] text-white/70 max-w-[640px] leading-[1.8] sm:leading-[1.7] mb-5 sm:mb-5 font-light";
 const sectionClass =
-  "relative overflow-hidden sm:min-h-[60vh] py-16 sm:py-20 lg:py-24 border-b border-white/[0.05]";
+  "relative overflow-hidden sm:min-h-[60vh] py-16 sm:py-20 lg:py-24";
 
 // ---- Section 1 content ----
 const s1Headline = [
@@ -205,7 +205,7 @@ const ManifestoV2: React.FC = () => (
     <StorySection
       totalWords={s3TotalWords}
       runway={0.9}
-      className="relative overflow-hidden sm:min-h-[60vh] pb-16 sm:pb-20 lg:pb-24 border-b border-white/[0.05]"
+      className="relative overflow-hidden sm:min-h-[60vh] pb-16 sm:pb-20 lg:pb-24"
     >
       {/* Splotch — dark teal atmospheric wash */}
       <div
