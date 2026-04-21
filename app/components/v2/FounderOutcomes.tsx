@@ -19,6 +19,8 @@ const founders = [
     headshot: "/founders/peter.jpg",
     logo: "/companies/rune.png",
     desc: "AI-enabled predictive logistics for the military.",
+    testimonial:
+      "It's safe to say that the Discipulus Cohort was a game changing experience. The opportunity to learn from established entrepreneurs, dedicate time to creating my initial pitch deck and presenting it to world class investors was an incredible opportunity that every defense tech founder needs.",
   },
   {
     name: "Ted Feldmann",
@@ -27,6 +29,8 @@ const founders = [
     headshot: "/founders/ted.jpeg",
     logo: "/companies/durin.png",
     desc: "Autonomous drilling for mineral discovery.",
+    testimonial:
+      "What an incredible experience with Discipulus last week. Alongside 9 other focused, aligned, and moral young people I propelled myself and my startup with an intensity lacking most everywhere else. Excited for what is next for Discipulus!",
   },
   {
     name: "Denver Rayburn",
@@ -35,6 +39,8 @@ const founders = [
     headshot: "/founders/denver.png",
     logo: "/companies/framework.png",
     desc: "Building the future of apparel manufacturing.",
+    testimonial:
+      "DV packed more value into a week than others could in a quarter. The intensity, a hallmark of El Segundo, was exceptional, propelling our company forward. The DV team quarterbacked our fundraising efforts, orchestrating back-to-back meetings with world-class operators and investors. If you're looking to generate significant momentum in your company's early stages, this is the definitive program.",
   },
   {
     name: "Johnny Ni",
@@ -43,6 +49,8 @@ const founders = [
     headshot: "/founders/johnny.jpeg",
     logo: "/companies/vanguard.png",
     desc: "Accelerating electronic defense capabilities.",
+    testimonial:
+      "Discipulus Cohort was the launchpad Vanguard needed to transform our vision into reality. Since joining, we've raised a pre-seed round, initiated a CRADA partnership, and are in talks with some large customers for our product integration. The guidance, network, and momentum we gained through Discipulus have been instrumental in driving both our tech and partnerships forward.",
   },
   {
     name: "Elliot Forcier-Poirier",
@@ -51,6 +59,8 @@ const founders = [
     headshot: "/founders/elliot.png",
     logo: "/companies/watoga.png",
     desc: "AI Co-pilot for mining.",
+    testimonial:
+      "Everyone in our cohort was mission aligned from day one and it created a profound bond between everyone in the batch. DV condensed several months of value in just a week. It set the stage immensely well for our pre-seed round and the team was there throughout the process to help us succeed. Discipulus will be ground-zero for many generational companies and will definitely be a significant factor in restoring western prosperity.",
   },
   {
     name: "Constantin Whitmire",
@@ -59,6 +69,8 @@ const founders = [
     headshot: "/founders/constantin.jpg",
     logo: "/companies/1aulogo.png",
     desc: "Next-generation photonic systems.",
+    testimonial:
+      "Jakob is a patriot, whose intense dynamism throughout the program was infectious. Beyond the Cohort, DVs mix of industry acumen and extensive network has allowed us to grow quickly without compromising our core mission. Can't wait to see what's next for El Segundo!",
   },
   {
     name: "Fed Chávez-Torres",
@@ -67,79 +79,78 @@ const founders = [
     headshot: "/founders/fed.png",
     logo: "/companies/tex.png",
     desc: "Intelligence for equipment procurement & sales.",
+    testimonial:
+      "From day one, Discipulus brought together founders who were deeply mission-aligned and serious about building enduring American companies. That alignment created trust, speed, and an uncommon sense of purpose. It's rare to find a program that pushes this hard while staying true to first principles.",
   },
 ];
 
 const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }) => {
-  const [hovered, setHovered] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <a
-      href={founder.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="relative aspect-square block overflow-hidden group cursor-pointer border border-white/10 border-l-2 border-l-transparent hover:border-l-white/40 transition-all duration-300 ease-8vc"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+    <div
+      className="relative aspect-square cursor-pointer [perspective:1000px] w-full text-left"
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onClick={() => setFlipped(!flipped)}
     >
-      <Image
-        src={founder.headshot}
-        alt={founder.name}
-        fill
-        className={`object-cover grayscale transition-all duration-500 ease-8vc ${
-          hovered ? "scale-[1.02]" : ""
-        }`}
-      />
-      {/* Color-shift tint on hover — warm cream glow */}
       <div
-        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-8vc ${
-          hovered ? "opacity-100" : "opacity-0"
-        }`}
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(232,220,200,0.18) 0%, rgba(116,94,160,0.12) 60%, rgba(6,12,26,0.55) 100%)",
-        }}
-      />
-      <div
-        className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ease-8vc ${
-          hovered ? "opacity-0" : "opacity-100"
-        } bg-gradient-to-t from-black/60 via-black/10 to-transparent`}
-      />
-
-      {/* Company logo — default state, top of card, in color */}
-      <div
-        className={`absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center transition-opacity duration-300 ease-8vc ${
-          hovered ? "opacity-0" : "opacity-100"
+        className={`relative w-full h-full transition-transform duration-500 ease-8vc-out [transform-style:preserve-3d] ${
+          flipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
-        <Image
-          src={founder.logo}
-          alt={`${founder.company} logo`}
-          width={180}
-          height={42}
-          className="w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
-        />
-      </div>
-
-      {/* Bottom content — founder name (always) + company + desc (hover only) */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-        <div className="font-freight text-[1.4rem] sm:text-[1.6rem] font-normal tracking-tight text-white leading-tight">
-          {founder.name}
+        {/* Front — photo + company logo + founder name */}
+        <div className="absolute inset-0 [backface-visibility:hidden] overflow-hidden border border-white/10">
+          <Image
+            src={founder.headshot}
+            alt={founder.name}
+            fill
+            className="object-cover grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
+          <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
+            <Image
+              src={founder.logo}
+              alt={`${founder.company} logo`}
+              width={180}
+              height={42}
+              className="w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+            />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+            <div className="font-freight text-[1.4rem] sm:text-[1.6rem] font-normal tracking-tight text-white leading-tight">
+              {founder.name}
+            </div>
+          </div>
         </div>
-        <div
-          className={`overflow-hidden transition-all duration-400 ease-8vc-out ${
-            hovered ? "max-h-[140px] opacity-100 mt-2" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="font-sans text-[1rem] text-white font-semibold tracking-tight mb-1.5">
+
+        {/* Back — company, desc, testimonial, visit link */}
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-5 sm:p-7 overflow-hidden">
+          <div className="font-freight text-[1.25rem] sm:text-[1.4rem] font-normal text-white tracking-tight leading-tight mb-1">
             {founder.company}
           </div>
-          <p className="font-sans text-[1.05rem] text-white/90 leading-relaxed">
+          <div className="font-sans text-[0.78rem] sm:text-[0.82rem] text-white/60 mb-4">
             {founder.desc}
-          </p>
+          </div>
+          <blockquote className="relative font-freight italic text-[0.85rem] sm:text-[0.92rem] text-white/85 leading-[1.55] flex-1 overflow-y-auto pr-1">
+            <span aria-hidden className="absolute -top-1 -left-1 text-white/15 text-[2rem] leading-none select-none">“</span>
+            <span className="relative block pl-4">{founder.testimonial}</span>
+          </blockquote>
+          <div className="mt-3 flex items-center justify-between text-[0.72rem] sm:text-[0.75rem]">
+            <span className="text-white/45 font-mono tracking-[0.12em] uppercase">{founder.name}</span>
+            <a
+              href={founder.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/65 font-medium underline underline-offset-2 decoration-white/25 hover:text-white hover:decoration-white/60 transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Visit →
+            </a>
+          </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 
