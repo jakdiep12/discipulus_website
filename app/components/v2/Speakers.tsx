@@ -24,17 +24,17 @@ const speakers: Speaker[] = [
   { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png" },
   { name: "Katherine Boyle", title: "General Partner at a16z", company: "a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png" },
   { name: "Dan Piemont", title: "Founder of Long Wall", company: "Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.com/", logo: "/logos/longwall.png" },
-  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", company: "Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/", logo: "/logos/sequoia.png" },
-  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.tech/", logo: "/logos/shinkei.png" },
+  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", company: "Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/", logo: "/logos/sequoia.svg" },
+  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://shinkei.systems/", logo: "/logos/shinkei.svg" },
   { name: "Kevin Hartz", title: "Co-founder of A*", company: "A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/", logo: "/logos/astar.svg" },
   { name: "Delian Asparouhov", title: "Co-founder of Varda Space Industries", company: "Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://www.varda.com/", logo: "/logos/varda.svg" },
-  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/", logo: "/logos/hadrian.png" },
+  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/", logo: "/logos/hadrian.svg" },
   { name: "Nathan Mintz", title: "Co-founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.cx2.com/", logo: "/logos/cx2.png" },
   { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/", logo: "/logos/galvanick.png" },
   { name: "Scott Nolan", title: "Founder of General Matter", company: "General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/", logo: "/logos/general-matter.svg" },
   { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/", logo: "/logos/1517.svg" },
   { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/", logo: "/logos/castelion.png" },
-  { name: "Josh Manchester", title: "Founder of Champion Hill", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://championhill.vc/", logo: "/logos/champion-hill.png" },
+  { name: "Josh Manchester", title: "Founder of Champion Hill", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/", logo: "/logos/champion-hill.svg" },
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
@@ -76,7 +76,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
               <img
                 src={speaker.logo}
                 alt={speaker.company}
-                className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+                className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left brightness-0 invert drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
                 onError={() => setLogoFailed(true)}
               />
             ) : (
