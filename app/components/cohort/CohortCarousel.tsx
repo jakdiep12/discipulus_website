@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Reveal, useParallax } from "../v2/useScrollEffects";
+import { Reveal } from "../v2/useScrollEffects";
 
 const images = [
   "/cohort/cohort17.jpeg",
@@ -51,7 +51,6 @@ const PhotoSet: React.FC<{ onSelect: (src: string) => void }> = ({ onSelect }) =
 
 export function CohortCarousel() {
   const [selected, setSelected] = useState<string | null>(null);
-  const parallaxRef = useParallax<HTMLDivElement>(0.3, 60);
 
   return (
     <section className="py-4 overflow-hidden">
@@ -59,7 +58,7 @@ export function CohortCarousel() {
         <div className="relative">
           <div className="absolute inset-y-0 left-0 w-12 sm:w-16 md:w-24 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-24 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
-          <div ref={parallaxRef} className="will-change-transform">
+          <div>
             <div className="flex gap-1 animate-photo-scroll" style={{ width: "max-content" }}>
               <PhotoSet onSelect={setSelected} />
               <PhotoSet onSelect={setSelected} />

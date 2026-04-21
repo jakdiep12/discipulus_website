@@ -12,7 +12,7 @@ const scheduleItems = [
 ];
 
 const Schedule: React.FC = () => (
-  <section id="experience" className="relative py-20 sm:py-24 bg-[#0c1424] overflow-hidden">
+  <section id="experience" className="relative py-20 sm:py-24 bg-navy overflow-hidden">
     {/* Splotch — dark teal atmospheric wash */}
     <div
       aria-hidden

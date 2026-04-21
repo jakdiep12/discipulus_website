@@ -2,11 +2,10 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import NavbarV2 from "./NavbarV2";
-import { Reveal, WordReveal, useParallax } from "./useScrollEffects";
+import { Reveal, WordReveal } from "./useScrollEffects";
 
 const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoWrapRef = useParallax<HTMLDivElement>(0.3, 100);
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
@@ -27,10 +26,7 @@ const Hero: React.FC = () => {
     <>
       {/* Video with navbar overlaid on top */}
       <div className="relative w-full aspect-video sm:aspect-auto sm:h-[65vh] md:h-[80vh] lg:h-[90vh] overflow-hidden">
-        <div
-          ref={videoWrapRef}
-          className="absolute inset-x-0 inset-y-0 sm:inset-y-auto sm:-top-[15%] sm:h-[130%] will-change-transform"
-        >
+        <div className="absolute inset-0">
           <video
             ref={videoRef}
             className="absolute inset-0 w-full h-full object-cover"

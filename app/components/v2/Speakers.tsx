@@ -7,33 +7,34 @@ import { Reveal } from "./useScrollEffects";
 interface Speaker {
   name: string;
   title: string;
+  // Company/fund name rendered as a wordmark at the top of each card.
+  company: string;
   topic: string;
   img?: string;
   url: string;
-  // Optional path to a firm/company logo to render in the card corner.
-  // If the asset is missing the <img> will hide itself via onError.
+  // Optional path to a firm/company logo image; when present, replaces the
+  // wordmark text on the card front.
   logo?: string;
-  logoAlt?: string;
 }
 
 const speakers: Speaker[] = [
-  { name: "Palmer Luckey", title: "Founder, Anduril Industries", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/" },
-  { name: "Augustus Doricko", title: "Founder of Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/" },
-  { name: "Tom Mueller", title: "Founder of Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/" },
-  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/" },
-  { name: "Katherine Boyle", title: "General Partner at a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png", logoAlt: "a16z" },
-  { name: "Dan Piemont", title: "Founder of Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/" },
-  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/" },
-  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/" },
-  { name: "Kevin Hartz", title: "General Partner at A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/" },
-  { name: "Delian Asparouhov", title: "Founder of Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://foundersfund.com/" },
-  { name: "Chris Power", title: "Founder of Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/" },
-  { name: "Nathan Mintz", title: "Founder of CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.epirusinc.com/" },
-  { name: "Josh Steinman", title: "Founder of Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/" },
-  { name: "Scott Nolan", title: "Founder of General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/" },
-  { name: "Michael Gibson", title: "General Partner at 1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/" },
-  { name: "Bryon Hargis", title: "Founder of Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/" },
-  { name: "Josh Manchester", title: "General Partner at Champion Hill Ventures", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/" },
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/" },
+  { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/" },
+  { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/" },
+  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/" },
+  { name: "Katherine Boyle", title: "General Partner at a16z", company: "a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png" },
+  { name: "Dan Piemont", title: "Founder of Long Wall", company: "Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/" },
+  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", company: "Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/" },
+  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/" },
+  { name: "Kevin Hartz", title: "General Partner at A*", company: "A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/" },
+  { name: "Delian Asparouhov", title: "Founder of Varda Space", company: "Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://foundersfund.com/" },
+  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/" },
+  { name: "Nathan Mintz", title: "Founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.epirusinc.com/" },
+  { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/" },
+  { name: "Scott Nolan", title: "Founder of General Matter", company: "General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/" },
+  { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/" },
+  { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/" },
+  { name: "Josh Manchester", title: "General Partner at Champion Hill Ventures", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/" },
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
@@ -68,17 +69,21 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          {speaker.logo && (
-            <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+          <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
+            {speaker.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={speaker.logo}
-                alt={speaker.logoAlt ?? ""}
+                alt={speaker.company}
                 className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
               />
-            </div>
-          )}
+            ) : (
+              <span className="font-sans text-[0.82rem] sm:text-[0.95rem] font-bold text-white uppercase tracking-[0.14em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
+                {speaker.company}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Back — info card with link */}

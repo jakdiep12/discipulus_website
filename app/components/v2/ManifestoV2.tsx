@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useParallax, WordReveal } from "./useScrollEffects";
+import { WordReveal } from "./useScrollEffects";
 import { StorySection, StoryText, countWords } from "./StoryText";
 
 const archetypes = [
@@ -20,35 +20,28 @@ const archetypes = [
   },
 ];
 
-const NumberMark: React.FC<{ n: string }> = ({ n }) => {
-  const ref = useParallax<HTMLDivElement>(0.6);
-  return (
-    <div
-      ref={ref}
-      aria-hidden
-      className="hidden sm:block pointer-events-none select-none font-freight leading-none text-white/[0.04] absolute -top-2 lg:-top-4 -left-6 lg:-left-8 text-[15rem] lg:text-[20rem] will-change-transform"
-    >
-      {n}
-    </div>
-  );
-};
+const NumberMark: React.FC<{ n: string }> = ({ n }) => (
+  <div
+    aria-hidden
+    className="hidden sm:block pointer-events-none select-none font-freight leading-none text-white/[0.04] absolute -top-2 lg:-top-4 -left-6 lg:-left-8 text-[15rem] lg:text-[20rem]"
+  >
+    {n}
+  </div>
+);
 
-const ManifestoImage: React.FC = () => {
-  const ref = useParallax<HTMLDivElement>(0.3, 80);
-  return (
-    <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-6 sm:mb-4 lg:mb-5 media-glow">
-      <div ref={ref} className="absolute inset-x-0 inset-y-0 sm:inset-y-auto sm:-top-[20%] sm:h-[140%] will-change-transform">
-        <Image
-          src="/manifesto3.png"
-          alt="Discipulus manifesto"
-          fill
-          className="object-cover object-center"
-        />
-      </div>
-      <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
+const ManifestoImage: React.FC = () => (
+  <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-6 sm:mb-4 lg:mb-5 media-glow">
+    <div className="absolute inset-0">
+      <Image
+        src="/manifesto3.png"
+        alt="Discipulus manifesto"
+        fill
+        className="object-cover object-center"
+      />
     </div>
-  );
-};
+    <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
+  </div>
+);
 
 const headlineClass =
   "font-freight text-[clamp(1.75rem,4.2vw,3rem)] font-semibold leading-[1.2] sm:leading-[1.12] text-white max-w-[900px] mx-auto mb-6 sm:mb-7 text-center";
@@ -169,7 +162,7 @@ const ManifestoV2: React.FC = () => (
     <StorySection
       totalWords={s2TotalWords}
       runway={0.8}
-      className={`${sectionClass} bg-[#0a1120]`}
+      className={sectionClass}
     >
       {/* Splotch — muted purple atmospheric wash */}
       <div

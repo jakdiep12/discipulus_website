@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Reveal, Parallax, WordReveal } from "./useScrollEffects";
+import { Reveal, WordReveal } from "./useScrollEffects";
 
 const TopoSVG = () => (
   <svg
@@ -37,7 +37,7 @@ const ElSegundo: React.FC = () => (
   <section className="py-16 lg:py-20 relative overflow-hidden">
     <TopoSVG />
     <div className="max-w-[1200px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start relative z-10">
-      <Parallax speed={0.08}>
+      <div>
         <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-5">
           Why <span className="el-segundo">El&nbsp;Segundo</span>
         </p>
@@ -45,7 +45,7 @@ const ElSegundo: React.FC = () => (
           The new center of gravity for American hard tech.
         </h2>
         <WordReveal className="text-[0.9375rem] sm:text-[1rem] text-white/65 leading-[1.65] mt-3" speed={30}>El Segundo is home to a growing cluster of defense, aerospace, and deep tech companies. The Cohort plugs founders directly into this physical ecosystem — the actual people and buildings where the work is happening.</WordReveal>
-      </Parallax>
+      </div>
       <div>
         <p className="font-mono text-[0.6rem] text-white/30 tracking-[0.12em] uppercase mb-3">
           Featured Companies
