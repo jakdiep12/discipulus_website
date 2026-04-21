@@ -43,18 +43,16 @@ const articles: Array<{
 ];
 
 const Press: React.FC = () => (
-  <section className="relative py-16 sm:py-20 text-navy">
-    <div className="absolute inset-0 bg-gradient-to-b from-navy via-cream via-[12%] to-cream pointer-events-none" />
-    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy to-cream pointer-events-none" />
+  <section className="relative py-16 sm:py-20 bg-navy">
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
       <WordReveal
         as="p"
         speed={35}
-        className="font-mono text-[0.78rem] sm:text-[0.75rem] text-navy/60 tracking-[0.16em] uppercase mb-5 font-semibold"
+        className="font-mono text-[0.78rem] sm:text-[0.75rem] text-white/60 tracking-[0.16em] uppercase mb-5 font-semibold"
       >
         In the press
       </WordReveal>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-navy/[0.07] border border-navy/[0.07]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/[0.08] border border-white/[0.08]">
         {articles.map((a, i) => (
           <a
             key={a.outlet}
