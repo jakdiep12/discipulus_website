@@ -69,12 +69,12 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           {speaker.logo && (
-            <div className="absolute top-3 left-3 right-3 flex items-center">
+            <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={speaker.logo}
                 alt={speaker.logoAlt ?? ""}
-                className="max-w-[70%] h-[18px] sm:h-[20px] w-auto object-contain object-left opacity-90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+                className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
               />
             </div>

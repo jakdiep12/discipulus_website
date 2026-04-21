@@ -78,7 +78,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
       href={founder.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative aspect-square block overflow-hidden group cursor-pointer border border-navy/10 border-l-2 border-l-transparent hover:border-l-navy/40 transition-all duration-300 ease-8vc"
+      className="relative aspect-square block overflow-hidden group cursor-pointer border border-white/10 border-l-2 border-l-transparent hover:border-l-white/40 transition-all duration-300 ease-8vc"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -123,7 +123,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
 
       {/* Bottom content — founder name (always) + company + desc (hover only) */}
       <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-        <div className="font-sans text-[1.25rem] sm:text-[1.4rem] font-semibold tracking-tight text-white leading-tight">
+        <div className="font-freight text-[1.4rem] sm:text-[1.6rem] font-normal tracking-tight text-white leading-tight">
           {founder.name}
         </div>
         <div
@@ -131,10 +131,10 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
             hovered ? "max-h-[140px] opacity-100 mt-2" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="text-[1rem] text-white/85 font-semibold tracking-tight mb-1.5">
+          <div className="font-sans text-[1rem] text-white font-semibold tracking-tight mb-1.5">
             {founder.company}
           </div>
-          <p className="text-[1.05rem] text-white/65 leading-relaxed">
+          <p className="font-sans text-[1.05rem] text-white/90 leading-relaxed">
             {founder.desc}
           </p>
         </div>
@@ -154,15 +154,21 @@ const FounderOutcomes: React.FC = () => {
   }, []);
 
   return (
-    <section id="outcomes" className="relative py-20 sm:py-24 text-navy">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-cream via-[12%] to-cream pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy to-cream pointer-events-none" />
+    <section id="outcomes" className="relative py-20 sm:py-24 text-white bg-navy overflow-hidden">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+        style={{
+          background:
+            "radial-gradient(520px 460px at 82% 18%, rgba(60,100,170,0.16), transparent 72%), radial-gradient(460px 420px at 10% 88%, rgba(116,94,160,0.14), transparent 72%), radial-gradient(380px 340px at 50% 55%, rgba(64,180,190,0.10), transparent 70%)",
+        }}
+      />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
         <Reveal>
-          <p className="font-mono text-[0.75rem] text-navy/50 tracking-[0.14em] uppercase mb-3">
+          <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
             Cohort
           </p>
-          <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight max-w-[520px] text-navy underline-reveal underline-reveal-dark mb-8 sm:mb-10">
+          <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight max-w-[520px] text-white underline-reveal mb-8 sm:mb-10">
             Featured Cohort Founders.
           </h2>
         </Reveal>
@@ -190,8 +196,8 @@ const FounderOutcomes: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="md:-left-14 -left-2 bg-navy text-white hover:!bg-white hover:!text-navy hidden sm:flex" />
-            <CarouselNext className="md:-right-14 -right-2 bg-navy text-white hover:!bg-white hover:!text-navy hidden sm:flex" />
+            <CarouselPrevious className="md:-left-14 -left-2 bg-white text-navy hover:!bg-navy hover:!text-white hidden sm:flex" />
+            <CarouselNext className="md:-right-14 -right-2 bg-white text-navy hover:!bg-navy hover:!text-white hidden sm:flex" />
           </Carousel>
         </div>
       </div>

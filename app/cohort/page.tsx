@@ -18,14 +18,21 @@ export default function CohortPage() {
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
       <NavbarV2 />
       <CohortHero />
-      <CohortVideo />
       <section className="relative py-14 sm:py-20 overflow-hidden">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
           style={{
             background:
-              "radial-gradient(540px 480px at 80% 20%, rgba(60,100,170,0.13), transparent 72%), radial-gradient(500px 440px at 10% 90%, rgba(116,94,160,0.11), transparent 72%)",
+              "radial-gradient(560px 500px at 82% 18%, rgba(60,100,170,0.20), transparent 72%), radial-gradient(500px 440px at 8% 88%, rgba(116,94,160,0.18), transparent 72%), radial-gradient(420px 380px at 55% 50%, rgba(64,180,190,0.12), transparent 70%), radial-gradient(360px 320px at 95% 70%, rgba(88,64,168,0.14), transparent 72%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
+          style={{
+            background:
+              "radial-gradient(300px 280px at 20% 30%, rgba(40,140,200,0.12), transparent 70%), radial-gradient(340px 300px at 70% 85%, rgba(150,110,200,0.10), transparent 72%)",
           }}
         />
         <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
@@ -42,6 +49,7 @@ export default function CohortPage() {
           </Reveal>
         </div>
       </section>
+      <CohortVideo />
       <FounderOutcomes />
       <Speakers />
       <AfterProgram />
