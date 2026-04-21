@@ -124,25 +124,34 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
           </div>
         </div>
 
-        {/* Back — company, desc, testimonial, visit link */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-5 sm:p-7 overflow-hidden">
-          <div className="font-freight text-[1.25rem] sm:text-[1.4rem] font-normal text-white tracking-tight leading-tight mb-1">
-            {founder.company}
-          </div>
-          <div className="font-sans text-[0.78rem] sm:text-[0.82rem] text-white/60 mb-4">
-            {founder.desc}
-          </div>
-          <blockquote className="relative font-freight italic text-[0.85rem] sm:text-[0.92rem] text-white/85 leading-[1.55] flex-1 overflow-y-auto pr-1">
-            <span aria-hidden className="absolute -top-1 -left-1 text-white/15 text-[2rem] leading-none select-none">“</span>
-            <span className="relative block pl-4">{founder.testimonial}</span>
+        {/* Back — testimonial fills the card */}
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-6 sm:p-8 lg:p-10 overflow-hidden">
+          <blockquote className="relative flex-1 flex items-center justify-center">
+            <span
+              aria-hidden
+              className="absolute top-0 left-0 font-freight text-white/10 text-[5rem] sm:text-[6rem] leading-none select-none"
+            >
+              “
+            </span>
+            <p className="relative font-freight italic text-white text-[1.1rem] sm:text-[1.35rem] lg:text-[1.55rem] leading-[1.45] tracking-tight text-center px-3 sm:px-5 overflow-y-auto max-h-full">
+              {founder.testimonial}
+            </p>
+            <span
+              aria-hidden
+              className="absolute bottom-0 right-0 font-freight text-white/10 text-[5rem] sm:text-[6rem] leading-none select-none"
+            >
+              ”
+            </span>
           </blockquote>
-          <div className="mt-3 flex items-center justify-between text-[0.72rem] sm:text-[0.75rem]">
-            <span className="text-white/45 font-mono tracking-[0.12em] uppercase">{founder.name}</span>
+          <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[0.72rem] sm:text-[0.78rem]">
+            <span className="font-mono text-white/65 tracking-[0.14em] uppercase">
+              {founder.name} · {founder.company}
+            </span>
             <a
               href={founder.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/65 font-medium underline underline-offset-2 decoration-white/25 hover:text-white hover:decoration-white/60 transition-colors"
+              className="font-mono text-white/55 tracking-[0.12em] uppercase hover:text-white transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               Visit →

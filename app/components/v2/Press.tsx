@@ -67,7 +67,7 @@ const Press: React.FC = () => (
             href={a.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="shimmer block bg-cream border-l-2 border-l-transparent p-6 lg:p-7 hover:bg-cream-hover hover:border-l-navy/25 transition-all duration-300 ease-8vc group"
+            className="shimmer block bg-navy-2 border-l-2 border-l-transparent p-6 lg:p-7 hover:bg-navy-3 hover:border-l-white/30 transition-all duration-300 ease-8vc group"
           >
             <Reveal delay={i * 120}>
               <div className="h-[36px] mb-3 flex items-center">
@@ -76,7 +76,7 @@ const Press: React.FC = () => (
                   alt={`${a.outlet} logo`}
                   width={180}
                   height={36}
-                  className="h-[30px] sm:h-[34px] w-auto object-contain opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+                  className="h-[30px] sm:h-[34px] w-auto object-contain brightness-0 invert opacity-85 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </Reveal>
@@ -84,16 +84,16 @@ const Press: React.FC = () => (
               as="div"
               speed={28}
               delay={i * 120 + 120}
-              className="font-sans text-[0.95rem] text-navy leading-snug font-semibold mb-1.5 group-hover:underline underline-offset-2 decoration-navy/30 transition-all duration-300"
+              className="font-sans text-[0.95rem] text-white leading-snug font-semibold mb-1.5 group-hover:underline underline-offset-2 decoration-white/30 transition-all duration-300"
             >
               {a.title}
             </WordReveal>
             <Reveal delay={i * 120 + 200}>
               {/* Preview snippet — appears on hover */}
-              <div className="text-[0.875rem] text-navy/50 leading-[1.6] mb-2 max-h-0 overflow-hidden group-hover:max-h-[80px] group-active:max-h-[80px] transition-all duration-500 ease-8vc-out">
+              <div className="text-[0.875rem] text-white/70 leading-[1.6] mb-2 max-h-0 overflow-hidden group-hover:max-h-[80px] group-active:max-h-[80px] transition-all duration-500 ease-8vc-out">
                 {a.preview}
               </div>
-              <div className="text-[0.75rem] text-navy/35 group-hover:text-navy/55 tracking-wide transition-colors duration-300">
+              <div className="text-[0.75rem] text-white/50 group-hover:text-white/75 tracking-wide transition-colors duration-300">
                 {a.date} →
               </div>
             </Reveal>
