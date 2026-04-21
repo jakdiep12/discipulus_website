@@ -18,27 +18,28 @@ interface Speaker {
 }
 
 const speakers: Speaker[] = [
-  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/" },
-  { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/" },
-  { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/" },
-  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/" },
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png" },
+  { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.png" },
+  { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png" },
+  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png" },
   { name: "Katherine Boyle", title: "General Partner at a16z", company: "a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png" },
-  { name: "Dan Piemont", title: "Founder of Long Wall", company: "Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/" },
-  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", company: "Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/" },
-  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/" },
-  { name: "Kevin Hartz", title: "General Partner at A*", company: "A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/" },
-  { name: "Delian Asparouhov", title: "Founder of Varda Space", company: "Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://foundersfund.com/" },
-  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/" },
-  { name: "Nathan Mintz", title: "Founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.epirusinc.com/" },
-  { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/" },
-  { name: "Scott Nolan", title: "Founder of General Matter", company: "General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/" },
-  { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/" },
-  { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/" },
-  { name: "Josh Manchester", title: "General Partner at Champion Hill Ventures", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/" },
+  { name: "Dan Piemont", title: "Founder of Long Wall", company: "Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.com/", logo: "/logos/longwall.png" },
+  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", company: "Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/", logo: "/logos/sequoia.png" },
+  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.tech/", logo: "/logos/shinkei.png" },
+  { name: "Kevin Hartz", title: "Co-founder of A*", company: "A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/", logo: "/logos/astar.png" },
+  { name: "Delian Asparouhov", title: "Co-founder of Varda Space Industries", company: "Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://www.varda.com/", logo: "/logos/varda.png" },
+  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/", logo: "/logos/hadrian.png" },
+  { name: "Nathan Mintz", title: "Co-founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.cx2.com/", logo: "/logos/cx2.png" },
+  { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/", logo: "/logos/galvanick.png" },
+  { name: "Scott Nolan", title: "Founder of General Matter", company: "General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/", logo: "/logos/general-matter.png" },
+  { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/", logo: "/logos/1517.png" },
+  { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/", logo: "/logos/castelion.png" },
+  { name: "Josh Manchester", title: "Founder of Champion Hill", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://championhill.vc/", logo: "/logos/champion-hill.png" },
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
   const [flipped, setFlipped] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
 
   return (
     <div
@@ -70,13 +71,13 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
-            {speaker.logo ? (
+            {speaker.logo && !logoFailed ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={speaker.logo}
                 alt={speaker.company}
                 className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
-                onError={(e) => { e.currentTarget.style.display = "none"; }}
+                onError={() => setLogoFailed(true)}
               />
             ) : (
               <span className="font-sans text-[0.82rem] sm:text-[0.95rem] font-bold text-white uppercase tracking-[0.14em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
