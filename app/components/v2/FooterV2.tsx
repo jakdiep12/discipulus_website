@@ -97,7 +97,7 @@ const FooterV2: React.FC = () => (
               aria-label="Discipulus Ventures on X"
               className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
             >
-              <Image src="/social/x.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+              <Image src="/social/x.png" alt="" width={32} height={32} className="w-[30px] h-[30px] brightness-0 invert" />
             </a>
             <a
               href="https://www.linkedin.com/company/discipulus-ventures"
@@ -106,7 +106,7 @@ const FooterV2: React.FC = () => (
               aria-label="Discipulus Ventures on LinkedIn"
               className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
             >
-              <Image src="/social/linkedin.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+              <Image src="/social/linkedin.png" alt="" width={32} height={32} className="w-[30px] h-[30px] brightness-0 invert" />
             </a>
             <a
               href="http://discipulusventures.substack.com/"
@@ -115,7 +115,7 @@ const FooterV2: React.FC = () => (
               aria-label="Discipulus Ventures on Substack"
               className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
             >
-              <Image src="/social/substack.png" alt="" width={20} height={20} className="w-[20px] h-[20px] invert" />
+              <Image src="/social/substack.png" alt="" width={32} height={32} className="w-[30px] h-[30px] brightness-0 invert" />
             </a>
           </div>
         </Reveal>

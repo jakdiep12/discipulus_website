@@ -17,15 +17,15 @@ interface Speaker {
 }
 
 const speakers: Speaker[] = [
-  { name: "Palmer Luckey", title: "Founder, Anduril Industries", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoAlt: "Anduril Industries" },
-  { name: "Augustus Doricko", title: "Founder of Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.png", logoAlt: "Rainmaker" },
-  { name: "Tom Mueller", title: "Founder of Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png", logoAlt: "Impulse Space" },
-  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png", logoAlt: "Valar Atomics" },
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/" },
+  { name: "Augustus Doricko", title: "Founder of Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/" },
+  { name: "Tom Mueller", title: "Founder of Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/" },
+  { name: "Isaiah Taylor", title: "Founder of Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/" },
   { name: "Katherine Boyle", title: "General Partner at a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png", logoAlt: "a16z" },
-  { name: "Dan Piemont", title: "Founder of Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/", logo: "/logos/longwall.png", logoAlt: "Long Wall" },
-  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/", logo: "/logos/sequoia.png", logoAlt: "Sequoia Capital" },
-  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/", logo: "/logos/shinkei.png", logoAlt: "Shinkei Systems" },
-  { name: "Kevin Hartz", title: "General Partner at A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/", logo: "/logos/astar.png", logoAlt: "A*" },
+  { name: "Dan Piemont", title: "Founder of Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.co/" },
+  { name: "Shaun Maguire", title: "Partner at Sequoia Capital", topic: "", img: "/speakers/shaun maguire.png", url: "https://www.sequoiacap.com/" },
+  { name: "Saif Khawaja", title: "Founder of Shinkei Systems", topic: "", img: "/speakers/saif.png", url: "https://www.shinkei.systems/" },
+  { name: "Kevin Hartz", title: "General Partner at A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/" },
   { name: "Delian Asparouhov", title: "Founder of Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://foundersfund.com/" },
   { name: "Chris Power", title: "Founder of Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/" },
   { name: "Nathan Mintz", title: "Founder of CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.epirusinc.com/" },
