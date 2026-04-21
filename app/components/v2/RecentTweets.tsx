@@ -33,15 +33,15 @@ const RecentTweets: React.FC = () => (
       </WordReveal>
       <div
         data-theme="dark"
-        className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-4xl mx-auto"
+        className="columns-1 md:columns-2 lg:columns-3 gap-5 md:gap-6 max-w-5xl mx-auto text-left"
       >
         {tweets.map((tweet, index) => (
           <div
             key={tweet.id}
-            className="w-full md:w-[calc(50%-1rem)]"
+            className="break-inside-avoid mb-5 md:mb-6"
           >
             <Reveal delay={index * 100} offset="sm">
-              <div className="[&_article]:!m-0 [&_.react-tweet-theme]:!m-0">
+              <div className="[&_article]:!m-0 [&_.react-tweet-theme]:!m-0 [&_.react-tweet-theme]:!max-w-none">
                 <Tweet id={tweet.id} />
               </div>
             </Reveal>
