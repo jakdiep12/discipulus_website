@@ -82,7 +82,7 @@ const LogoMarquee: React.FC = () => {
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(60% 40% at 20% 0%, rgba(232,220,200,0.10), transparent 70%), radial-gradient(50% 40% at 80% 100%, rgba(120,170,255,0.09), transparent 70%)",
+            "radial-gradient(85% 60% at 20% 0%, rgba(232,220,200,0.22), transparent 68%), radial-gradient(75% 60% at 80% 100%, rgba(120,170,255,0.24), transparent 68%), radial-gradient(55% 50% at 50% 50%, rgba(140,100,200,0.16), transparent 70%)",
         }}
       />
 

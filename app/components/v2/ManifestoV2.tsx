@@ -143,7 +143,7 @@ const ManifestoV2: React.FC = () => (
         className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
         style={{
           background:
-            "radial-gradient(540px 480px at 20% 30%, rgba(60,100,170,0.13), transparent 72%), radial-gradient(500px 460px at 85% 80%, rgba(90,60,140,0.11), transparent 72%)",
+            "radial-gradient(920px 820px at 20% 30%, rgba(60,100,170,0.40), transparent 68%), radial-gradient(880px 800px at 85% 80%, rgba(110,70,180,0.36), transparent 68%), radial-gradient(680px 620px at 50% 55%, rgba(48,150,190,0.22), transparent 68%)",
         }}
       />
       <NumberMark n="1" />
@@ -177,7 +177,7 @@ const ManifestoV2: React.FC = () => (
         className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
         style={{
           background:
-            "radial-gradient(560px 520px at 80% 20%, rgba(116,94,160,0.14), transparent 72%), radial-gradient(520px 460px at 15% 85%, rgba(40,110,140,0.12), transparent 72%)",
+            "radial-gradient(960px 880px at 80% 20%, rgba(140,90,200,0.42), transparent 68%), radial-gradient(900px 800px at 15% 85%, rgba(40,150,190,0.38), transparent 68%), radial-gradient(720px 640px at 55% 50%, rgba(70,110,200,0.24), transparent 70%)",
         }}
       />
       <NumberMark n="2" />
@@ -213,7 +213,7 @@ const ManifestoV2: React.FC = () => (
         className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
         style={{
           background:
-            "radial-gradient(560px 500px at 15% 25%, rgba(40,110,140,0.14), transparent 72%), radial-gradient(540px 480px at 85% 85%, rgba(60,100,170,0.12), transparent 72%)",
+            "radial-gradient(960px 860px at 15% 25%, rgba(40,150,190,0.42), transparent 68%), radial-gradient(920px 820px at 85% 85%, rgba(60,110,200,0.38), transparent 68%), radial-gradient(720px 640px at 55% 55%, rgba(120,90,200,0.24), transparent 70%)",
         }}
       />
       <NumberMark n="3" />

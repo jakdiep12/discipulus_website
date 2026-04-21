@@ -39,7 +39,7 @@ const FooterV2: React.FC = () => (
       className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
       style={{
         background:
-          "radial-gradient(560px 480px at 20% 20%, rgba(60,100,170,0.13), transparent 72%), radial-gradient(520px 460px at 85% 85%, rgba(116,94,160,0.12), transparent 72%)",
+          "radial-gradient(960px 820px at 20% 20%, rgba(60,100,170,0.40), transparent 68%), radial-gradient(900px 800px at 85% 85%, rgba(140,90,200,0.38), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(48,160,200,0.24), transparent 70%)",
       }}
     />
     <ParticlesSVG />

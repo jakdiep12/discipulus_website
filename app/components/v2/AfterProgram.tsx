@@ -28,7 +28,7 @@ const AfterProgram: React.FC = () => (
       className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
       style={{
         background:
-          "radial-gradient(540px 480px at 85% 15%, rgba(116,94,160,0.13), transparent 72%), radial-gradient(520px 460px at 10% 85%, rgba(60,100,170,0.12), transparent 72%)",
+          "radial-gradient(920px 820px at 85% 15%, rgba(116,94,160,0.38), transparent 70%), radial-gradient(880px 780px at 10% 85%, rgba(60,100,170,0.36), transparent 70%), radial-gradient(680px 620px at 50% 55%, rgba(64,180,190,0.22), transparent 68%)",
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

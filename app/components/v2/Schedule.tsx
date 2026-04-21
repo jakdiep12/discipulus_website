@@ -19,7 +19,7 @@ const Schedule: React.FC = () => (
       className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
       style={{
         background:
-          "radial-gradient(560px 480px at 15% 20%, rgba(40,110,140,0.14), transparent 72%), radial-gradient(540px 460px at 85% 85%, rgba(90,60,140,0.12), transparent 72%)",
+          "radial-gradient(960px 820px at 15% 20%, rgba(40,150,190,0.40), transparent 68%), radial-gradient(920px 800px at 85% 85%, rgba(110,70,180,0.38), transparent 68%), radial-gradient(720px 640px at 55% 50%, rgba(60,110,200,0.24), transparent 70%)",
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

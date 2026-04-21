@@ -113,7 +113,7 @@ const Speakers: React.FC = () => (
       className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
       style={{
         background:
-          "radial-gradient(600px 500px at 80% 20%, rgba(116,94,160,0.13), transparent 70%), radial-gradient(520px 460px at 15% 90%, rgba(40,110,140,0.11), transparent 70%)",
+          "radial-gradient(1020px 860px at 80% 20%, rgba(140,90,200,0.40), transparent 68%), radial-gradient(900px 800px at 15% 90%, rgba(40,150,190,0.36), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(70,110,200,0.24), transparent 70%)",
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

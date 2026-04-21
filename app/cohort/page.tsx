@@ -24,7 +24,7 @@ export default function CohortPage() {
           className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
           style={{
             background:
-              "radial-gradient(560px 500px at 82% 18%, rgba(60,100,170,0.20), transparent 72%), radial-gradient(500px 440px at 8% 88%, rgba(116,94,160,0.18), transparent 72%), radial-gradient(420px 380px at 55% 50%, rgba(64,180,190,0.12), transparent 70%), radial-gradient(360px 320px at 95% 70%, rgba(88,64,168,0.14), transparent 72%)",
+              "radial-gradient(960px 860px at 82% 18%, rgba(60,100,170,0.48), transparent 68%), radial-gradient(880px 780px at 8% 88%, rgba(140,90,200,0.44), transparent 68%), radial-gradient(760px 680px at 55% 50%, rgba(64,180,190,0.30), transparent 70%), radial-gradient(640px 560px at 95% 70%, rgba(100,70,200,0.36), transparent 68%)",
           }}
         />
         <div
@@ -32,7 +32,7 @@ export default function CohortPage() {
           className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
           style={{
             background:
-              "radial-gradient(300px 280px at 20% 30%, rgba(40,140,200,0.12), transparent 70%), radial-gradient(340px 300px at 70% 85%, rgba(150,110,200,0.10), transparent 72%)",
+              "radial-gradient(580px 520px at 20% 30%, rgba(40,160,220,0.32), transparent 68%), radial-gradient(620px 540px at 70% 85%, rgba(170,110,220,0.28), transparent 68%), radial-gradient(480px 440px at 50% 50%, rgba(80,140,220,0.22), transparent 70%)",
           }}
         />
         <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

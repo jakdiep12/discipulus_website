@@ -86,7 +86,7 @@ const FAQ: React.FC = () => (
       className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
       style={{
         background:
-          "radial-gradient(520px 460px at 25% 30%, rgba(60,100,170,0.13), transparent 70%), radial-gradient(560px 500px at 85% 85%, rgba(90,60,140,0.12), transparent 72%)",
+          "radial-gradient(880px 780px at 25% 30%, rgba(60,100,170,0.38), transparent 68%), radial-gradient(940px 840px at 85% 85%, rgba(110,70,180,0.36), transparent 68%), radial-gradient(620px 560px at 60% 50%, rgba(48,150,190,0.22), transparent 68%)",
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">

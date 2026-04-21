@@ -182,25 +182,25 @@ body::before {
   animation: breath-glow 3.6s ease-in-out infinite;
 }
 
-/* Atmospheric drift — slow translate + gentle opacity pulse for radial
+/* Atmospheric drift — slow translate + opacity pulse for radial
    gradient splotches. Pair with an opacity-gating class; the splotch
    element itself supplies the gradient via inline style. */
 @keyframes atmospheric-drift {
-  0%   { transform: translate3d(0, 0, 0);       opacity: 0.85; }
-  50%  { transform: translate3d(-3%, 2%, 0);    opacity: 1;    }
-  100% { transform: translate3d(0, 0, 0);       opacity: 0.85; }
+  0%   { transform: translate3d(0, 0, 0)           scale(1);    opacity: 0.85; }
+  50%  { transform: translate3d(-7%, 4.5%, 0)      scale(1.08); opacity: 1;    }
+  100% { transform: translate3d(0, 0, 0)           scale(1);    opacity: 0.85; }
 }
 .atmospheric-drift {
-  animation: atmospheric-drift 14s ease-in-out infinite;
+  animation: atmospheric-drift 22s ease-in-out infinite;
   will-change: transform, opacity;
 }
 @keyframes atmospheric-drift-alt {
-  0%   { transform: translate3d(0, 0, 0);       opacity: 0.8;  }
-  50%  { transform: translate3d(2.5%, -1.5%, 0); opacity: 1;    }
-  100% { transform: translate3d(0, 0, 0);       opacity: 0.8;  }
+  0%   { transform: translate3d(0, 0, 0)           scale(1);    opacity: 0.8;  }
+  50%  { transform: translate3d(5.5%, -3.5%, 0)    scale(1.1);  opacity: 1;    }
+  100% { transform: translate3d(0, 0, 0)           scale(1);    opacity: 0.8;  }
 }
 .atmospheric-drift-alt {
-  animation: atmospheric-drift-alt 17s ease-in-out infinite;
+  animation: atmospheric-drift-alt 26s ease-in-out infinite;
   will-change: transform, opacity;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -209,6 +209,7 @@ body::before {
     animation: none;
   }
 }
+
 
 /* Blink caret for "live" indicators */
 @keyframes caret-blink {

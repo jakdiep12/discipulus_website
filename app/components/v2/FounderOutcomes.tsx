@@ -160,7 +160,7 @@ const FounderOutcomes: React.FC = () => {
         className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
         style={{
           background:
-            "radial-gradient(520px 460px at 82% 18%, rgba(60,100,170,0.16), transparent 72%), radial-gradient(460px 420px at 10% 88%, rgba(116,94,160,0.14), transparent 72%), radial-gradient(380px 340px at 50% 55%, rgba(64,180,190,0.10), transparent 70%)",
+            "radial-gradient(920px 820px at 82% 18%, rgba(60,100,170,0.42), transparent 68%), radial-gradient(860px 760px at 10% 88%, rgba(140,90,200,0.38), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(64,180,190,0.28), transparent 70%)",
         }}
       />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
