@@ -116,7 +116,7 @@ const Speakers: React.FC = () => (
           "radial-gradient(1020px 860px at 80% 20%, rgba(140,90,200,0.40), transparent 68%), radial-gradient(900px 800px at 15% 90%, rgba(40,150,190,0.36), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(70,110,200,0.24), transparent 70%)",
       }}
     />
-    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
       <Reveal>
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Selected Past Speakers

@@ -31,7 +31,7 @@ const AfterProgram: React.FC = () => (
           "radial-gradient(920px 820px at 85% 15%, rgba(116,94,160,0.38), transparent 70%), radial-gradient(880px 780px at 10% 85%, rgba(60,100,170,0.36), transparent 70%), radial-gradient(680px 620px at 50% 55%, rgba(64,180,190,0.22), transparent 68%)",
       }}
     />
-    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
       <Reveal>
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           After the program
@@ -40,7 +40,7 @@ const AfterProgram: React.FC = () => (
           After You Leave The Program.
         </h2>
       </Reveal>
-      <ul className="flex flex-col gap-5 max-w-3xl">
+      <ul className="flex flex-col gap-5 max-w-3xl mx-auto text-left">
         {bullets.map((text, i) => (
           <Reveal key={i} delay={i * 100} offset="sm">
             <li className="flex items-start gap-3 text-[0.9375rem] sm:text-[1rem] text-white/75 leading-[1.7] font-light">

@@ -13,7 +13,7 @@ const deals = [
 const DealGrid: React.FC = () => (
   <section className="relative py-5 bg-[#0c1424]">
     <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-transparent to-navy/60 pointer-events-none" />
-    <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+    <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 text-center">
       <Reveal>
         <p className="font-mono text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-2">
           The Cohort at a glance

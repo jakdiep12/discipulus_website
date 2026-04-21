@@ -193,6 +193,11 @@ body::before {
 .atmospheric-drift {
   animation: atmospheric-drift 22s ease-in-out infinite;
   will-change: transform, opacity;
+  /* Bleed the splotch past its section's top/bottom so the color field
+     overlaps with the neighboring section, smoothing the seam. The host
+     section keeps overflow-hidden, so the extension is clipped cleanly. */
+  top: -9rem !important;
+  bottom: -9rem !important;
 }
 @keyframes atmospheric-drift-alt {
   0%   { transform: translate3d(0, 0, 0)           scale(1);    opacity: 0.8;  }
@@ -202,6 +207,8 @@ body::before {
 .atmospheric-drift-alt {
   animation: atmospheric-drift-alt 26s ease-in-out infinite;
   will-change: transform, opacity;
+  top: -9rem !important;
+  bottom: -9rem !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .atmospheric-drift,

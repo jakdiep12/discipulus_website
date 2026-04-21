@@ -89,7 +89,7 @@ const FAQ: React.FC = () => (
           "radial-gradient(880px 780px at 25% 30%, rgba(60,100,170,0.38), transparent 68%), radial-gradient(940px 840px at 85% 85%, rgba(110,70,180,0.36), transparent 68%), radial-gradient(620px 560px at 60% 50%, rgba(48,150,190,0.22), transparent 68%)",
       }}
     />
-    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+    <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
       <Reveal>
         <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
           Common questions
@@ -98,7 +98,7 @@ const FAQ: React.FC = () => (
           Frequently asked questions.
         </h2>
       </Reveal>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto text-left">
         {faqs.map((faq, i) => (
           <FAQItem key={i} faq={faq} index={i} />
         ))}

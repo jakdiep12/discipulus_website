@@ -51,9 +51,9 @@ const ManifestoImage: React.FC = () => {
 };
 
 const headlineClass =
-  "font-freight text-[clamp(1.75rem,4.2vw,3rem)] font-semibold leading-[1.2] sm:leading-[1.12] text-white max-w-[760px] mb-6 sm:mb-7";
+  "font-freight text-[clamp(1.75rem,4.2vw,3rem)] font-semibold leading-[1.2] sm:leading-[1.12] text-white max-w-[900px] mx-auto mb-6 sm:mb-7 text-center";
 const bodyClass =
-  "text-[1rem] text-white/70 max-w-[640px] leading-[1.8] sm:leading-[1.7] mb-5 sm:mb-5 font-light";
+  "text-[1rem] text-white/70 max-w-[640px] mx-auto leading-[1.8] sm:leading-[1.7] mb-5 sm:mb-5 font-light";
 const sectionClass =
   "relative overflow-hidden sm:min-h-[60vh] py-16 sm:py-20 lg:py-24";
 
@@ -196,7 +196,7 @@ const ManifestoV2: React.FC = () => (
         <StoryText
           bits={s2Bodies[1]}
           offset={s2BodyOffsets.totals[1]}
-          className="text-[1rem] text-white/85 max-w-[640px] leading-[1.7] italic mt-1"
+          className="text-[1rem] text-white/85 max-w-[640px] mx-auto leading-[1.7] italic mt-1"
         />
       </div>
     </StorySection>
@@ -230,7 +230,7 @@ const ManifestoV2: React.FC = () => (
           offset={s3HeadlineWords}
           className={bodyClass}
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8 sm:mt-10 mb-10 sm:mb-12 max-w-[980px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mt-8 sm:mt-10 mb-10 sm:mb-12 max-w-[980px] mx-auto">
           {archetypes.map((a, i) => (
             <div key={a.title}>
               <StoryText
@@ -254,12 +254,12 @@ const ManifestoV2: React.FC = () => (
             </div>
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-5">
           <a
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc self-start"
+            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc"
           >
             <span className="relative z-10">Apply now</span>
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />

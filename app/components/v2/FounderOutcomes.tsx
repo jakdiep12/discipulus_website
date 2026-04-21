@@ -163,12 +163,12 @@ const FounderOutcomes: React.FC = () => {
             "radial-gradient(920px 820px at 82% 18%, rgba(60,100,170,0.42), transparent 68%), radial-gradient(860px 760px at 10% 88%, rgba(140,90,200,0.38), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(64,180,190,0.28), transparent 70%)",
         }}
       />
-      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
         <Reveal>
           <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
             Cohort
           </p>
-          <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight max-w-[520px] text-white underline-reveal mb-8 sm:mb-10">
+          <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight text-white underline-reveal mb-8 sm:mb-10">
             Featured Cohort Founders.
           </h2>
         </Reveal>

@@ -35,15 +35,15 @@ export default function CohortPage() {
               "radial-gradient(580px 520px at 20% 30%, rgba(40,160,220,0.32), transparent 68%), radial-gradient(620px 540px at 70% 85%, rgba(170,110,220,0.28), transparent 68%), radial-gradient(480px 440px at 50% 50%, rgba(80,140,220,0.22), transparent 70%)",
           }}
         />
-        <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
           <Reveal>
             <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
               Fall 2026 Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
             </p>
-            <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mb-5">
+            <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mx-auto mb-5">
               Discipulus Cohort
             </h1>
-            <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[520px] leading-[1.65]">
+            <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto leading-[1.65]">
               Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
             </p>
           </Reveal>

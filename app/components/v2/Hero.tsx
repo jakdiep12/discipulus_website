@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
 
       {/* Hero text — below the video, on solid navy */}
       <div className="px-6 sm:px-10 lg:px-16 pt-14 pb-16 sm:pb-20 relative z-10">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1200px] mx-auto text-center">
           <WordReveal
             as="p"
             speed={30}
@@ -86,13 +86,13 @@ const Hero: React.FC = () => {
             as="h1"
             speed={55}
             delay={200}
-            className="font-freight text-[clamp(2rem,5.5vw,4.6rem)] font-normal leading-[1.15] sm:leading-[1.1] text-white max-w-[760px] mb-7 sm:mb-5 tracking-tight"
+            className="font-freight text-[clamp(2rem,5.5vw,4.6rem)] font-normal leading-[1.15] sm:leading-[1.1] text-white max-w-[900px] mx-auto mb-7 sm:mb-5 tracking-tight"
           >
             {"Cultivating a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
           </WordReveal>
 
           <Reveal delay={900}>
-            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center">
               <a
                 href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
                 target="_blank"
