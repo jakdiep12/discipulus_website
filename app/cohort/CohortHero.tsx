@@ -10,7 +10,7 @@ const HERO_IMAGE_ALT = "Palmer Luckey with Discipulus Cohort founders";
 export const CohortHero: React.FC = () => {
   return (
     <div className="relative w-full bg-navy">
-      <div className="relative w-full h-screen">
+      <div className="relative w-full aspect-[3/2] sm:aspect-auto sm:h-screen">
         <Image
           src={HERO_IMAGE_SRC}
           alt={HERO_IMAGE_ALT}

@@ -78,14 +78,25 @@ const FooterV2: React.FC = () => (
     <section className="relative px-6 sm:px-10 lg:px-16 pb-10 sm:pb-12 pt-6 border-t border-white/[0.05]">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center gap-6 sm:gap-7">
         <Reveal offset="sm">
-          <Image
-            src="/Discipulus - Logo.png"
-            alt="Discipulus Ventures"
-            width={660}
-            height={84}
-            className="h-[78px] sm:h-[84px] w-auto opacity-80"
-            priority={false}
-          />
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="Scroll to top"
+            className="block cursor-pointer opacity-80 hover:opacity-100 transition-opacity duration-300 ease-8vc"
+          >
+            <Image
+              src="/Discipulus - Logo.png"
+              alt="Discipulus Ventures"
+              width={660}
+              height={84}
+              className="h-[78px] sm:h-[84px] w-auto"
+              priority={false}
+            />
+          </button>
         </Reveal>
 
         <Reveal delay={100} offset="sm">
