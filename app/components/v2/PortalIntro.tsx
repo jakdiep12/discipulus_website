@@ -114,7 +114,7 @@ const PortalIntro: React.FC<PortalIntroProps> = ({ children }) => {
           ref={logoRef}
           src="/Discipulus - Logo Small.png"
           alt=""
-          className="absolute top-1/2 left-1/2 w-[72px] h-auto pointer-events-none"
+          className="absolute top-1/2 left-1/2 w-[108px] h-auto pointer-events-none"
           style={{
             opacity: 0,
             transform: "translate(-50%, -50%) scale(0.85)",

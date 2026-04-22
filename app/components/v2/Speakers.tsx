@@ -15,12 +15,15 @@ interface Speaker {
   // Optional path to a firm/company logo image; when present, replaces the
   // wordmark text on the card front.
   logo?: string;
+  // Anchor slot for the logo/wordmark. Defaults to "top" (top-left); set
+  // "bottom" when the speaker's face fills the upper part of the photo.
+  logoSlot?: "top" | "bottom";
 }
 
 const speakers: Speaker[] = [
   { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png" },
   { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.svg" },
-  { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png" },
+  { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png", logoSlot: "bottom" },
   { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png" },
   { name: "Katherine Boyle", title: "General Partner at a16z", company: "a16z", topic: "", img: "/speakers/katherine-boyle-bw.jpg", url: "https://a16z.com/", logo: "/logos/a16z.png" },
   { name: "Dan Piemont", title: "Founder of Long Wall", company: "Long Wall", topic: "", img: "/speakers/danpiemont.jpeg", url: "https://www.longwall.com/", logo: "/logos/longwall.png" },
@@ -28,9 +31,9 @@ const speakers: Speaker[] = [
   { name: "Saif Khawaja", title: "Founder of Shinkei Systems", company: "Shinkei", topic: "", img: "/speakers/saif.png", url: "https://shinkei.systems/", logo: "/logos/shinkei.svg" },
   { name: "Kevin Hartz", title: "Co-founder of A*", company: "A*", topic: "", img: "/speakers/kevinhartz.jpg", url: "https://www.a-star.co/", logo: "/logos/astar.svg" },
   { name: "Delian Asparouhov", title: "Co-founder of Varda Space Industries", company: "Varda Space", topic: "", img: "/speakers/delian-asparouhov.webp", url: "https://www.varda.com/", logo: "/logos/varda.svg" },
-  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/", logo: "/logos/hadrian.svg" },
-  { name: "Nathan Mintz", title: "Co-founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.cx2.com/", logo: "/logos/cx2.png" },
-  { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/", logo: "/logos/galvanick.png" },
+  { name: "Chris Power", title: "Founder of Hadrian", company: "Hadrian", topic: "", img: "/speakers/chris-power-bw.jpg", url: "https://www.hadrian.co/", logo: "/logos/hadrian.svg", logoSlot: "bottom" },
+  { name: "Nathan Mintz", title: "Co-founder of CX2", company: "CX2", topic: "", img: "/speakers/nathan-mintz.webp", url: "https://www.cx2.com/", logo: "/logos/cx2.png", logoSlot: "bottom" },
+  { name: "Josh Steinman", title: "Founder of Galvanick", company: "Galvanick", topic: "", img: "/speakers/joshua-steinman.jpg", url: "https://www.galvanick.com/", logo: "/logos/galvanick.png", logoSlot: "bottom" },
   { name: "Scott Nolan", title: "Founder of General Matter", company: "General Matter", topic: "", img: "/speakers/scott-nolan.png", url: "https://generalmatter.com/", logo: "/logos/general-matter.svg" },
   { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/", logo: "/logos/1517.svg" },
   { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://castelion.com/", logo: "/logos/castelion.png" },
@@ -70,7 +73,13 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
+          <div
+            className={`absolute ${
+              speaker.logoSlot === "bottom"
+                ? "bottom-5 sm:bottom-7"
+                : "top-5 sm:top-7"
+            } left-5 sm:left-7 right-5 sm:right-7 flex items-center`}
+          >
             {speaker.logo && !logoFailed ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img

@@ -60,9 +60,9 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
           <Image
             src="/Discipulus - Logo.png"
             alt="Discipulus Ventures"
-            width={480}
-            height={78}
-            className="h-[28px] w-auto"
+            width={720}
+            height={117}
+            className="h-[42px] w-auto"
           />
           <button
             onClick={() => setMenuOpen(false)}
@@ -137,9 +137,9 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
           <Image
             src="/Discipulus - Logo.png"
             alt="Discipulus Ventures"
-            width={480}
-            height={78}
-            className="h-[28px] sm:h-[40px] md:h-[56px] lg:h-[78px] w-auto"
+            width={720}
+            height={117}
+            className="h-[42px] sm:h-[60px] md:h-[84px] lg:h-[117px] w-auto"
             priority
           />
         </Link>

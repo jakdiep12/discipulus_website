@@ -81,9 +81,9 @@ const FooterV2: React.FC = () => (
           <Image
             src="/Discipulus - Logo.png"
             alt="Discipulus Ventures"
-            width={440}
-            height={56}
-            className="h-[52px] sm:h-[56px] w-auto opacity-80"
+            width={660}
+            height={84}
+            className="h-[78px] sm:h-[84px] w-auto opacity-80"
             priority={false}
           />
         </Reveal>
