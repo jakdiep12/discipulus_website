@@ -76,7 +76,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
               <img
                 src={speaker.logo}
                 alt={speaker.company}
-                className="w-[140px] sm:w-[170px] h-[32px] sm:h-[40px] object-contain object-left brightness-0 invert drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+                className="w-[90px] sm:w-[110px] h-[18px] sm:h-[22px] object-contain object-left brightness-0 invert drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
                 onError={() => setLogoFailed(true)}
               />
             ) : (
