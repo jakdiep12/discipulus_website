@@ -1,8 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Reveal } from "./useScrollEffects";
+
+function useCanHover() {
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(hover: hover)");
+    setCanHover(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setCanHover(e.matches);
+    mq.addEventListener?.("change", onChange);
+    return () => mq.removeEventListener?.("change", onChange);
+  }, []);
+  return canHover;
+}
 
 interface Speaker {
   name: string;
@@ -24,7 +37,7 @@ interface Speaker {
 const DEFAULT_LOGO_CLASS = "w-[90px] sm:w-[110px] h-[18px] sm:h-[22px]";
 
 const speakers: Speaker[] = [
-  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoClass: "w-[130px] sm:w-[155px] h-[32px] sm:h-[40px]" },
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoClass: "w-[108px] sm:w-[150px] h-[26px] sm:h-[38px]" },
   { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.svg", logoClass: "w-[56px] sm:w-[70px] h-[38px] sm:h-[48px]" },
   { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png" },
   { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png" },
@@ -46,13 +59,22 @@ const speakers: Speaker[] = [
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
   const [flipped, setFlipped] = useState(false);
   const [logoFailed, setLogoFailed] = useState(false);
+  const canHover = useCanHover();
 
   return (
     <div
       className="shimmer aspect-square cursor-pointer [perspective:800px] w-full text-left"
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
+      role="button"
+      tabIndex={0}
       onClick={() => setFlipped(!flipped)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setFlipped(!flipped);
+        }
+      }}
+      onMouseEnter={canHover ? () => setFlipped(true) : undefined}
+      onMouseLeave={canHover ? () => setFlipped(false) : undefined}
     >
       <div
         className={`relative w-full h-full transition-transform duration-500 ease-8vc-out [transform-style:preserve-3d] ${

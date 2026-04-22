@@ -3,6 +3,19 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Reveal } from "./useScrollEffects";
+
+function useCanHover() {
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(hover: hover)");
+    setCanHover(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setCanHover(e.matches);
+    mq.addEventListener?.("change", onChange);
+    return () => mq.removeEventListener?.("change", onChange);
+  }, []);
+  return canHover;
+}
 import {
   Carousel,
   CarouselContent,
@@ -86,13 +99,22 @@ const founders = [
 
 const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }) => {
   const [flipped, setFlipped] = useState(false);
+  const canHover = useCanHover();
 
   return (
     <div
       className="relative aspect-square cursor-pointer [perspective:1000px] w-full text-left"
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
+      role="button"
+      tabIndex={0}
       onClick={() => setFlipped(!flipped)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setFlipped(!flipped);
+        }
+      }}
+      onMouseEnter={canHover ? () => setFlipped(true) : undefined}
+      onMouseLeave={canHover ? () => setFlipped(false) : undefined}
     >
       <div
         className={`relative w-full h-full transition-transform duration-500 ease-8vc-out [transform-style:preserve-3d] ${
@@ -125,27 +147,27 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
         </div>
 
         {/* Back — testimonial fills the card */}
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-5 sm:p-6 lg:p-7 overflow-hidden">
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-4 sm:p-6 lg:p-7 overflow-hidden">
           <blockquote className="relative flex-1 flex items-center justify-center min-h-0">
             <span
               aria-hidden
-              className="absolute -top-1 left-0 font-freight text-white/10 text-[2.75rem] sm:text-[3.5rem] leading-none select-none"
+              className="absolute -top-1 left-0 font-freight text-white/10 text-[2.25rem] sm:text-[3.5rem] leading-none select-none"
             >
               “
             </span>
-            <p className="relative font-freight italic text-white text-[0.95rem] sm:text-[1.05rem] lg:text-[1.15rem] leading-[1.65] tracking-tight text-center px-2 sm:px-3 max-h-full overflow-y-auto">
+            <p className="relative font-freight italic text-white text-[0.82rem] sm:text-[1.05rem] lg:text-[1.15rem] leading-[1.55] sm:leading-[1.65] tracking-tight text-center px-2 sm:px-3 max-h-full overflow-y-auto">
               {founder.testimonial}
             </p>
           </blockquote>
-          <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[0.68rem] sm:text-[0.72rem]">
-            <span className="font-mono text-white/65 tracking-[0.14em] uppercase">
+          <div className="mt-2 pt-2 sm:mt-3 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2 text-[0.62rem] sm:text-[0.72rem]">
+            <span className="font-mono text-white/65 tracking-[0.12em] uppercase truncate">
               {founder.name} · {founder.company}
             </span>
             <a
               href={founder.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono text-white/55 tracking-[0.12em] uppercase hover:text-white transition-colors"
+              className="shrink-0 font-mono text-white/55 tracking-[0.12em] uppercase hover:text-white transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               Visit →
