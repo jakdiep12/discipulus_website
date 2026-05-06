@@ -193,7 +193,7 @@ const FounderOutcomes: React.FC = () => {
     <section id="outcomes" className="relative py-20 sm:py-24 text-white bg-navy overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
             "radial-gradient(920px 820px at 82% 18%, rgba(60,100,170,0.42), transparent 68%), radial-gradient(860px 760px at 10% 88%, rgba(140,90,200,0.38), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(64,180,190,0.28), transparent 70%)",

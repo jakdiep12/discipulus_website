@@ -83,7 +83,7 @@ const FAQ: React.FC = () => (
     {/* Splotch — deep blue atmospheric wash */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
           "radial-gradient(880px 780px at 25% 30%, rgba(60,100,170,0.38), transparent 68%), radial-gradient(940px 840px at 85% 85%, rgba(110,70,180,0.36), transparent 68%), radial-gradient(620px 560px at 60% 50%, rgba(48,150,190,0.22), transparent 68%)",

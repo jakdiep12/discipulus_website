@@ -46,7 +46,7 @@ const Press: React.FC = () => (
   <section className="relative py-16 sm:py-20 bg-navy overflow-hidden">
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift-alt"
+      className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
           "radial-gradient(960px 840px at 85% 15%, rgba(140,90,200,0.36), transparent 68%), radial-gradient(900px 800px at 10% 85%, rgba(60,100,170,0.34), transparent 68%), radial-gradient(700px 620px at 50% 55%, rgba(48,160,200,0.22), transparent 70%)",

@@ -36,7 +36,7 @@ const FooterV2: React.FC = () => (
     {/* Splotch — atmospheric wash for the close */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
           "radial-gradient(960px 820px at 20% 20%, rgba(60,100,170,0.40), transparent 68%), radial-gradient(900px 800px at 85% 85%, rgba(140,90,200,0.38), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(48,160,200,0.24), transparent 70%)",

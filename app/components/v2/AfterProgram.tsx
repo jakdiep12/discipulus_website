@@ -26,7 +26,7 @@ const AfterProgram: React.FC = () => (
     {/* Splotch — muted purple / deep blue atmospheric wash */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
           "radial-gradient(920px 820px at 85% 15%, rgba(116,94,160,0.38), transparent 70%), radial-gradient(880px 780px at 10% 85%, rgba(60,100,170,0.36), transparent 70%), radial-gradient(680px 620px at 50% 55%, rgba(64,180,190,0.22), transparent 68%)",

@@ -144,7 +144,7 @@ const Speakers: React.FC = () => (
     {/* Splotch — muted purple atmospheric wash */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0 z-0 atmospheric-drift"
+      className="pointer-events-none absolute inset-0 z-0"
       style={{
         background:
           "radial-gradient(1020px 860px at 80% 20%, rgba(140,90,200,0.40), transparent 68%), radial-gradient(900px 800px at 15% 90%, rgba(40,150,190,0.36), transparent 68%), radial-gradient(720px 640px at 50% 55%, rgba(70,110,200,0.24), transparent 70%)",
