@@ -13,22 +13,28 @@ export const CohortVideo: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="relative w-full h-[28vh] sm:h-[32vh] lg:h-[36vh] overflow-hidden">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/videos/2026_Spring_poster.jpg"
-        >
-          <source src="/videos/2026_Spring_web.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-x-0 top-0 h-24 sm:h-32 bg-gradient-to-b from-navy via-navy/60 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-navy via-navy/60 to-transparent pointer-events-none" />
+    <section className="relative bg-navy py-10 sm:py-14">
+      <div className="relative w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="relative">
+          <video
+            ref={videoRef}
+            className="w-full h-auto block"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/videos/2026_Spring_poster.jpg"
+          >
+            <source src="/videos/2026_Spring_web.mp4" type="video/mp4" />
+          </video>
+          {/* Soft gradient blends — fade all four edges into navy so the
+              video doesn't sit as a hard rectangle. */}
+          <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-navy to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-t from-navy to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-navy to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-navy to-transparent pointer-events-none" />
+        </div>
       </div>
     </section>
   );

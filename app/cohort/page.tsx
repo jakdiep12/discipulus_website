@@ -1,4 +1,4 @@
-import NavbarV2 from "../components/v2/NavbarV2";
+import Image from "next/image";
 import FounderOutcomes from "../components/v2/FounderOutcomes";
 import Speakers from "../components/v2/Speakers";
 import AfterProgram from "../components/v2/AfterProgram";
@@ -16,7 +16,6 @@ export { default as metadata } from "./metadata";
 export default function CohortPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
-      <NavbarV2 />
       <CohortHero />
       <section className="relative py-14 sm:py-20 overflow-hidden">
         <div
@@ -35,18 +34,33 @@ export default function CohortPage() {
               "radial-gradient(580px 520px at 20% 30%, rgba(40,160,220,0.32), transparent 68%), radial-gradient(620px 540px at 70% 85%, rgba(170,110,220,0.28), transparent 68%), radial-gradient(480px 440px at 50% 50%, rgba(80,140,220,0.22), transparent 70%)",
           }}
         />
-        <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
-          <Reveal>
-            <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
-              Fall 2026 Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
-            </p>
-            <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mx-auto mb-5">
-              Discipulus Cohort
-            </h1>
-            <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto leading-[1.65]">
-              Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
-            </p>
-          </Reveal>
+        <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-14 items-center">
+            <Reveal>
+              <div className="text-center md:text-left">
+                <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
+                  Fall 2026 Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
+                </p>
+                <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mx-auto md:mx-0 mb-5">
+                  Discipulus Cohort
+                </h1>
+                <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto md:mx-0 leading-[1.65]">
+                  Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="relative w-full max-w-[420px] mx-auto md:mx-0 aspect-[3/4] overflow-hidden media-glow">
+                <Image
+                  src="/elsegundowatertower.jpg"
+                  alt="El Segundo water tower"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 80vw, 420px"
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
       <CohortVideo />
