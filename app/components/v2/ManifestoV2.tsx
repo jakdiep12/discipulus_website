@@ -43,8 +43,10 @@ const ManifestoImage: React.FC = () => (
   </div>
 );
 
+// Aggressive radial dissolve: continuous fade with no flat core; alpha
+// reaches 0 well inside the rectangle so corners fully blend into the navy.
 const WATER_TOWER_FADE_MASK =
-  "radial-gradient(ellipse 90% 95% at center, black 55%, transparent 100%)";
+  "radial-gradient(ellipse 65% 70% at center, black 0%, transparent 100%)";
 
 const WaterTowerImage: React.FC = () => (
   <div

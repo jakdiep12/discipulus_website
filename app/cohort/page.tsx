@@ -54,9 +54,9 @@ export default function CohortPage() {
                 className="relative w-full max-w-[420px] mx-auto md:mx-0 aspect-[3/4]"
                 style={{
                   maskImage:
-                    "radial-gradient(ellipse 90% 95% at center, black 55%, transparent 100%)",
+                    "radial-gradient(ellipse 65% 70% at center, black 0%, transparent 100%)",
                   WebkitMaskImage:
-                    "radial-gradient(ellipse 90% 95% at center, black 55%, transparent 100%)",
+                    "radial-gradient(ellipse 65% 70% at center, black 0%, transparent 100%)",
                 }}
               >
                 <Image
