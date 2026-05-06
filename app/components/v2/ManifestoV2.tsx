@@ -239,7 +239,7 @@ const ManifestoV2: React.FC = () => (
     <StorySection
       totalWords={s3TotalWords}
       runway={0.9}
-      className="relative overflow-hidden sm:min-h-[60vh] pb-16 sm:pb-20 lg:pb-24"
+      className="relative overflow-hidden sm:min-h-[60vh] pb-32 sm:pb-40 lg:pb-48"
     >
       {/* Splotch — dark teal atmospheric wash */}
       <div
@@ -288,12 +288,12 @@ const ManifestoV2: React.FC = () => (
           ))}
         </div>
         <ManifestoImage />
-        <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-5 mt-12 sm:mt-16 lg:mt-20">
           <a
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc"
+            className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-w-[280px] sm:min-w-[320px] min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc"
           >
             <span className="relative z-10">Apply now</span>
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
