@@ -153,10 +153,12 @@ const TeamSection: React.FC = () => (
       {/* Principals */}
       <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-14 sm:mb-16">
         {principals.map((p, i) => (
-          <Reveal key={p.name} delay={i * 120}>
-            <div className="w-full max-w-[20rem] sm:w-80">
-              <TeamCard member={p} size="lg" />
-            </div>
+          <Reveal
+            key={p.name}
+            delay={i * 120}
+            className="w-full max-w-[20rem] sm:w-80"
+          >
+            <TeamCard member={p} size="lg" />
           </Reveal>
         ))}
       </div>
