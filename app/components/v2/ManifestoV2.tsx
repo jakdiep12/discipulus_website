@@ -29,17 +29,26 @@ const NumberMark: React.FC<{ n: string }> = ({ n }) => (
   </div>
 );
 
+// Same radial dissolve as the manifesto-S2 water tower so the satellite's
+// rectangle edges fade into the navy field instead of reading as a hard tile.
+const SATELLITE_FADE_MASK =
+  "radial-gradient(ellipse 65% 70% at center, black 0%, transparent 100%)";
+
 const ManifestoImage: React.FC = () => (
-  <div className="relative w-1/2 max-w-[600px] aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mx-auto mb-6 sm:mb-4 lg:mb-5 media-glow">
-    <div className="absolute inset-0">
-      <Image
-        src="/manifesto3.png"
-        alt="Discipulus manifesto"
-        fill
-        className="object-cover object-center"
-      />
-    </div>
-    <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
+  <div
+    className="relative w-1/2 max-w-[600px] aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mx-auto mb-6 sm:mb-4 lg:mb-5"
+    style={{
+      maskImage: SATELLITE_FADE_MASK,
+      WebkitMaskImage: SATELLITE_FADE_MASK,
+    }}
+  >
+    <Image
+      src="/manifesto3.png"
+      alt="Discipulus manifesto"
+      fill
+      className="object-cover object-center"
+      sizes="(max-width: 768px) 50vw, 600px"
+    />
   </div>
 );
 
