@@ -37,7 +37,7 @@ interface Speaker {
 const DEFAULT_LOGO_CLASS = "w-[90px] sm:w-[110px] h-[18px] sm:h-[22px]";
 
 const speakers: Speaker[] = [
-  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer-robot.jpeg", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoClass: "w-[108px] sm:w-[150px] h-[26px] sm:h-[38px]" },
+  { name: "Palmer Luckey", title: "Founder, Anduril Industries", company: "Anduril", topic: "", img: "/palmer.webp", url: "https://www.anduril.com/", logo: "/logos/anduril.png", logoClass: "w-[108px] sm:w-[150px] h-[26px] sm:h-[38px]" },
   { name: "Augustus Doricko", title: "Founder of Rainmaker", company: "Rainmaker", topic: "", img: "/speakers/augustus-doricko-bw.jpg", url: "https://www.rainmaker.com/", logo: "/logos/rainmaker.svg", logoClass: "w-[56px] sm:w-[70px] h-[38px] sm:h-[48px]" },
   { name: "Tom Mueller", title: "Founder of Impulse Space", company: "Impulse Space", topic: "", img: "/speakers/tom-mueller-bw.png", url: "https://www.impulsespace.com/", logo: "/logos/impulse-space.png" },
   { name: "Isaiah Taylor", title: "Founder of Valar Atomics", company: "Valar Atomics", topic: "", img: "/speakers/isaiah-taylor.jpg", url: "https://www.valaratomics.com/", logo: "/logos/valar-atomics.png" },
