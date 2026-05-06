@@ -30,7 +30,7 @@ const NumberMark: React.FC<{ n: string }> = ({ n }) => (
 );
 
 const ManifestoImage: React.FC = () => (
-  <div className="relative w-full aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mb-6 sm:mb-4 lg:mb-5 media-glow">
+  <div className="relative w-1/2 max-w-[600px] aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mx-auto mb-6 sm:mb-4 lg:mb-5 media-glow">
     <div className="absolute inset-0">
       <Image
         src="/manifesto3.png"
@@ -39,6 +39,19 @@ const ManifestoImage: React.FC = () => (
         className="object-cover object-center"
       />
     </div>
+    <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
+  </div>
+);
+
+const WaterTowerImage: React.FC = () => (
+  <div className="relative w-full max-w-[420px] aspect-[3/4] overflow-hidden mx-auto mt-10 sm:mt-12 lg:mt-14 media-glow">
+    <Image
+      src="/elsegundowatertower.jpg"
+      alt="El Segundo water tower"
+      fill
+      className="object-cover object-center"
+      sizes="(max-width: 768px) 80vw, 420px"
+    />
     <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
   </div>
 );
@@ -110,7 +123,11 @@ const s2BodyOffsets = s2Bodies.reduce<{ offset: number; totals: number[] }>(
 const s2TotalWords = s2BodyOffsets.offset;
 
 // ---- Section 3 content ----
-const s3Headline = ["A call to the new industrialists."];
+const s3Headline: (string | React.ReactElement)[] = [
+  "A call to the ",
+  <span key="ni" className="el-segundo">new industrialists</span>,
+  ".",
+];
 const s3Intro = ["We are looking for founders who are \u2014"];
 const s3HeadlineWords = countWords(s3Headline);
 const s3IntroWords = countWords(s3Intro);
@@ -139,6 +156,19 @@ const ManifestoV2: React.FC = () => (
             "radial-gradient(920px 820px at 20% 30%, rgba(60,100,170,0.40), transparent 68%), radial-gradient(880px 800px at 85% 80%, rgba(110,70,180,0.36), transparent 68%), radial-gradient(680px 620px at 50% 55%, rgba(48,150,190,0.22), transparent 68%)",
         }}
       />
+      {/* Golden dome — ambient atmosphere fill, behind text */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[55%] sm:h-[65%] opacity-20"
+      >
+        <Image
+          src="/golden-dome.png"
+          alt=""
+          fill
+          className="object-contain object-bottom"
+          sizes="100vw"
+        />
+      </div>
       <NumberMark n="1" />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full">
         <StoryText
@@ -191,6 +221,7 @@ const ManifestoV2: React.FC = () => (
           offset={s2BodyOffsets.totals[1]}
           className="text-[1rem] text-white/85 max-w-[640px] mx-auto leading-[1.7] italic mt-1"
         />
+        <WaterTowerImage />
       </div>
     </StorySection>
 
