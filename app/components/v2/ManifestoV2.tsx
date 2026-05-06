@@ -43,8 +43,17 @@ const ManifestoImage: React.FC = () => (
   </div>
 );
 
+const WATER_TOWER_FADE_MASK =
+  "radial-gradient(ellipse 90% 95% at center, black 55%, transparent 100%)";
+
 const WaterTowerImage: React.FC = () => (
-  <div className="relative w-full max-w-[420px] aspect-[3/4] overflow-hidden mx-auto mt-10 sm:mt-12 lg:mt-14 media-glow">
+  <div
+    className="relative w-full max-w-[420px] aspect-[3/4] mx-auto mt-10 sm:mt-12 lg:mt-14"
+    style={{
+      maskImage: WATER_TOWER_FADE_MASK,
+      WebkitMaskImage: WATER_TOWER_FADE_MASK,
+    }}
+  >
     <Image
       src="/elsegundowatertower.jpg"
       alt="El Segundo water tower"
@@ -52,7 +61,6 @@ const WaterTowerImage: React.FC = () => (
       className="object-cover object-center"
       sizes="(max-width: 768px) 80vw, 420px"
     />
-    <div className="absolute inset-0 pointer-events-none [box-shadow:inset_0_0_120px_rgba(6,12,26,0.7)]" />
   </div>
 );
 
@@ -159,13 +167,13 @@ const ManifestoV2: React.FC = () => (
       {/* Golden dome — ambient atmosphere fill, behind text */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[55%] sm:h-[65%] opacity-20"
+        className="pointer-events-none absolute inset-0 z-0 opacity-20"
       >
         <Image
           src="/golden-dome.png"
           alt=""
           fill
-          className="object-contain object-bottom"
+          className="object-cover object-bottom"
           sizes="100vw"
         />
       </div>
