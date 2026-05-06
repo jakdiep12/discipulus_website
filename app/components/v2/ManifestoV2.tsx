@@ -251,7 +251,6 @@ const ManifestoV2: React.FC = () => (
         }}
       />
       <NumberMark n="3" />
-      <ManifestoImage />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full pb-6 sm:pb-8 pt-6 sm:pt-8">
         <StoryText
           bits={s3Headline}
@@ -288,6 +287,7 @@ const ManifestoV2: React.FC = () => (
             </div>
           ))}
         </div>
+        <ManifestoImage />
         <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-5">
           <a
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
