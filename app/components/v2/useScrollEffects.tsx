@@ -1,33 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { scrollManager } from "./scrollManager";
-
-/**
- * Registers an element for layered parallax scroll.
- * speed < 1: element moves slower than scroll (background feel)
- * speed > 1: element moves faster than scroll (foreground feel)
- */
-export function useParallax<T extends HTMLElement = HTMLDivElement>(
-  speed: number,
-  maxOffset?: number,
-) {
-  const ref = useRef<T>(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    return scrollManager.registerParallax(el, speed, maxOffset);
-  }, [speed, maxOffset]);
-  return ref;
-}
-
-/** Foreground-accent divider: 1px rule that floats at 1.15x scroll speed. */
-export const ParallaxDivider: React.FC<{ className?: string }> = ({
-  className = "h-px bg-white/[0.06]",
-}) => {
-  const ref = useParallax<HTMLDivElement>(1.15, 40);
-  return <div ref={ref} className={`${className} will-change-transform`} />;
-};
 
 /**
  * Fade-up + slide on scroll into view
@@ -102,26 +75,6 @@ export const Reveal: React.FC<{
   );
 };
 
-/**
- * Wrapper: applies layered parallax transform to children.
- * Kept as a convenience wrapper around useParallax.
- */
-export const Parallax: React.FC<{
-  children: React.ReactNode;
-  speed?: number;
-  className?: string;
-}> = ({ children, speed = 0.85, className = "" }) => {
-  const ref = useParallax<HTMLDivElement>(speed);
-  return (
-    <div ref={ref} className={`${className} will-change-transform`}>
-      {children}
-    </div>
-  );
-};
-
-/**
- * Staggered children reveal — each child fades in sequentially
- */
 /**
  * Word-by-word text reveal — like AI generating text at reading pace
  * Splits text into words, each fades in sequentially on scroll

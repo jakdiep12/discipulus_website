@@ -1,11 +1,5 @@
 "use client";
 
-type ParallaxItem = {
-  el: HTMLElement;
-  speed: number;
-  maxOffset?: number;
-};
-
 type StoryItem = {
   el: HTMLElement;
   totalWords: number;
@@ -14,7 +8,6 @@ type StoryItem = {
 };
 
 class ScrollManager {
-  private parallaxItems = new Set<ParallaxItem>();
   private storyItems = new Set<StoryItem>();
   private rafId: number | null = null;
   private initialized = false;
@@ -57,25 +50,6 @@ class ScrollManager {
     this.rafId = null;
     const { vh, isMobile } = this;
 
-    this.parallaxItems.forEach((item) => {
-      const rect = item.el.getBoundingClientRect();
-      // Skip elements far from the viewport
-      if (rect.bottom < -vh || rect.top > vh * 2) return;
-      if (isMobile) {
-        // Mobile browsers resize the viewport as the address bar hides/shows,
-        // which makes parallax offsets jump — keep content still instead.
-        item.el.style.transform = "translate3d(0, 0, 0)";
-        return;
-      }
-      const delta = vh / 2 - rect.top - rect.height / 2;
-      let offset = delta * (1 - item.speed);
-      if (item.maxOffset !== undefined) {
-        const cap = item.maxOffset;
-        offset = Math.max(-cap, Math.min(cap, offset));
-      }
-      item.el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
-    });
-
     this.storyItems.forEach((item) => {
       const rect = item.el.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > vh) {
@@ -98,17 +72,6 @@ class ScrollManager {
       item.el.style.setProperty("--reveal-count", String(eased * item.totalWords));
     });
   };
-
-  registerParallax(el: HTMLElement, speed: number, maxOffset?: number): () => void {
-    this.ensureInit();
-    const item: ParallaxItem = { el, speed, maxOffset };
-    this.parallaxItems.add(item);
-    this.schedule();
-    return () => {
-      this.parallaxItems.delete(item);
-      el.style.transform = "";
-    };
-  }
 
   registerStory(el: HTMLElement, totalWords: number, runway = 1.3): () => void {
     this.ensureInit();
