@@ -33,19 +33,14 @@ const RecentTweets: React.FC = () => (
       </WordReveal>
       <div
         data-theme="dark"
-        className="columns-1 md:columns-2 lg:columns-4 gap-5 md:gap-6 max-w-6xl mx-auto text-left"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 auto-rows-[460px] max-w-6xl mx-auto text-left"
       >
         {tweets.map((tweet, index) => (
-          <div
-            key={tweet.id}
-            className="break-inside-avoid mb-5 md:mb-6"
-          >
-            <Reveal delay={index * 100} offset="sm">
-              <div className="[&_article]:!m-0 [&_.react-tweet-theme]:!m-0 [&_.react-tweet-theme]:!max-w-none">
-                <Tweet id={tweet.id} />
-              </div>
-            </Reveal>
-          </div>
+          <Reveal key={tweet.id} delay={index * 80} offset="sm">
+            <div className="h-full overflow-hidden [&_article]:!m-0 [&_article]:!h-full [&_.react-tweet-theme]:!m-0 [&_.react-tweet-theme]:!h-full [&_.react-tweet-theme]:!max-w-none">
+              <Tweet id={tweet.id} />
+            </div>
+          </Reveal>
         ))}
       </div>
     </div>
