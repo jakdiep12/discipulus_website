@@ -1,5 +1,9 @@
 export const tweets = [
   {
+    id: "2049900150357955023",
+    url: "https://x.com/jakobdiepen/status/2049900150357955023",
+  },
+  {
     id: "2045206515221762406",
     url: "https://x.com/jakobdiepen/status/2045206515221762406",
   },

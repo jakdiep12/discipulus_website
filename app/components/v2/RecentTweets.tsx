@@ -33,7 +33,7 @@ const RecentTweets: React.FC = () => (
       </WordReveal>
       <div
         data-theme="dark"
-        className="columns-1 md:columns-2 lg:columns-3 gap-5 md:gap-6 max-w-5xl mx-auto text-left"
+        className="columns-1 md:columns-2 lg:columns-4 gap-5 md:gap-6 max-w-6xl mx-auto text-left"
       >
         {tweets.map((tweet, index) => (
           <div
