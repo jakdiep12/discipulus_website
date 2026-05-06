@@ -24,18 +24,36 @@ const Schedule: React.FC = () => (
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-center">
-        <Reveal>
-          <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
-            Example day
-          </p>
-          <h2 className="font-freight text-[1.7rem] sm:text-[1.9rem] font-normal leading-tight text-white mb-5 underline-reveal">
-            What a day looks like inside the Cohort.
-          </h2>
-          <WordReveal className="text-[0.9375rem] sm:text-[1rem] text-white/65 leading-[1.65]" speed={40}>{"The most productive 10 days of your company's life."}</WordReveal>
-        </Reveal>
-        <Reveal>
-          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/4] overflow-hidden media-glow">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 lg:items-stretch">
+        <div className="flex flex-col">
+          <Reveal>
+            <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
+              Example day
+            </p>
+            <h2 className="font-freight text-[1.7rem] sm:text-[1.9rem] font-normal leading-tight text-white mb-5 underline-reveal">
+              What a day looks like inside the Cohort.
+            </h2>
+            <WordReveal className="text-[0.9375rem] sm:text-[1rem] text-white/65 leading-[1.65]" speed={40}>{"The most productive 10 days of your company's life."}</WordReveal>
+          </Reveal>
+          <div className="mt-6 sm:mt-8 border-t border-white/5">
+            {scheduleItems.map((item, i) => (
+              <Reveal key={item.time} delay={i * 80}>
+                <div
+                  className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr] border-b border-white/5 hover:bg-navy-2 transition-all duration-300 ease-8vc hover:pl-2 group"
+                >
+                  <div className="font-mono text-[0.78rem] sm:text-[0.75rem] text-white/40 group-hover:text-white/70 px-3 sm:px-4 py-4 sm:py-3 tracking-wide transition-colors duration-300">
+                    {item.time}
+                  </div>
+                  <div className="text-[0.9375rem] text-white/80 group-hover:text-white px-3 sm:px-4 py-4 sm:py-3 transition-colors duration-300">
+                    {item.desc}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <Reveal className="lg:h-full">
+          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/4] lg:aspect-auto lg:h-full overflow-hidden media-glow">
             <Image
               src="/gym.jpeg"
               alt="Founder workout — bench press with spotter"
@@ -45,22 +63,6 @@ const Schedule: React.FC = () => (
             />
           </div>
         </Reveal>
-      </div>
-      <div className="mt-12 sm:mt-16 max-w-[820px] mx-auto border-t border-white/5">
-        {scheduleItems.map((item, i) => (
-          <Reveal key={item.time} delay={i * 80}>
-            <div
-              className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr] border-b border-white/5 hover:bg-navy-2 transition-all duration-300 ease-8vc hover:pl-2 group"
-            >
-              <div className="font-mono text-[0.78rem] sm:text-[0.75rem] text-white/40 group-hover:text-white/70 px-3 sm:px-4 py-4 sm:py-3 tracking-wide transition-colors duration-300">
-                {item.time}
-              </div>
-              <div className="text-[0.9375rem] text-white/80 group-hover:text-white px-3 sm:px-4 py-4 sm:py-3 transition-colors duration-300">
-                {item.desc}
-              </div>
-            </div>
-          </Reveal>
-        ))}
       </div>
     </div>
   </section>
