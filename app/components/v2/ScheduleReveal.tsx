@@ -34,7 +34,7 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
         <span>{label}</span>
         <ChevronDown
           aria-hidden
-          className={`h-3.5 w-3.5 shrink-0 text-white/50 transition-transform duration-200 ease-8vc-out group-hover:text-white/80 motion-reduce:transition-none ${
+          className={`h-3.5 w-3.5 shrink-0 text-[#f7e3b5]/60 transition-transform duration-200 ease-8vc-out group-hover:text-[#f7e3b5]/90 motion-reduce:transition-none ${
             open ? "rotate-180" : ""
           }`}
         />
