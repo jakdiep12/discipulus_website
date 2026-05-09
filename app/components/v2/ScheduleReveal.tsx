@@ -54,11 +54,16 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
               open ? "opacity-100" : "opacity-0"
             }`}
           >
+            {/* eager: the panel is rendered with the section, so we want the
+                browser to fetch as the page parses rather than wait until the
+                user clicks (Next/Image's lazy default never trips here because
+                the image lives in a 0-height grid row). */}
             <Image
               src={imageSrc}
               alt={imageAlt}
               width={imageWidth}
               height={imageHeight}
+              loading="eager"
               className="w-full h-auto"
               sizes="(max-width: 1024px) 90vw, 600px"
             />
