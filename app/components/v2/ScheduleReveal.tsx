@@ -93,7 +93,7 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
             onClick={() => setLightboxOpen(true)}
             aria-label={`View ${label} photo full size`}
             tabIndex={open ? 0 : -1}
-            className={`group/img relative w-full max-w-[600px] mx-auto mt-3 overflow-hidden media-glow cursor-zoom-in transition-opacity duration-200 ease-8vc-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
+            className={`group/img block relative w-full max-w-[600px] mx-auto mt-3 overflow-hidden media-glow cursor-zoom-in transition-opacity duration-200 ease-8vc-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
               open ? "opacity-100" : "opacity-0"
             }`}
           >
