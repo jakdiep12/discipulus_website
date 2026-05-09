@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 interface NavbarV2Props {
   transparent?: boolean;
@@ -20,26 +21,30 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  // Focus trap also handles body scroll lock + return-focus on close.
+  const menuRef = useFocusTrap<HTMLDivElement>(menuOpen);
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!menuOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMenuOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
     };
   }, [menuOpen]);
 
   const menuOverlay = (
     <div
-      className={`fixed inset-0 z-[9999] md:hidden transition-opacity duration-300 ease-8vc ${
+      ref={menuRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      tabIndex={-1}
+      className={`fixed inset-0 z-[9999] md:hidden transition-opacity duration-300 ease-8vc focus:outline-none ${
         menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
       aria-hidden={!menuOpen}

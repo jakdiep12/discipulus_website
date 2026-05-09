@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "../v2/useScrollEffects";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 // Next 15 default deviceSizes (no override in next.config.js). The lightbox
 // renders <Image fill sizes="90vw">, so the URL Next requests at runtime is
@@ -70,6 +71,7 @@ const PhotoSet: React.FC<{
 export function CohortCarousel() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const prefetched = useRef<Set<string>>(new Set());
+  const lightboxRef = useFocusTrap<HTMLDivElement>(selectedIndex !== null);
 
   const prefetch = useCallback((src: string) => {
     if (typeof window === "undefined") return;
@@ -141,10 +143,12 @@ export function CohortCarousel() {
       {/* Lightbox */}
       {selected && (
         <div
+          ref={lightboxRef}
           role="dialog"
           aria-modal="true"
           aria-label={`Cohort photo ${(selectedIndex ?? 0) + 1} of ${images.length}`}
-          className="fixed inset-0 z-[99999] bg-black/90 flex items-center justify-center cursor-zoom-out"
+          tabIndex={-1}
+          className="fixed inset-0 z-[99999] bg-black/90 flex items-center justify-center cursor-zoom-out focus:outline-none"
           onClick={close}
         >
           <button

@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ChevronDown, X } from "lucide-react";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 
 interface ScheduleRevealProps {
   label: string;
@@ -35,6 +36,7 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
   const [mounted, setMounted] = useState(false);
   const panelId = useId();
   const prefetched = useRef(false);
+  const lightboxRef = useFocusTrap<HTMLDivElement>(lightboxOpen);
 
   // Portal target only exists post-mount; gate on this so SSR doesn't crash.
   useEffect(() => {
@@ -136,10 +138,12 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
       {lightboxOpen && mounted &&
         createPortal(
           <div
+            ref={lightboxRef}
             role="dialog"
             aria-modal="true"
             aria-label={imageAlt}
-            className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out"
+            tabIndex={-1}
+            className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out focus:outline-none"
             onClick={closeLightbox}
           >
             <button
