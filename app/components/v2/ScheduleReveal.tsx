@@ -50,7 +50,7 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
       >
         <div className="min-h-0 overflow-hidden">
           <div
-            className={`relative w-full max-w-[600px] mt-3 overflow-hidden media-glow transition-opacity duration-200 ease-8vc-out motion-reduce:transition-none ${
+            className={`relative w-full max-w-[600px] mx-auto mt-3 overflow-hidden media-glow transition-opacity duration-200 ease-8vc-out motion-reduce:transition-none ${
               open ? "opacity-100" : "opacity-0"
             }`}
           >
