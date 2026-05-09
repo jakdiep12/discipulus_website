@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "../v2/useScrollEffects";
 
 // Next 15 default deviceSizes (no override in next.config.js). The lightbox
@@ -67,7 +68,7 @@ const PhotoSet: React.FC<{
 );
 
 export function CohortCarousel() {
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const prefetched = useRef<Set<string>>(new Set());
 
   const prefetch = useCallback((src: string) => {
@@ -84,6 +85,44 @@ export function CohortCarousel() {
     img.src = `/_next/image?url=${encodeURIComponent(src)}&w=${w}&q=75`;
   }, []);
 
+  const handleSelect = useCallback((src: string) => {
+    setSelectedIndex(images.indexOf(src));
+  }, []);
+
+  const close = useCallback(() => setSelectedIndex(null), []);
+  const prev = useCallback(
+    () => setSelectedIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length)),
+    []
+  );
+  const next = useCallback(
+    () => setSelectedIndex((i) => (i === null ? null : (i + 1) % images.length)),
+    []
+  );
+
+  // Keyboard nav while the lightbox is open.
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+      else return;
+      e.preventDefault();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedIndex, close, prev, next]);
+
+  // Prefetch neighbours so chained arrow navigation stays instant.
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const n = images.length;
+    prefetch(images[(selectedIndex + 1) % n]);
+    prefetch(images[(selectedIndex - 1 + n) % n]);
+  }, [selectedIndex, prefetch]);
+
+  const selected = selectedIndex !== null ? images[selectedIndex] : null;
+
   return (
     <section className="py-4 overflow-hidden">
       <Reveal>
@@ -92,8 +131,8 @@ export function CohortCarousel() {
           <div className="absolute inset-y-0 right-0 w-12 sm:w-16 md:w-24 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
           <div>
             <div className="flex gap-1 animate-photo-scroll" style={{ width: "max-content" }}>
-              <PhotoSet onSelect={setSelected} onPrefetch={prefetch} />
-              <PhotoSet onSelect={setSelected} onPrefetch={prefetch} />
+              <PhotoSet onSelect={handleSelect} onPrefetch={prefetch} />
+              <PhotoSet onSelect={handleSelect} onPrefetch={prefetch} />
             </div>
           </div>
         </div>
@@ -102,20 +141,53 @@ export function CohortCarousel() {
       {/* Lightbox */}
       {selected && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Cohort photo ${(selectedIndex ?? 0) + 1} of ${images.length}`}
           className="fixed inset-0 z-[99999] bg-black/90 flex items-center justify-center cursor-zoom-out"
-          onClick={() => setSelected(null)}
+          onClick={close}
         >
           <button
-            onClick={() => setSelected(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              close();
+            }}
             className="absolute top-8 right-4 sm:top-6 sm:right-6 text-white/60 hover:text-white text-3xl transition-colors z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Close"
           >
             &times;
           </button>
-          <div className="relative w-[90vw] h-[90vh] max-w-[1200px]">
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 text-white/60 hover:text-white hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden />
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 text-white/60 hover:text-white hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden />
+          </button>
+
+          <div
+            className="relative w-[90vw] h-[90vh] max-w-[1200px]"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
+              key={selected}
               src={selected}
-              alt="Cohort photo zoomed"
+              alt={`Cohort photo ${(selectedIndex ?? 0) + 1}`}
               fill
               sizes="90vw"
               className="object-contain"
