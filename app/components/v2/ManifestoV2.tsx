@@ -20,15 +20,6 @@ const archetypes = [
   },
 ];
 
-const NumberMark: React.FC<{ n: string }> = ({ n }) => (
-  <div
-    aria-hidden
-    className="hidden sm:block pointer-events-none select-none font-freight leading-none text-white/[0.04] absolute -top-2 lg:-top-4 -left-6 lg:-left-8 text-[15rem] lg:text-[20rem]"
-  >
-    {n}
-  </div>
-);
-
 // Same radial dissolve as the manifesto-S2 water tower so the satellite's
 // rectangle edges fade into the navy field instead of reading as a hard tile.
 const SATELLITE_FADE_MASK =
@@ -188,7 +179,6 @@ const ManifestoV2: React.FC = () => (
           sizes="100vw"
         />
       </div>
-      <NumberMark n="1" />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full">
         <StoryText
           bits={s1Headline}
@@ -222,7 +212,6 @@ const ManifestoV2: React.FC = () => (
             "radial-gradient(960px 880px at 80% 20%, rgba(140,90,200,0.42), transparent 68%), radial-gradient(900px 800px at 15% 85%, rgba(40,150,190,0.38), transparent 68%), radial-gradient(720px 640px at 55% 50%, rgba(70,110,200,0.24), transparent 70%)",
         }}
       />
-      <NumberMark n="2" />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full">
         <StoryText
           bits={s2Headline}
@@ -259,7 +248,6 @@ const ManifestoV2: React.FC = () => (
             "radial-gradient(960px 860px at 15% 25%, rgba(40,150,190,0.42), transparent 68%), radial-gradient(920px 820px at 85% 85%, rgba(60,110,200,0.38), transparent 68%), radial-gradient(720px 640px at 55% 55%, rgba(120,90,200,0.24), transparent 70%)",
         }}
       />
-      <NumberMark n="3" />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 w-full pb-6 sm:pb-8 pt-6 sm:pt-8">
         <StoryText
           bits={s3Headline}
