@@ -170,7 +170,23 @@ const TeamSection: React.FC = () => (
         </h3>
       </Reveal>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
+      {/* Mobile: scroll-snap carousel — 5 advisors don't fit cleanly into
+          a 2-col grid, so we swipe through them instead of stranding the
+          5th in a row by itself. */}
+      <div className="sm:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-3 pb-2">
+          {advisors.map((a, i) => (
+            <Reveal key={a.name} delay={i * 80}>
+              <div className="snap-center shrink-0 w-[68vw] max-w-[280px]">
+                <TeamCard member={a} size="sm" />
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      {/* sm and up: full grid */}
+      <div className="hidden sm:grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
         {advisors.map((a, i) => (
           <Reveal key={a.name} delay={i * 80}>
             <TeamCard member={a} size="sm" />

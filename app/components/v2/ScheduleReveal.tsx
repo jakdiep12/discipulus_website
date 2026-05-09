@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ChevronDown, X } from "lucide-react";
@@ -55,18 +55,26 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
     img.src = `/_next/image?url=${encodeURIComponent(imageSrc)}&w=${w}&q=75`;
   }, [open, imageSrc]);
 
+  // Closing the lightbox also collapses the inline panel — the user already
+  // dismissed the deepest view, no point leaving the dropdown half-open
+  // behind it.
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    setOpen(false);
+  }, []);
+
   // Esc closes the lightbox while it's open.
   useEffect(() => {
     if (!lightboxOpen) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setLightboxOpen(false);
+        closeLightbox();
         e.preventDefault();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [lightboxOpen]);
+  }, [lightboxOpen, closeLightbox]);
 
   return (
     <>
@@ -132,12 +140,12 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
             aria-modal="true"
             aria-label={imageAlt}
             className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out"
-            onClick={() => setLightboxOpen(false)}
+            onClick={closeLightbox}
           >
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setLightboxOpen(false);
+                closeLightbox();
               }}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-[#f7e3b5] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7e3b5]/70 cursor-pointer"
               aria-label="Close"
