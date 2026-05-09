@@ -98,27 +98,24 @@ const founders = [
 ];
 
 const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }) => {
+  // Same a11y pattern as SpeakerCard — drop role="button" + tabIndex (a
+  // button containing an <a> is invalid) and let keyboard focus on the
+  // back-side link drive the flip via focus-flipped state.
   const [flipped, setFlipped] = useState(false);
+  const [focusFlipped, setFocusFlipped] = useState(false);
   const canHover = useCanHover();
+  const isFlipped = flipped || focusFlipped;
 
   return (
     <div
       className="relative aspect-square cursor-pointer [perspective:1000px] w-full text-left"
-      role="button"
-      tabIndex={0}
       onClick={() => setFlipped(!flipped)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setFlipped(!flipped);
-        }
-      }}
       onMouseEnter={canHover ? () => setFlipped(true) : undefined}
       onMouseLeave={canHover ? () => setFlipped(false) : undefined}
     >
       <div
         className={`relative w-full h-full transition-transform duration-500 ease-8vc-out [transform-style:preserve-3d] ${
-          flipped ? "[transform:rotateY(180deg)]" : ""
+          isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
         {/* Front — photo + company logo + founder name */}
@@ -169,8 +166,10 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
               href={founder.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 font-mono text-white/55 tracking-[0.12em] uppercase hover:text-white transition-colors"
+              className="shrink-0 font-mono text-white/65 tracking-[0.12em] uppercase hover:text-white focus-visible:outline-none focus-visible:text-[#f7e3b5] transition-colors"
               onClick={(e) => e.stopPropagation()}
+              onFocus={() => setFocusFlipped(true)}
+              onBlur={() => setFocusFlipped(false)}
             >
               Visit →
             </a>

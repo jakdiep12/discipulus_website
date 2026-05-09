@@ -57,28 +57,28 @@ const speakers: Speaker[] = [
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
+  // The card flips on click/touch (mouse handlers below) AND when keyboard
+  // focus enters its back-side link via tabbing. That second path is why we
+  // can drop the role="button" / tabIndex / onKeyDown trio that previously
+  // wrapped this whole div: a button containing an <a> is invalid (WCAG
+  // 4.1.2), and keyboard users can now reach the link directly without
+  // pretending the card itself is a button.
   const [flipped, setFlipped] = useState(false);
+  const [focusFlipped, setFocusFlipped] = useState(false);
   const [logoFailed, setLogoFailed] = useState(false);
   const canHover = useCanHover();
+  const isFlipped = flipped || focusFlipped;
 
   return (
     <div
       className="shimmer aspect-square cursor-pointer [perspective:800px] w-full text-left"
-      role="button"
-      tabIndex={0}
       onClick={() => setFlipped(!flipped)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setFlipped(!flipped);
-        }
-      }}
       onMouseEnter={canHover ? () => setFlipped(true) : undefined}
       onMouseLeave={canHover ? () => setFlipped(false) : undefined}
     >
       <div
         className={`relative w-full h-full transition-transform duration-500 ease-8vc-out [transform-style:preserve-3d] ${
-          flipped ? "[transform:rotateY(180deg)]" : ""
+          isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
         {/* Front — full-bleed photo (or styled placeholder when photo missing) */}
@@ -125,8 +125,10 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
             href={speaker.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.875rem] text-white/70 mb-4 font-medium underline underline-offset-2 decoration-white/30 hover:text-white hover:decoration-white/60 transition-colors duration-200"
+            className="text-[0.875rem] text-white/70 mb-4 font-medium underline underline-offset-2 decoration-white/30 hover:text-white hover:decoration-white/60 transition-colors duration-200 focus-visible:outline-none focus-visible:text-white focus-visible:decoration-[#f7e3b5]"
             onClick={(e) => e.stopPropagation()}
+            onFocus={() => setFocusFlipped(true)}
+            onBlur={() => setFocusFlipped(false)}
           >
             {speaker.title}
           </a>

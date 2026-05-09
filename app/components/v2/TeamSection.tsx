@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { Reveal } from "./useScrollEffects";
@@ -132,6 +132,54 @@ const TeamCard: React.FC<TeamCardProps> = ({ member, size = "lg" }) => {
   );
 };
 
+// Mobile-only horizontal carousel for advisors. The TeamCards inside carry
+// focusable <a> social links, so Tab-key nav already auto-scrolls (browsers
+// scroll a focused element into view). This component adds explicit
+// ArrowLeft/ArrowRight scrubbing for users who want to swipe through cards
+// without tabbing through every link, and exposes a region landmark with a
+// usage hint.
+const AdvisorMobileCarousel: React.FC = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCard = (direction: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    // ~one card-width step (68vw + 12px gap, capped at 292px to match max-w + gap).
+    const step = Math.min(el.clientWidth * 0.68 + 12, 292);
+    el.scrollBy({ left: step * direction, behavior: "smooth" });
+  };
+
+  return (
+    <div
+      ref={scrollerRef}
+      role="region"
+      aria-label="Advisors carousel"
+      aria-roledescription="carousel"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          scrollByCard(1);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          scrollByCard(-1);
+        }
+      }}
+      className="sm:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7e3b5]/40 focus-visible:rounded-md [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    >
+      <div className="flex gap-3 pb-2">
+        {advisors.map((a, i) => (
+          <Reveal key={a.name} delay={i * 80}>
+            <div className="snap-center shrink-0 w-[68vw] max-w-[280px]">
+              <TeamCard member={a} size="sm" />
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const TeamSection: React.FC = () => (
   <section id="team" className="relative py-20 sm:py-24 overflow-hidden">
     {/* Splotch — dark teal atmospheric wash */}
@@ -173,17 +221,8 @@ const TeamSection: React.FC = () => (
       {/* Mobile: scroll-snap carousel — 5 advisors don't fit cleanly into
           a 2-col grid, so we swipe through them instead of stranding the
           5th in a row by itself. */}
-      <div className="sm:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex gap-3 pb-2">
-          {advisors.map((a, i) => (
-            <Reveal key={a.name} delay={i * 80}>
-              <div className="snap-center shrink-0 w-[68vw] max-w-[280px]">
-                <TeamCard member={a} size="sm" />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      <AdvisorMobileCarousel />
+
 
       {/* sm and up: full grid */}
       <div className="hidden sm:grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-5 max-w-3xl md:max-w-none mx-auto">
