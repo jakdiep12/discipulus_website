@@ -86,7 +86,7 @@ const Schedule: React.FC = () => (
       }}
     />
     <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 lg:items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 lg:items-start">
         <div className="flex flex-col">
           <Reveal>
             <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
@@ -118,8 +118,8 @@ const Schedule: React.FC = () => (
             ))}
           </div>
         </div>
-        <Reveal className="lg:h-full">
-          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/4] lg:aspect-auto lg:h-full overflow-hidden media-glow">
+        <Reveal>
+          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/4] overflow-hidden media-glow">
             <Image
               src="/gym.jpeg"
               alt="Founder workout — bench press with spotter"
