@@ -34,6 +34,11 @@ body::before {
   color: #ead8bc;
   font-weight: 600;
   white-space: nowrap;
+  /* inline-block + isolation give the span its own paint context so the
+     filter pass survives Safari's compositing on .story-word ancestors,
+     where it was previously dropped on desktop. */
+  display: inline-block;
+  isolation: isolate;
   filter: brightness(1.5);
   text-shadow:
     0 0 6px rgba(232, 220, 200, 0.22),
