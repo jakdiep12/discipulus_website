@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ChevronDown, X } from "lucide-react";
 
@@ -31,8 +32,14 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const panelId = useId();
   const prefetched = useRef(false);
+
+  // Portal target only exists post-mount; gate on this so SSR doesn't crash.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // When the panel opens, warm the lightbox-size variant of this image so
   // clicking-to-zoom is instant. Inline panel renders at <=600px (sizes attr),
@@ -114,40 +121,45 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
         </div>
       </div>
 
-      {/* Lightbox — fills the viewport, image scaled to fit with object-contain. */}
-      {lightboxOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={imageAlt}
-          className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out"
-          onClick={() => setLightboxOpen(false)}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxOpen(false);
-            }}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-[#f7e3b5] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7e3b5]/70 cursor-pointer"
-            aria-label="Close"
-          >
-            <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden />
-          </button>
+      {/* Lightbox — portaled to <body> so it escapes any transformed ancestor
+          (the schedule item lives inside a <Reveal> with translate/scale,
+          which would otherwise become the containing block for position:fixed
+          and shrink the lightbox to the cell's bounds). */}
+      {lightboxOpen && mounted &&
+        createPortal(
           <div
-            className="relative w-full h-full"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={imageAlt}
+            className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out"
+            onClick={() => setLightboxOpen(false)}
           >
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
-      )}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxOpen(false);
+              }}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-[#f7e3b5] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7e3b5]/70 cursor-pointer"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden />
+            </button>
+            <div
+              className="relative w-full h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 };
