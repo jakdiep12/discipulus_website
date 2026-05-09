@@ -2,7 +2,7 @@
 
 import React, { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 
 interface ScheduleRevealProps {
   label: string;
@@ -36,13 +36,13 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
 
   // When the panel opens, warm the lightbox-size variant of this image so
   // clicking-to-zoom is instant. Inline panel renders at <=600px (sizes attr),
-  // lightbox renders at 90vw — different optimized URLs on desktop.
+  // lightbox renders at 100vw — different optimized URLs on desktop.
   useEffect(() => {
     if (!open || prefetched.current) return;
     if (typeof window === "undefined") return;
     prefetched.current = true;
     const dpr = window.devicePixelRatio || 1;
-    const target = Math.ceil(window.innerWidth * 0.9 * dpr);
+    const target = Math.ceil(window.innerWidth * dpr);
     const w = pickDeviceSize(target);
     const img = new window.Image();
     img.src = `/_next/image?url=${encodeURIComponent(imageSrc)}&w=${w}&q=75`;
@@ -114,13 +114,13 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
         </div>
       </div>
 
-      {/* Lightbox — same scale/treatment as the cohort carousel zoom view. */}
+      {/* Lightbox — fills the viewport, image scaled to fit with object-contain. */}
       {lightboxOpen && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label={imageAlt}
-          className="fixed inset-0 z-[99999] bg-black/90 flex items-center justify-center cursor-zoom-out"
+          className="fixed inset-0 z-[99999] bg-black/95 cursor-zoom-out"
           onClick={() => setLightboxOpen(false)}
         >
           <button
@@ -128,20 +128,20 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
               e.stopPropagation();
               setLightboxOpen(false);
             }}
-            className="absolute top-8 right-4 sm:top-6 sm:right-6 text-[#f7e3b5]/70 hover:text-[#f7e3b5] text-3xl transition-colors z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-[#f7e3b5] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7e3b5]/70 cursor-pointer"
             aria-label="Close"
           >
-            &times;
+            <X className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden />
           </button>
           <div
-            className="relative w-[90vw] h-[90vh] max-w-[1200px]"
+            className="relative w-full h-full"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={imageSrc}
               alt={imageAlt}
               fill
-              sizes="90vw"
+              sizes="100vw"
               className="object-contain"
               priority
             />
