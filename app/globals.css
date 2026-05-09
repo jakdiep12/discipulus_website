@@ -201,3 +201,15 @@ body::before {
   background: currentColor;
   animation: caret-blink 1.1s steps(1) infinite;
 }
+
+/* Honor prefers-reduced-motion: still indicate liveness, but stop
+   anything that runs forever or animates large viewport-width transforms.
+   WCAG 2.3.3 / 2.2.2. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-investor-scroll,
+  .animate-photo-scroll,
+  .breath-glow,
+  .caret-blink::after {
+    animation: none !important;
+  }
+}
