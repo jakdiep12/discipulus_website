@@ -22,7 +22,7 @@ const images = [
   "/cohort/cohort19.jpeg",
   "/cohort/cohort20.jpeg",
   "/cohort/cohort21.jpeg",
-  "/cohort/cohort0.png",
+  "/cohort/cohort0.jpeg",
   "/cohort/cohort1.jpeg",
   "/cohort/cohort2.jpeg",
   "/cohort/cohort3.jpeg",
