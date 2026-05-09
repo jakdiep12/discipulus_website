@@ -18,7 +18,7 @@ export default function ExperiencePage() {
       <NavbarV2 />
       <main>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 pt-16 lg:pt-20">
-        <p className="font-mono text-[0.67rem] text-white/40 tracking-[0.14em] uppercase mb-4">
+        <p className="font-mono text-[0.67rem] text-white/60 tracking-[0.14em] uppercase mb-4">
           The Cohort Experience
         </p>
         <h1 className="font-freight text-[clamp(2.2rem,4.5vw,3.6rem)] font-normal leading-[1.1] text-white max-w-[700px] mb-6">

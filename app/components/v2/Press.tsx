@@ -94,7 +94,7 @@ const Press: React.FC = () => (
               <div className="text-[0.875rem] text-white/70 leading-[1.6] mb-2 max-h-0 overflow-hidden group-hover:max-h-[80px] group-active:max-h-[80px] transition-all duration-500 ease-8vc-out">
                 {a.preview}
               </div>
-              <div className="text-[0.75rem] text-white/50 group-hover:text-white/75 tracking-wide transition-colors duration-300">
+              <div className="text-[0.75rem] text-white/65 group-hover:text-white/85 tracking-wide transition-colors duration-300">
                 {a.date} →
               </div>
             </Reveal>

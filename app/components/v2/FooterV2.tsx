@@ -133,7 +133,7 @@ const FooterV2: React.FC = () => (
         </Reveal>
 
         <Reveal delay={200} offset="sm">
-          <div className="font-mono text-[0.7rem] text-white/40 tracking-wider text-center leading-relaxed">
+          <div className="font-mono text-[0.7rem] text-white/60 tracking-wider text-center leading-relaxed">
             <span className="block">© 2026 Discipulus Ventures</span>
             <span className="block">All Rights Reserved.</span>
             <Link href="/cookies" className="inline-block mt-2 hover:text-white/70 transition-colors duration-200">

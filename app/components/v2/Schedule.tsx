@@ -103,7 +103,7 @@ const Schedule: React.FC = () => (
                 <div
                   className="grid grid-cols-[64px_1fr] sm:grid-cols-[88px_1fr] border-b border-white/5 hover:bg-navy-2 transition-all duration-300 ease-8vc hover:pl-2 group"
                 >
-                  <div className="font-mono text-[0.78rem] sm:text-[0.75rem] text-white/40 group-hover:text-white/70 px-3 sm:px-4 py-4 sm:py-3 tracking-wide transition-colors duration-300">
+                  <div className="font-mono text-[0.78rem] sm:text-[0.75rem] text-white/60 group-hover:text-white/85 px-3 sm:px-4 py-4 sm:py-3 tracking-wide transition-colors duration-300">
                     {item.time}
                   </div>
                   <div className="text-[0.9375rem] text-white/80 group-hover:text-white px-3 sm:px-4 py-4 sm:py-3 transition-colors duration-300">

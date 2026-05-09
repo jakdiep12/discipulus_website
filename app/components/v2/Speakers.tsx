@@ -125,12 +125,12 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
             href={speaker.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[0.875rem] text-white/55 mb-4 font-medium underline underline-offset-2 decoration-white/20 hover:text-white/80 hover:decoration-white/50 transition-colors duration-200"
+            className="text-[0.875rem] text-white/70 mb-4 font-medium underline underline-offset-2 decoration-white/30 hover:text-white hover:decoration-white/60 transition-colors duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {speaker.title}
           </a>
-          <div className="text-[0.875rem] text-white/45 leading-relaxed italic font-light max-w-[200px]">
+          <div className="text-[0.875rem] text-white/65 leading-relaxed italic font-light max-w-[200px]">
             {speaker.topic}
           </div>
         </div>

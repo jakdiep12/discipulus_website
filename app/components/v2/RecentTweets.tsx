@@ -19,7 +19,7 @@ const RecentTweets: React.FC = () => (
       <WordReveal
         as="p"
         speed={35}
-        className="font-mono text-[0.75rem] text-white/40 tracking-[0.16em] uppercase mb-3 font-semibold"
+        className="font-mono text-[0.75rem] text-white/60 tracking-[0.16em] uppercase mb-3 font-semibold"
       >
         Signal
       </WordReveal>

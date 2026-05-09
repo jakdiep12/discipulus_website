@@ -64,7 +64,7 @@ const AfterProgram: React.FC = () => (
               </Reveal>
             ))}
             <Reveal delay={bullets.length * 100} offset="sm">
-              <li className="flex items-center gap-3 text-[0.85rem] text-white/40 italic font-light pl-6">
+              <li className="flex items-center gap-3 text-[0.85rem] text-white/60 italic font-light pl-6">
                 and more…
               </li>
             </Reveal>
