@@ -29,20 +29,18 @@ body::before {
 }
 
 /* "El Segundo" — emphasized proper noun everywhere on the site.
-   Same cream the manifesto uses for "religion, patriotism, and family". */
+   Brightness baked into the color value: filter: brightness(1.5) on
+   #ead8bc clips every channel to 255 (pure white) and the cream the
+   text-shadow tries to halo around it gets read as plain white on
+   desktop. Picking a directly-bright cream gives the same lift
+   without losing the warm tint. */
 .el-segundo {
-  color: #ead8bc;
+  color: #f7e3b5;
   font-weight: 600;
   white-space: nowrap;
-  /* inline-block + isolation give the span its own paint context so the
-     filter pass survives Safari's compositing on .story-word ancestors,
-     where it was previously dropped on desktop. */
-  display: inline-block;
-  isolation: isolate;
-  filter: brightness(1.5);
   text-shadow:
-    0 0 6px rgba(232, 220, 200, 0.22),
-    0 0 14px rgba(232, 220, 200, 0.12);
+    0 0 6px rgba(247, 227, 181, 0.32),
+    0 0 14px rgba(247, 227, 181, 0.18);
 }
 
 /* Scrollbar styling */
