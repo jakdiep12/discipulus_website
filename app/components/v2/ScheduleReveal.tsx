@@ -98,9 +98,12 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
       {/* grid-rows 0fr → 1fr animates content height without a hardcoded
           max-height; child needs min-h-0 + overflow-hidden to clip during the
           transition. */}
+      {/* inert (vs aria-hidden) blocks tab focus and pointer interaction
+          on the entire panel subtree while collapsed — addresses the
+          aria-hidden-with-focusable-descendant 4.1.2 audit flag. */}
       <div
         id={panelId}
-        aria-hidden={!open}
+        inert={!open ? true : undefined}
         className="grid transition-[grid-template-rows] duration-[250ms] ease-8vc-out motion-reduce:transition-none"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
@@ -109,7 +112,6 @@ const ScheduleReveal: React.FC<ScheduleRevealProps> = ({
             type="button"
             onClick={() => setLightboxOpen(true)}
             aria-label={`View ${label} photo full size`}
-            tabIndex={open ? 0 : -1}
             className={`group/img block relative w-full max-w-[600px] mx-auto mt-3 overflow-hidden media-glow cursor-zoom-in transition-opacity duration-200 ease-8vc-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
               open ? "opacity-100" : "opacity-0"
             }`}
