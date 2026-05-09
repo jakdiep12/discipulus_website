@@ -152,7 +152,7 @@ export function CohortCarousel() {
               e.stopPropagation();
               close();
             }}
-            className="absolute top-8 right-4 sm:top-6 sm:right-6 text-white/60 hover:text-white text-3xl transition-colors z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="absolute top-8 right-4 sm:top-6 sm:right-6 text-[#f7e3b5]/70 hover:text-[#f7e3b5] text-3xl transition-colors z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Close"
           >
             &times;
@@ -163,7 +163,7 @@ export function CohortCarousel() {
               e.stopPropagation();
               prev();
             }}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 text-white/60 hover:text-white hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 text-[#f7e3b5]/70 hover:text-[#f7e3b5] hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             aria-label="Previous photo"
           >
             <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden />
@@ -174,7 +174,7 @@ export function CohortCarousel() {
               e.stopPropagation();
               next();
             }}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 text-white/60 hover:text-white hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 text-[#f7e3b5]/70 hover:text-[#f7e3b5] hover:bg-white/10 transition-colors w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             aria-label="Next photo"
           >
             <ChevronRight className="w-7 h-7 sm:w-8 sm:h-8" aria-hidden />
