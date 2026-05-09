@@ -12,7 +12,9 @@ export default function TeamPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />
-      <TeamSection />
+      <main>
+        <TeamSection />
+      </main>
       <FooterV2 />
     </div>
   );

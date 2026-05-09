@@ -15,6 +15,7 @@ export default function CohortPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />
+      <main>
       {/* Cohort hero photo */}
       <div className="relative w-full aspect-[2/1] lg:aspect-[2.5/1] overflow-hidden">
         <Image
@@ -29,6 +30,7 @@ export default function CohortPage() {
       <FounderOutcomes />
       <Press />
       <LogoMarquee />
+      </main>
       <FooterV2 />
     </div>
   );

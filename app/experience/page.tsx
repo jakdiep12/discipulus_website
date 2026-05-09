@@ -16,6 +16,7 @@ export default function ExperiencePage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />
+      <main>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 pt-16 lg:pt-20">
         <p className="font-mono text-[0.67rem] text-white/40 tracking-[0.14em] uppercase mb-4">
           The Cohort Experience
@@ -32,6 +33,7 @@ export default function ExperiencePage() {
       <HowItWorks />
       <ElSegundo />
       <FAQ />
+      </main>
       <FooterV2 />
     </div>
   );

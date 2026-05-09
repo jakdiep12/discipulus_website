@@ -12,7 +12,9 @@ export default function SpeakersPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />
-      <Speakers />
+      <main>
+        <Speakers />
+      </main>
       <FooterV2 />
     </div>
   );

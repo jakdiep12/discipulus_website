@@ -16,6 +16,7 @@ export { default as metadata } from "./metadata";
 export default function CohortPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
+      <main>
       <CohortHero />
       <section className="relative py-14 sm:py-20 overflow-hidden">
         <div
@@ -79,6 +80,7 @@ export default function CohortPage() {
       <TeamSection />
       <FAQ />
       <CohortCarousel />
+      </main>
       <FooterV2 />
     </div>
   );

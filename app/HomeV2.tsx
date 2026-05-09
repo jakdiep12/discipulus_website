@@ -12,16 +12,17 @@ const HomeV2: React.FC = () => {
   return (
     <PortalIntro>
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen max-w-full overflow-hidden antialiased">
-      {/* 1. Hero — video, tagline, Apply now / Learn more */}
-      <Hero />
-      {/* 2. Logo marquee (once) */}
-      <LogoMarquee />
-      {/* 3. Manifesto — conviction sections */}
-      <ManifestoV2 />
-      {/* 4. Recent updates / Press */}
-      <Press />
-      <RecentTweets />
-      {/* 5. Close */}
+      <main>
+        {/* 1. Hero — video, tagline, Apply now / Learn more */}
+        <Hero />
+        {/* 2. Logo marquee (once) */}
+        <LogoMarquee />
+        {/* 3. Manifesto — conviction sections */}
+        <ManifestoV2 />
+        {/* 4. Recent updates / Press */}
+        <Press />
+        <RecentTweets />
+      </main>
       <FooterV2 />
     </div>
     </PortalIntro>
