@@ -9,7 +9,7 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
   <a
     href={v.href}
     target="_blank"
-    rel="noreferrer"
+    rel="noopener noreferrer"
     className="flex items-center justify-center shrink-0 px-8 sm:px-10 md:px-12"
   >
     <Image
@@ -17,6 +17,7 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
       alt={v.id}
       width={220}
       height={22}
+      sizes="220px"
       className={`h-[18px] sm:h-[20px] md:h-[22px] w-auto opacity-90 shrink-0 hover:opacity-100 transition-opacity duration-300 ease-8vc${
         v.dark ? " brightness-0 invert" : ""
       }`}

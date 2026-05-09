@@ -21,6 +21,7 @@ export default function CohortPage() {
           src="/FoundingFathers.png"
           alt="Discipulus Cohort founders in front of the American flag"
           fill
+          sizes="100vw"
           className="object-cover object-center"
           priority
         />

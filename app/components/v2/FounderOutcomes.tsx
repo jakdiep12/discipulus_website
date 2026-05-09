@@ -127,6 +127,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
             src={founder.headshot}
             alt={founder.name}
             fill
+            sizes="(max-width: 768px) 90vw, 600px"
             className="object-cover grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
@@ -136,6 +137,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
               alt={`${founder.company} logo`}
               width={180}
               height={42}
+              sizes="180px"
               className="w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
             />
           </div>

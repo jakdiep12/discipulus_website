@@ -62,6 +62,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             alt="Discipulus Ventures"
             width={720}
             height={117}
+            sizes="260px"
             className="h-[42px] w-auto"
           />
           <button
@@ -139,6 +140,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             alt="Discipulus Ventures"
             width={720}
             height={117}
+            sizes="(max-width: 640px) 260px, (max-width: 768px) 370px, (max-width: 1024px) 520px, 720px"
             className="h-[42px] sm:h-[60px] md:h-[84px] lg:h-[117px] w-auto"
             priority
           />

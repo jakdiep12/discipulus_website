@@ -88,6 +88,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
               src={speaker.img}
               alt={speaker.name}
               fill
+              sizes="(max-width: 768px) 50vw, 280px"
               className="object-cover grayscale"
             />
           ) : (

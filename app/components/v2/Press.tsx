@@ -73,9 +73,10 @@ const Press: React.FC = () => (
               <div className="h-[36px] mb-3 flex items-center">
                 <Image
                   src={a.logo}
-                  alt={`${a.outlet} logo`}
+                  alt=""
                   width={180}
                   height={36}
+                  sizes="180px"
                   className="h-[30px] sm:h-[34px] w-auto object-contain brightness-0 invert opacity-85 group-hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
