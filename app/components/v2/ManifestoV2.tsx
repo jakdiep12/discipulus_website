@@ -20,25 +20,14 @@ const archetypes = [
   },
 ];
 
-// Same radial dissolve as the manifesto-S2 water tower so the satellite's
-// rectangle edges fade into the navy field instead of reading as a hard tile.
-const SATELLITE_FADE_MASK =
-  "radial-gradient(ellipse 65% 70% at center, black 0%, transparent 100%)";
-
 const ManifestoImage: React.FC = () => (
-  <div
-    className="relative w-1/2 max-w-[600px] aspect-[16/9] lg:aspect-[2.4/1] overflow-hidden mx-auto mb-6 sm:mb-4 lg:mb-5"
-    style={{
-      maskImage: SATELLITE_FADE_MASK,
-      WebkitMaskImage: SATELLITE_FADE_MASK,
-    }}
-  >
+  <div className="relative w-[72vw] max-w-[520px] aspect-square mx-auto mb-6 sm:mb-4 lg:mb-5">
     <Image
       src="/manifesto3.png"
       alt="Discipulus manifesto"
       fill
-      className="object-cover object-center"
-      sizes="(max-width: 768px) 50vw, 600px"
+      className="object-contain object-center"
+      sizes="(max-width: 768px) 72vw, 520px"
     />
   </div>
 );
