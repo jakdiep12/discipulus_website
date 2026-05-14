@@ -119,12 +119,12 @@ const Schedule: React.FC = () => (
           </div>
         </div>
         <Reveal>
-          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/4] overflow-hidden media-glow">
+          <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 aspect-[3/2] overflow-hidden media-glow">
             <Image
               src="/cohort-workshop-session.png"
               alt="Cohort founders gathered for a workshop session in El Segundo"
               fill
-              className="object-cover object-center"
+              className="object-contain object-center"
               sizes="(max-width: 1024px) 90vw, 560px"
             />
           </div>
