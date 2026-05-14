@@ -41,6 +41,24 @@ body::before {
   text-shadow:
     0 0 6px rgba(247, 227, 181, 0.32),
     0 0 14px rgba(247, 227, 181, 0.18);
+  filter: drop-shadow(0 0 0.35em rgba(247, 227, 181, 0.24));
+  animation: el-segundo-glow 4s ease-in-out infinite;
+}
+
+@keyframes el-segundo-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(247, 227, 181, 0.32),
+      0 0 14px rgba(247, 227, 181, 0.18);
+    filter: drop-shadow(0 0 0.35em rgba(247, 227, 181, 0.24));
+  }
+  50% {
+    text-shadow:
+      0 0 9px rgba(247, 227, 181, 0.46),
+      0 0 22px rgba(247, 227, 181, 0.28),
+      0 0 34px rgba(247, 227, 181, 0.16);
+    filter: drop-shadow(0 0 0.58em rgba(247, 227, 181, 0.34));
+  }
 }
 
 /* Scrollbar styling */
@@ -209,7 +227,8 @@ body::before {
   .animate-investor-scroll,
   .animate-photo-scroll,
   .breath-glow,
-  .caret-blink::after {
+  .caret-blink::after,
+  .el-segundo {
     animation: none !important;
   }
 }
