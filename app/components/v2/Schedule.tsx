@@ -3,74 +3,32 @@
 import React from "react";
 import Image from "next/image";
 import { Reveal, WordReveal } from "./useScrollEffects";
-import ScheduleReveal from "./ScheduleReveal";
 
 type ScheduleItem = {
   time: string;
   desc: string;
-  reveal?: {
-    imageSrc: string;
-    imageAlt: string;
-    imageWidth: number;
-    imageHeight: number;
-  };
 };
 
 const scheduleItems: ScheduleItem[] = [
   {
     time: "06:00",
     desc: "Founder workout",
-    reveal: {
-      imageSrc: "/schedule-reveals/founder-workout.jpeg",
-      imageAlt:
-        "Cohort founders lifting dumbbells at a Coast Fitness gym beneath posters reading 'Build More Muscle' and 'Practice Like A Champion'",
-      imageWidth: 1600,
-      imageHeight: 1200,
-    },
   },
   {
     time: "08:15",
     desc: "One hour session from guest speaker",
-    reveal: {
-      imageSrc: "/schedule-reveals/guest-speaker-session.jpeg",
-      imageAlt:
-        "The cohort seated at folding tables with laptops listening to two guest speakers in front of a large American flag",
-      imageWidth: 1600,
-      imageHeight: 900,
-    },
   },
   {
     time: "09:15",
     desc: "Unicorn founder office hours",
-    reveal: {
-      imageSrc: "/schedule-reveals/unicorn-founder-office-hours.jpeg",
-      imageAlt:
-        "Nathan Mintz in a blue work shirt, arms crossed, talking with a cohort founder beside a red US General toolbox in a workshop",
-      imageWidth: 899,
-      imageHeight: 1600,
-    },
   },
   {
     time: "15:00",
     desc: "Investor office hours",
-    reveal: {
-      imageSrc: "/schedule-reveals/investor-office-hours.jpeg",
-      imageAlt:
-        "Five cohort founders huddled in front of a whiteboard diagramming 'The VC Architecture' — LPs, GPs, partners — with an American flag on the wall",
-      imageWidth: 1600,
-      imageHeight: 900,
-    },
   },
   {
     time: "19:00",
     desc: "Dinner with special guest speaker",
-    reveal: {
-      imageSrc: "/schedule-reveals/dinner-guest-speaker.jpeg",
-      imageAlt:
-        "Cohort founders eating In-N-Out together in a workshop space with an American flag and aerospace hardware in the background",
-      imageWidth: 1200,
-      imageHeight: 1600,
-    },
   },
 ];
 
@@ -107,11 +65,7 @@ const Schedule: React.FC = () => (
                     {item.time}
                   </div>
                   <div className="text-[0.9375rem] text-white/80 group-hover:text-white px-3 sm:px-4 py-4 sm:py-3 transition-colors duration-300">
-                    {item.reveal ? (
-                      <ScheduleReveal label={item.desc} {...item.reveal} />
-                    ) : (
-                      item.desc
-                    )}
+                    {item.desc}
                   </div>
                 </div>
               </Reveal>
