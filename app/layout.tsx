@@ -8,9 +8,10 @@ import PageTransition from './components/v2/PageTransition'
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], weight: ['300', '400', '500'], variable: '--font-jetbrains-mono' })
+const ogImageUrl = 'https://www.discipulusventures.com/og-image-v2.png'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://discipulusventures.com'),
+  metadataBase: new URL('https://www.discipulusventures.com'),
   title: 'Discipulus Ventures',
   description: 'Cultivating a visionary vanguard of founders solving America\'s hardest problems in El Segundo.',
   icons: {
@@ -19,13 +20,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Discipulus Ventures',
     description: 'Cultivating a visionary vanguard of founders solving America\'s hardest problems in El Segundo.',
-    url: 'https://discipulusventures.com',
+    url: 'https://www.discipulusventures.com',
     siteName: 'Discipulus Ventures',
     images: [
       {
-        url: '/Discipulus - Hero.png',
+        url: ogImageUrl,
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Discipulus Ventures - Cultivating visionary founders',
       },
     ],
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Discipulus Ventures',
     description: 'Cultivating a visionary vanguard of founders solving America\'s hardest problems in El Segundo.',
-    images: ['/Discipulus - Hero.png'],
+    images: [ogImageUrl],
   },
 }
 

@@ -3,9 +3,8 @@ import type { Metadata } from 'next'
 const title = 'Our Team — Discipulus Ventures'
 const description = 'Meet the Discipulus Ventures team and advisors in El Segundo.'
 
-const url = 'https://discipulusventures.com/team'
-// Using a clean, dark background with logo/brand area; adjust if you add a dedicated hero image later
-const image = '/Discipulus - Logo.png'
+const url = 'https://www.discipulusventures.com/team'
+const image = 'https://www.discipulusventures.com/og-image-v2.png'
 
 const metadata: Metadata = {
   title,
@@ -20,6 +19,7 @@ const metadata: Metadata = {
         url: image,
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Discipulus Ventures team page hero',
       },
     ],

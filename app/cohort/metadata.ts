@@ -4,8 +4,8 @@ const title = 'Discipulus Cohort — Discipulus Ventures'
 const description =
   "Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest."
 
-const url = 'https://discipulusventures.com/cohort'
-const image = '/FoundingFathers.png'
+const url = 'https://www.discipulusventures.com/cohort'
+const image = 'https://www.discipulusventures.com/og-image-v2.png'
 
 const metadata: Metadata = {
   title,
@@ -20,6 +20,7 @@ const metadata: Metadata = {
         url: image,
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Discipulus Cohort hero background',
       },
     ],
