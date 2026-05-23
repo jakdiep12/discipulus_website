@@ -8,7 +8,7 @@ import PageTransition from './components/v2/PageTransition'
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], weight: ['300', '400', '500'], variable: '--font-jetbrains-mono' })
-const ogImageUrl = 'https://www.discipulusventures.com/Discipulus%20-%20Logo%20Small.png'
+const ogImageUrl = 'https://www.discipulusventures.com/og-image-v2.png'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.discipulusventures.com'),
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: ogImageUrl,
-        width: 2160,
-        height: 2160,
+        width: 1200,
+        height: 630,
         type: 'image/png',
         alt: 'Discipulus Ventures - Cultivating visionary founders',
       },

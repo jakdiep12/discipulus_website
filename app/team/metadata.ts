@@ -4,7 +4,7 @@ const title = 'Our Team — Discipulus Ventures'
 const description = 'Meet the Discipulus Ventures team and advisors in El Segundo.'
 
 const url = 'https://www.discipulusventures.com/team'
-const image = 'https://www.discipulusventures.com/Discipulus%20-%20Logo%20Small.png'
+const image = 'https://www.discipulusventures.com/og-image-v2.png'
 
 const metadata: Metadata = {
   title,
@@ -17,8 +17,8 @@ const metadata: Metadata = {
     images: [
       {
         url: image,
-        width: 2160,
-        height: 2160,
+        width: 1200,
+        height: 630,
         type: 'image/png',
         alt: 'Discipulus Ventures team page hero',
       },
