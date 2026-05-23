@@ -5,7 +5,7 @@ const description =
   "Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest."
 
 const url = 'https://www.discipulusventures.com/cohort'
-const image = 'https://www.discipulusventures.com/og-image-v2.png'
+const image = 'https://www.discipulusventures.com/Discipulus%20-%20Logo%20Small.png'
 
 const metadata: Metadata = {
   title,
@@ -18,8 +18,8 @@ const metadata: Metadata = {
     images: [
       {
         url: image,
-        width: 1200,
-        height: 630,
+        width: 2160,
+        height: 2160,
         type: 'image/png',
         alt: 'Discipulus Cohort hero background',
       },
