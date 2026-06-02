@@ -1,9 +1,31 @@
 "use client";
 
 import React from "react";
-import { Tweet } from "react-tweet";
 import { tweets } from "@/app/data/tweets";
 import { Reveal, WordReveal } from "./useScrollEffects";
+
+type TweetCardProps = {
+  url: string;
+};
+
+const TweetCard: React.FC<TweetCardProps> = ({ url }) => (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex h-full min-h-[220px] flex-col justify-between rounded-xl border border-white/10 bg-white/[0.03] px-6 py-6 text-left transition-colors hover:border-white/25 hover:bg-white/[0.05]"
+  >
+    <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-white/45">
+      Update
+    </span>
+    <span className="font-freight text-[1.45rem] leading-tight text-white">
+      View this update from the Discipulus timeline.
+    </span>
+    <span className="text-[0.85rem] font-medium text-[#f7e3b5]/75 transition-colors group-hover:text-[#f7e3b5]">
+      Open on X →
+    </span>
+  </a>
+);
 
 const RecentTweets: React.FC = () => (
   <section className="relative py-16 sm:py-20 bg-navy overflow-hidden">
@@ -37,9 +59,7 @@ const RecentTweets: React.FC = () => (
       >
         {tweets.map((tweet, index) => (
           <Reveal key={tweet.id} delay={index * 80} offset="sm">
-            <div className="h-full overflow-hidden [&_article]:!m-0 [&_article]:!h-full [&_.react-tweet-theme]:!m-0 [&_.react-tweet-theme]:!h-full [&_.react-tweet-theme]:!max-w-none">
-              <Tweet id={tweet.id} />
-            </div>
+            <TweetCard url={tweet.url} />
           </Reveal>
         ))}
       </div>
