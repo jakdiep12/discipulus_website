@@ -1,14 +1,37 @@
 "use client";
 
 import React from "react";
+import { EmbeddedTweet, TweetSkeleton, useTweet } from "react-tweet";
 import { tweets } from "@/app/data/tweets";
 import { Reveal, WordReveal } from "./useScrollEffects";
 
 type TweetCardProps = {
+  id: string;
   url: string;
 };
 
-const TweetCard: React.FC<TweetCardProps> = ({ url }) => (
+class TweetRenderBoundary extends React.Component<
+  { children: React.ReactNode; fallback: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidUpdate(prevProps: { children: React.ReactNode; fallback: React.ReactNode }) {
+    if (prevProps.children !== this.props.children && this.state.hasError) {
+      this.setState({ hasError: false });
+    }
+  }
+
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+const TweetFallback: React.FC<{ url: string }> = ({ url }) => (
   <a
     href={url}
     target="_blank"
@@ -26,6 +49,22 @@ const TweetCard: React.FC<TweetCardProps> = ({ url }) => (
     </span>
   </a>
 );
+
+const TweetCard: React.FC<TweetCardProps> = ({ id, url }) => {
+  const { data, error, isLoading } = useTweet(id);
+  const fallback = <TweetFallback url={url} />;
+
+  if (isLoading) return <TweetSkeleton />;
+  if (error || !data) return fallback;
+
+  return (
+    <TweetRenderBoundary fallback={fallback}>
+      <div className="h-full overflow-hidden [&_article]:!m-0 [&_article]:!h-full [&_.react-tweet-theme]:!m-0 [&_.react-tweet-theme]:!h-full [&_.react-tweet-theme]:!max-w-none">
+        <EmbeddedTweet tweet={data} />
+      </div>
+    </TweetRenderBoundary>
+  );
+};
 
 const RecentTweets: React.FC = () => (
   <section className="relative py-16 sm:py-20 bg-navy overflow-hidden">
@@ -59,7 +98,7 @@ const RecentTweets: React.FC = () => (
       >
         {tweets.map((tweet, index) => (
           <Reveal key={tweet.id} delay={index * 80} offset="sm">
-            <TweetCard url={tweet.url} />
+            <TweetCard id={tweet.id} url={tweet.url} />
           </Reveal>
         ))}
       </div>
