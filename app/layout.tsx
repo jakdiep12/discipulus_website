@@ -13,13 +13,13 @@ const ogImageUrl = 'https://www.discipulusventures.com/og-image-v2.png'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.discipulusventures.com'),
   title: 'Discipulus Ventures',
-  description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problem in El Segundo.',
+  description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problems in El Segundo.',
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
     title: 'Discipulus Ventures',
-    description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problem in El Segundo.',
+    description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problems in El Segundo.',
     url: 'https://www.discipulusventures.com',
     siteName: 'Discipulus Ventures',
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Discipulus Ventures',
-    description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problem in El Segundo.',
+    description: 'Cultivating a visionary vanguard of founders solving the West\'s hardest problems in El Segundo.',
     images: [ogImageUrl],
   },
 }
