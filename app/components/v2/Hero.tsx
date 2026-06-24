@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
             delay={200}
             className="font-freight text-[clamp(2rem,5.5vw,4.6rem)] font-normal leading-[1.15] sm:leading-[1.1] text-white max-w-[900px] mx-auto mb-7 sm:mb-5 tracking-tight"
           >
-            {"Cultivating a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
+            {"Cultivating a visionary vanguard of founders solving the West\u2019s hardest problem in El Segundo."}
           </WordReveal>
 
           <Reveal delay={900}>
