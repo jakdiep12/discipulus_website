@@ -7,7 +7,7 @@ const steps = [
   { num: "01", title: "Apply", desc: "We select ~10 founders per Cohort for technical depth, mission alignment, and intensity." },
   { num: "02", title: "Arrive", desc: "Move into the El Segundo house. Meet your Cohort — the people you'll build alongside for 10 days." },
   { num: "03", title: "Train", desc: "Daily sessions with unicorn founders and defense operators. Office hours. Peer pressure that compounds." },
-  { num: "04", title: "Demo Day", desc: "Present to 100+ investors at the Demo Day for the American Interest. Walk out funded." },
+  { num: "04", title: "Demo Day", desc: "Present to 100+ investors at the Demo Day for the Western Interest. Walk out funded." },
   { num: "05", title: "For life", desc: "Ongoing mentorship, fundraising support, and lifetime access to the El Segundo network." },
 ];
 

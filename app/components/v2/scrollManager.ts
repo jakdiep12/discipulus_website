@@ -50,8 +50,15 @@ class ScrollManager {
     this.rafId = null;
     const { vh, isMobile } = this;
 
-    this.storyItems.forEach((item) => {
-      const rect = item.el.getBoundingClientRect();
+    // Batch all reads before any writes so we never interleave
+    // getBoundingClientRect() with style mutations (avoids forced layout
+    // thrashing when multiple story sections are on screen at once).
+    const reads = Array.from(this.storyItems, (item) => ({
+      item,
+      rect: item.el.getBoundingClientRect(),
+    }));
+
+    reads.forEach(({ item, rect }) => {
       if (rect.bottom < 0 || rect.top > vh) {
         // Fully off screen — snap to end state so it stays readable when back-scrolling.
         const finished = rect.bottom < 0 ? item.totalWords : 0;

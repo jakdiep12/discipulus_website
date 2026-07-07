@@ -27,7 +27,7 @@ const articles: Array<{
     logo: "/news/techcrunch.png",
     title: "Discipulus Ventures mentors young founders to revive a Norman Rockwell vision of America",
     date: "March 26, 2024",
-    preview: "A new Cohort model for value-aligned founders building for the national interest.",
+    preview: "A new Cohort model for value-aligned founders building for the Western interest.",
     url: "https://techcrunch.com/2024/03/26/discipluus-ventures-mentors-founders-norman-rockwell-america/",
   },
   {

@@ -16,7 +16,7 @@ const bullets: React.ReactNode[] = [
     >
       HF0
     </a>{" "}
-    and in-person access to 100+ top investors through the Demo Day for the American Interest
+    and in-person access to 100+ top investors through the Demo Day for the Western Interest
   </>,
   <>Become an <span className="el-segundo">El&nbsp;Segundo</span> insider and get to know the key players in the ecosystem</>,
 ];

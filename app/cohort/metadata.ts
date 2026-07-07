@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 const title = 'Discipulus Cohort — Discipulus Ventures'
 const description =
-  "Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the national interest."
+  "Two week residency in El Segundo with 10 other early-stage, value-aligned founders building hard tech and software for the Western interest."
 
 const url = 'https://www.discipulusventures.com/cohort'
 const image = 'https://www.discipulusventures.com/og-image-v2.png'

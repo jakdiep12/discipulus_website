@@ -6,7 +6,7 @@ import { Reveal, WordReveal } from "./useScrollEffects";
 const faqs = [
   {
     q: "Who is the Cohort for?",
-    a: "We welcome founders in the early stages of building or seriously exploring building hard tech and software for the national interest. We seek individuals driven by a unique set of values that motivates them to solve the West's hardest problems and attracts them to the culture of El Segundo. We've worked with student founders, full-time founders, and those balancing full-time jobs, so we don't exclude any particular persona.",
+    a: "We welcome founders in the early stages of building or seriously exploring building hard tech and software for the Western interest. We seek individuals driven by a unique set of values that motivates them to solve the West's hardest problems and attracts them to the culture of El Segundo. We've worked with student founders, full-time founders, and those balancing full-time jobs, so we don't exclude any particular persona.",
   },
   {
     q: "What's the timeline and commitment?",

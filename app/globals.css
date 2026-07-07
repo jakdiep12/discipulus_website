@@ -112,7 +112,6 @@ body::before {
 }
 .story-word {
   opacity: clamp(0, calc(var(--reveal-count, 9999) - var(--i, 0)), 1);
-  transition: opacity 180ms ease-out;
   will-change: opacity;
 }
 

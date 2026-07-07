@@ -108,7 +108,17 @@ const s2Bodies: (string | React.ReactElement)[][] = [
   [
     "We are building an exclusive, tight-knit network of the West\u2019s smartest, most value-driven individuals and giving them a home to build solutions to our nation\u2019s most important problems, surrounded by people who can greatly accelerate their impact.",
   ],
-  ["Join us today."],
+  [
+    <a
+      key="join-us-s2"
+      href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline underline-offset-2 decoration-white/40 hover:decoration-white/80 transition-colors"
+    >
+      Join us today.
+    </a>,
+  ],
 ];
 const s2HeadlineWords = countWords(s2Headline);
 const s2BodyOffsets = s2Bodies.reduce<{ offset: number; totals: number[] }>(

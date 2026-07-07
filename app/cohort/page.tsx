@@ -46,8 +46,22 @@ export default function CohortPage() {
                   Discipulus Cohort
                 </h1>
                 <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto md:mx-0 leading-[1.65]">
-                  Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the national interest.
+                  Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the Western interest.
                 </p>
+                <p className="text-[0.8125rem] text-white/45 mt-3 font-bold">
+                  September 29th &ndash; October 8th, 2026
+                </p>
+                <div className="mt-7">
+                  <a
+                    href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 py-4 sm:py-3.5 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase min-h-[52px] sm:min-h-[44px] hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc"
+                  >
+                    <span className="relative z-10">Apply now</span>
+                    <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
+                  </a>
+                </div>
               </div>
             </Reveal>
             <Reveal>
