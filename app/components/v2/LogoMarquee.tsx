@@ -5,6 +5,15 @@ import Image from "next/image";
 import { investors } from "@/app/data/investors";
 import { WordReveal } from "./useScrollEffects";
 
+// Two size tiers only — written as full literal class strings (not built
+// from a runtime template) so Tailwind's static scanner picks both up.
+// A `transform: scale()` approach was tried first, but it shrinks the
+// image visually while leaving its layout box (and the surrounding gap)
+// full-size, which read as extra whitespace around the scaled logos.
+// Setting the real height instead shrinks the box itself.
+const FULL_SIZE = "h-[18px] sm:h-[20px] md:h-[22px]";
+const TWO_THIRDS_SIZE = "h-[12px] sm:h-[13.33px] md:h-[14.67px]";
+
 const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
   <a
     href={v.href}
@@ -18,10 +27,10 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
       width={220}
       height={22}
       sizes="220px"
-      className={`h-[18px] sm:h-[20px] md:h-[22px] w-auto opacity-90 shrink-0 hover:opacity-100 transition-opacity duration-300 ease-8vc${
+      loading="eager"
+      className={`${v.scale ? TWO_THIRDS_SIZE : FULL_SIZE} w-auto opacity-90 shrink-0 hover:opacity-100 transition-opacity duration-300 ease-8vc${
         v.dark ? " brightness-0 invert" : ""
       }`}
-      style={v.scale ? { transform: `scale(${v.scale})` } : undefined}
     />
   </a>
 );
@@ -43,26 +52,11 @@ const LogoMarquee: React.FC = () => {
 
     let animation: Animation | null = null;
     let lastWidth = 0;
-    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
+    let resizeDebounce: ReturnType<typeof setTimeout> | null = null;
+    let cancelled = false;
 
-    const apply = () => {
-      const width = strip.getBoundingClientRect().width;
-      if (width < 10) return; // not laid out yet — wait for the next observation
-      if (Math.abs(width - lastWidth) < 1 && animation?.playState === "running") return;
-
-      // Carry over how far through the current loop we already were, so
-      // a mid-flight restart (e.g. a late-loading image nudging the
-      // strip's width) continues the roll instead of snapping back to
-      // frame 0 — that snap is what read as the animation "starting over".
-      let progress = 0;
-      if (animation && lastWidth > 0) {
-        const elapsed = Number(animation.currentTime ?? 0);
-        const oldDuration = (lastWidth / 60) * 1000;
-        progress = oldDuration > 0 ? (elapsed % oldDuration) / oldDuration : 0;
-      }
-
+    const runAnimation = (width: number) => {
       lastWidth = width;
-      animation?.cancel();
       // ~60 pixels per second → calm, readable pace.
       const duration = (width / 60) * 1000;
       animation = track.animate(
@@ -72,29 +66,67 @@ const LogoMarquee: React.FC = () => {
         ],
         { duration, iterations: Infinity, easing: "linear" }
       );
-      animation.currentTime = progress * duration;
+      return duration;
     };
 
-    // Debounce: logos load in one at a time, each shifting the strip's
-    // width and firing the observer. Without this, every incremental
-    // image load restarts the animation from position 0, which reads as
-    // a visible stutter/reset instead of one smooth loop.
-    const scheduleApply = () => {
-      if (debounceTimer) clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(apply, 200);
+    // Start only once every logo image has actually loaded (not on a
+    // fixed debounce timer). Each image loading in shifts the strip's
+    // pixel width, so starting before they're all in would immediately
+    // require a restart — the "shows one new logo, then starts over"
+    // glitch. Waiting for a real load-complete signal removes the guesswork.
+    const start = () => {
+      if (cancelled || animation) return;
+      const width = strip.getBoundingClientRect().width;
+      if (width < 10) return;
+      runAnimation(width);
     };
 
-    scheduleApply();
+    const imgs = Array.from(strip.querySelectorAll("img"));
+    const pending = imgs.filter((img) => !img.complete);
+    if (pending.length === 0) {
+      start();
+    } else {
+      let remaining = pending.length;
+      const onOneDone = () => {
+        remaining -= 1;
+        if (remaining <= 0) start();
+      };
+      pending.forEach((img) => {
+        img.addEventListener("load", onOneDone, { once: true });
+        img.addEventListener("error", onOneDone, { once: true });
+      });
+    }
 
-    const ro = new ResizeObserver(() => scheduleApply());
+    // After the initial start, only a genuine viewport resize should
+    // change the loop width. Carry over playback progress so that
+    // doesn't visibly reset the roll either.
+    const handleResize = () => {
+      if (!animation) return;
+      const width = strip.getBoundingClientRect().width;
+      if (width < 10 || Math.abs(width - lastWidth) < 1) return;
+      const elapsed = Number(animation.currentTime ?? 0);
+      const oldDuration = (lastWidth / 60) * 1000;
+      const progress = oldDuration > 0 ? (elapsed % oldDuration) / oldDuration : 0;
+      animation.cancel();
+      const duration = runAnimation(width);
+      animation!.currentTime = progress * duration;
+    };
+
+    const scheduleResize = () => {
+      if (resizeDebounce) clearTimeout(resizeDebounce);
+      resizeDebounce = setTimeout(handleResize, 150);
+    };
+
+    const ro = new ResizeObserver(() => scheduleResize());
     ro.observe(strip);
-    window.addEventListener("resize", scheduleApply);
+    window.addEventListener("resize", scheduleResize);
 
     return () => {
-      if (debounceTimer) clearTimeout(debounceTimer);
+      cancelled = true;
+      if (resizeDebounce) clearTimeout(resizeDebounce);
       animation?.cancel();
       ro.disconnect();
-      window.removeEventListener("resize", scheduleApply);
+      window.removeEventListener("resize", scheduleResize);
     };
   }, []);
 
