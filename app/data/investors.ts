@@ -69,4 +69,43 @@ export const investors = [
     href: "https://signalfire.com/",
     dark: true,
   },
+  {
+    id: "steelatlas",
+    src: "/logos/steelatlas.png",
+    href: "https://steelatlas.vc/",
+    dark: true,
+  },
+  {
+    id: "boxgroup",
+    src: "/logos/boxgroup.png",
+    href: "https://boxgroup.com/",
+    dark: true,
+  },
+  {
+    id: "silentventures",
+    src: "/logos/silentventures.png",
+    href: "https://silentvc.com/",
+    dark: true,
+    scale: 2 / 3,
+  },
+  {
+    id: "svangel",
+    src: "/logos/svangel.png",
+    href: "https://svangel.com/",
+    dark: true,
+  },
+  {
+    id: "humancapital",
+    src: "/logos/humancapital.png",
+    href: "https://human.capital/",
+    dark: true,
+    scale: 2 / 3,
+  },
+  {
+    id: "rootventures",
+    src: "/logos/rootventures.png",
+    href: "https://root.vc/",
+    dark: true,
+    scale: 2 / 3,
+  },
 ];

@@ -21,6 +21,7 @@ const LogoItem: React.FC<{ v: typeof investors[number] }> = ({ v }) => (
       className={`h-[18px] sm:h-[20px] md:h-[22px] w-auto opacity-90 shrink-0 hover:opacity-100 transition-opacity duration-300 ease-8vc${
         v.dark ? " brightness-0 invert" : ""
       }`}
+      style={v.scale ? { transform: `scale(${v.scale})` } : undefined}
     />
   </a>
 );
@@ -42,11 +43,24 @@ const LogoMarquee: React.FC = () => {
 
     let animation: Animation | null = null;
     let lastWidth = 0;
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
     const apply = () => {
       const width = strip.getBoundingClientRect().width;
       if (width < 10) return; // not laid out yet — wait for the next observation
       if (Math.abs(width - lastWidth) < 1 && animation?.playState === "running") return;
+
+      // Carry over how far through the current loop we already were, so
+      // a mid-flight restart (e.g. a late-loading image nudging the
+      // strip's width) continues the roll instead of snapping back to
+      // frame 0 — that snap is what read as the animation "starting over".
+      let progress = 0;
+      if (animation && lastWidth > 0) {
+        const elapsed = Number(animation.currentTime ?? 0);
+        const oldDuration = (lastWidth / 60) * 1000;
+        progress = oldDuration > 0 ? (elapsed % oldDuration) / oldDuration : 0;
+      }
+
       lastWidth = width;
       animation?.cancel();
       // ~60 pixels per second → calm, readable pace.
@@ -58,20 +72,29 @@ const LogoMarquee: React.FC = () => {
         ],
         { duration, iterations: Infinity, easing: "linear" }
       );
+      animation.currentTime = progress * duration;
     };
 
-    // Initial attempt — may run before images load (width = 0) and retry
-    // on the next ResizeObserver callback.
-    apply();
+    // Debounce: logos load in one at a time, each shifting the strip's
+    // width and firing the observer. Without this, every incremental
+    // image load restarts the animation from position 0, which reads as
+    // a visible stutter/reset instead of one smooth loop.
+    const scheduleApply = () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(apply, 200);
+    };
 
-    const ro = new ResizeObserver(() => apply());
+    scheduleApply();
+
+    const ro = new ResizeObserver(() => scheduleApply());
     ro.observe(strip);
-    window.addEventListener("resize", apply);
+    window.addEventListener("resize", scheduleApply);
 
     return () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
       animation?.cancel();
       ro.disconnect();
-      window.removeEventListener("resize", apply);
+      window.removeEventListener("resize", scheduleApply);
     };
   }, []);
 
