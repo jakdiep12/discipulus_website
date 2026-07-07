@@ -41,3 +41,5 @@ This GitHub repository contains the code for the Discipulus Ventures website.
 ## Deployment
 
 Deployed on **Vercel**. Push to `main` triggers production deploy.
+
+<!-- deploy test -->
