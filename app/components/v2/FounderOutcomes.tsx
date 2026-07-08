@@ -95,6 +95,38 @@ const founders = [
     testimonial:
       "From day one, Discipulus brought together founders who were deeply mission-aligned and serious about building enduring American companies. That alignment created trust, speed, and an uncommon sense of purpose. It's rare to find a program that pushes this hard while staying true to first principles.",
   },
+  {
+    name: "Dylan McGuire",
+    company: "Aleph",
+    url: "https://alephsurgical.com/",
+    headshot: "/founders/dylan.png",
+    logo: "/companies/aleph.png",
+    logoInvert: true,
+    desc: "Autonomous surgical robots bringing frontier embodied AI into the operating room.",
+    testimonial:
+      "Discipulus brings together talented, ambitious founders who believe America can and should be building the future — and backs that belief with the funding to make it happen.",
+  },
+  {
+    name: "Jared West",
+    company: "Western Chemicals",
+    url: "https://www.westernchemicals.com/",
+    headshot: "/founders/jared.png",
+    logo: "/companies/westernchemicals.png",
+    logoInvert: true,
+    desc: "Turning wastewater into the world's cheapest fuels.",
+    testimonial:
+      "The Discipulus Cohort was one of the best experiences of my life. The density of engineering talent among the founders in the cohort is unmatched, and each founder pushes one another to become stronger, smarter, and better at building their company. The Discipulus Ventures team provides expert training for fundraising and company operations which enabled us to close an oversubscribed pre-seed fundraise in 1 month. Couldn't be more grateful for my experience with DV, and can't wait to see the next batch of exceptional American founders!",
+  },
+  {
+    name: "Eric Olszewski",
+    company: "Actinide",
+    url: "https://www.actinideinc.com/",
+    headshot: "/founders/eric.png",
+    logo: "/companies/actinide.png",
+    desc: "Building America's scalable, U.S.-owned isotope separation platform.",
+    testimonial:
+      "Discipulus gave us the highest ROI of any accelerator I have ever participated in. Jakob and his team worked diligently to help us craft the messaging of our highly technical business that ultimately led to a seed round that far exceeded what we had projected. If you are building something ambitious, I cannot recommend Discipulus enough.",
+  },
 ];
 
 const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }) => {
@@ -135,7 +167,9 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
               width={180}
               height={42}
               sizes="180px"
-              className="w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]"
+              className={`w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]${
+                founder.logoInvert ? " brightness-0 invert" : ""
+              }`}
             />
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
