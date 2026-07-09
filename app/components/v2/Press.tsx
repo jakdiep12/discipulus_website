@@ -40,6 +40,34 @@ const articles: Array<{
     ),
     url: "https://labusinessjournal.com/featured/military-culture-in-tech/",
   },
+  {
+    outlet: "Deseret News",
+    logo: "/news/deseret.png",
+    title: "'Software is dead.' See what's next in El Segundo",
+    date: "April 21, 2026",
+    preview: (
+      <>How Jakob Diepenbrock&rsquo;s Discipulus Ventures is leading a hard-tech renaissance in <span className="el-segundo">El&nbsp;Segundo</span>.</>
+    ),
+    url: "https://www.deseret.com/u-s-world/2026/04/21/el-segundo-hard-tech-hub-jakob-diepenbrock/?utm_source=twitter&utm_medium=dn-social&utm_campaign=twitter&utm_content=deseretnews",
+  },
+  {
+    outlet: "Axios",
+    logo: "/news/axios.png",
+    title: "Exclusive: Discipulus Ventures closes $30M hard-tech fund",
+    date: "June 29, 2026",
+    preview: "A $30 million Fund II targeting startups in defense tech, energy, mining, manufacturing, and other critical industries.",
+    url: "https://www.axios.com/pro/climate-deals/2026/06/29/discipulus-ventures-jakob-diepenbrock-fund-ii",
+  },
+  {
+    outlet: "iConnections",
+    logo: "/news/iconnections.png",
+    title: "10 Founders. 1 House. 1 Chef. This Is How Hard Tech Gets Built",
+    date: "March 5, 2026",
+    preview: (
+      <>Jakob Diepenbrock on the cohort model behind Discipulus Ventures&rsquo; 4x first fund &mdash; ten founders living together in <span className="el-segundo">El&nbsp;Segundo</span>.</>
+    ),
+    url: "https://iconnections.io/insights/video/10-founders-1-house-1-chef-this-is-how-hard-tech-gets-built-global-alts-miami-2026/",
+  },
 ];
 
 const Press: React.FC = () => (
