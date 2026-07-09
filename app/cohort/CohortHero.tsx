@@ -10,23 +10,20 @@ const HERO_IMAGE_ALT = "Palmer Luckey with Discipulus Cohort founders";
 
 export const CohortHero: React.FC = () => {
   return (
-    <div className="relative w-full aspect-[3/2] sm:aspect-auto sm:h-[65vh] md:h-[80vh] lg:h-[90vh] overflow-hidden bg-navy">
-      <div className="absolute inset-0">
-        <Image
-          src={HERO_IMAGE_SRC}
-          alt={HERO_IMAGE_ALT}
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
-      </div>
-      {/* Bottom fade — blends into navy below (matches landing Hero) */}
-      <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-navy to-transparent pointer-events-none" />
+    <div className="relative w-full bg-navy">
+      <NavbarV2 />
 
-      {/* Navbar sits on top of the photo */}
-      <div className="absolute inset-x-0 top-0 z-30">
-        <NavbarV2 transparent />
+      <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-16 pt-8 sm:pt-10 pb-14 sm:pb-16">
+        <div className="relative w-full aspect-[1920/1278] rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <Image
+            src={HERO_IMAGE_SRC}
+            alt={HERO_IMAGE_ALT}
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
       </div>
     </div>
   );
