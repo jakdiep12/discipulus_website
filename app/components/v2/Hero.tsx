@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
                 href="/cohort"
                 className="text-white/70 sm:text-white/60 px-7 py-4 sm:py-3.5 text-[0.875rem] sm:text-[0.8rem] tracking-wider border border-white/15 sm:border-white/10 text-center w-full sm:w-auto min-h-[52px] sm:min-h-[44px] flex items-center justify-center hover:text-white hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300 ease-8vc"
               >
-                Learn more
+                Learn More About the Cohort
               </a>
             </div>
           </Reveal>
