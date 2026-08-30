@@ -24,7 +24,7 @@ export default function HomeV2() {
         <div className="foundry-hero">
           <div className="foundry-hero-copy">
             <p className="foundry-folio">VOL. 03 · EL SEGUNDO, CALIFORNIA · 2026</p>
-            <h1>A new generation of American industry is being forged here.</h1>
+            <h1>Build the next American industrial generation.</h1>
             <p className="foundry-deck">A ten-day founder residency for people building the machines, materials, energy systems, and defense technologies that move the country forward.</p>
             <div className="foundry-actions">
               <a href={APPLY_URL} target="_blank" rel="noreferrer">Apply to Discipulus <span aria-hidden>→</span></a>
@@ -32,7 +32,8 @@ export default function HomeV2() {
             </div>
           </div>
           <div className="foundry-hero-art">
-            <Image src="/elsegundowatertower.jpg" alt="Illustrated El Segundo water tower against an aerospace skyline" fill priority sizes="(max-width: 800px) 100vw, 46vw" />
+            <Image src="/cohort-workshop-session.png" alt="Founders working inside an El Segundo industrial workshop" fill priority sizes="(max-width: 800px) 100vw, 46vw" />
+            <div className="foundry-art-years" aria-hidden><span>1913</span><span>1961</span><span>2026</span></div>
             <div className="foundry-art-caption"><span>PLATE I</span><p>The aerospace city by the sea.</p></div>
           </div>
         </div>

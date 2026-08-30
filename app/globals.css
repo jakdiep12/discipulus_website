@@ -264,8 +264,12 @@ body::before {
 .foundry-actions a:first-child { background: var(--fo-paper); color: var(--fo-navy); }
 .foundry-actions a:hover { border-color: white; }
 .foundry-hero-art { position: relative; min-height: 780px; overflow: hidden; border-left: 1px solid rgba(255,255,255,.16); }
-.foundry-hero-art img { object-fit: cover; object-position: center; filter: saturate(.78) contrast(1.05); }
+.foundry-hero-art img { object-fit: cover; object-position: 58% center; filter: grayscale(1) contrast(1.18) brightness(.72); }
+.foundry-hero-art::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(7,18,38,.58), transparent 36%), linear-gradient(0deg, rgba(7,18,38,.62), transparent 44%); content: ''; pointer-events: none; }
+.foundry-art-years { position: absolute; z-index: 2; top: 90px; bottom: 75px; left: 28px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; border-left: 1px solid rgba(255,255,255,.38); color: rgba(255,255,255,.68); font-family: var(--font-jetbrains-mono), monospace; font-size: 8px; letter-spacing: .12em; }
+.foundry-art-years span { padding-left: 12px; writing-mode: vertical-rl; }
 .foundry-art-caption { position: absolute; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-top: 1px solid rgba(255,255,255,.18); background: rgba(7,18,38,.78); backdrop-filter: blur(14px); }
+.foundry-art-caption { z-index: 3; }
 .foundry-art-caption span { font-family: var(--font-jetbrains-mono), monospace; font-size: 9px; letter-spacing: .12em; }
 .foundry-art-caption p { margin: 0; font-family: freight-display-pro, Georgia, serif; font-size: 18px; }
 .foundry-ticker { display: flex; min-height: 68px; align-items: center; justify-content: center; gap: 28px; border-top: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.62); font-family: var(--font-jetbrains-mono), monospace; font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
