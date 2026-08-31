@@ -55,12 +55,6 @@ const FooterV2: React.FC = () => (
       </WordReveal>
       <Reveal delay={500}>
         <div className="flex flex-col sm:flex-row gap-3.5 items-center justify-center relative z-10">
-          <Link
-            href="/jobs"
-            className="text-white/70 sm:text-white/60 px-7 py-4 sm:py-3 text-[0.875rem] sm:text-[0.8rem] tracking-wider border border-white/15 sm:border-white/10 min-h-[52px] sm:min-h-0 hover:text-white hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300 ease-8vc inline-flex items-center justify-center"
-          >
-            Explore jobs
-          </Link>
           <a
             href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
             target="_blank"
