@@ -120,15 +120,6 @@ const FooterV2: React.FC = () => (
             >
               <Image src="/social/linkedin.png" alt="" width={32} height={32} sizes="32px" className="w-[30px] h-[30px] brightness-0 invert" />
             </a>
-            <a
-              href="http://discipulusventures.substack.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Discipulus Ventures on Substack"
-              className="opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 ease-8vc"
-            >
-              <Image src="/social/substack.png" alt="" width={32} height={32} sizes="32px" className="w-[30px] h-[30px] brightness-0 invert" />
-            </a>
           </div>
         </Reveal>
 
