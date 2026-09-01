@@ -41,12 +41,28 @@ export default function CookiesPage() {
                 <tr>
                   <td className="px-4 py-3 font-mono text-xs text-white/70">cookie-consent</td>
                   <td className="px-4 py-3 text-white/70">Functional (localStorage)</td>
-                  <td className="px-4 py-3 text-white/70">Stores your consent preference so the banner is not shown on repeat visits</td>
+                  <td className="px-4 py-3 text-white/70">Records that you have seen the cookie notice so it is not shown again</td>
                   <td className="px-4 py-3 text-white/70">Until cleared</td>
+                </tr>
+                <tr className="border-t border-white/10">
+                  <td className="px-4 py-3 font-mono text-xs text-white/70">discipulus-portal-seen</td>
+                  <td className="px-4 py-3 text-white/70">Functional (sessionStorage)</td>
+                  <td className="px-4 py-3 text-white/70">Records that the opening animation has played so it is not repeated on every page</td>
+                  <td className="px-4 py-3 text-white/70">Until the tab is closed</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-xl font-semibold mb-3">Third-Party Resources</h2>
+          <p className="text-white/80 leading-relaxed">
+            Our typefaces are served by Adobe Fonts (<span className="font-mono text-xs">use.typekit.net</span>),
+            which receives your IP address and browser details in order to deliver the font files. It
+            is subject to Adobe&apos;s privacy practices. Everything else the site needs — scripts,
+            images, and video — is served from our own domain.
+          </p>
         </section>
 
         <section className="mb-8">

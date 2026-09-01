@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { DM_Sans, JetBrains_Mono } from 'next/font/google'
-import Script from 'next/script'
 import AnnouncementBanner from './components/AnnouncementBanner'
 import CookieBanner from './components/CookieBanner'
 import PageTransition from './components/v2/PageTransition'
@@ -58,7 +57,6 @@ export default function RootLayout({
           {children}
         </PageTransition>
         <CookieBanner />
-        <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
       </body>
     </html>
   )
