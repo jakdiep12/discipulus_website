@@ -24,6 +24,27 @@ class ScrollManager {
     this.schedule();
   }
 
+  /**
+   * Drops the global listeners and any pending work once the last story section
+   * unmounts, so navigating away from a page with story text does not leave a
+   * scroll handler running for the rest of the session. `ensureInit` wires
+   * everything back up when a new section registers.
+   */
+  private teardown() {
+    if (!this.initialized || typeof window === "undefined") return;
+    this.initialized = false;
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
+    if (this.rafId !== null) {
+      cancelAnimationFrame(this.rafId);
+      this.rafId = null;
+    }
+    if (this.resizeTimer) {
+      clearTimeout(this.resizeTimer);
+      this.resizeTimer = null;
+    }
+  }
+
   private measureViewport() {
     this.vh = window.innerHeight;
     this.isMobile = window.innerWidth < 768;
@@ -89,6 +110,7 @@ class ScrollManager {
     return () => {
       this.storyItems.delete(item);
       el.style.removeProperty("--reveal-count");
+      if (this.storyItems.size === 0) this.teardown();
     };
   }
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import PortalIntro from "./components/v2/PortalIntro";
 import Hero from "./components/v2/Hero";
 import LogoMarquee from "./components/v2/LogoMarquee";

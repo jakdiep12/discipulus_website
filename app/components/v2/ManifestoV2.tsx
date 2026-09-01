@@ -1,9 +1,8 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { WordReveal } from "./useScrollEffects";
-import { StorySection, StoryText, countWords } from "./StoryText";
+import { StorySection, StoryText } from "./StoryText";
+import { countWords } from "./storyWords";
 
 const archetypes = [
   {

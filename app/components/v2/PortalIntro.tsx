@@ -32,7 +32,15 @@ const PortalIntro: React.FC<PortalIntroProps> = ({ children }) => {
     const overlay = overlayRef.current;
     if (!logo || !overlay) return;
 
+    let started = false;
+    let cancel: (() => void) | undefined;
+
+    // The image `load` event and the safety timer race each other; whichever
+    // fires first owns the animation, so the loser must not start a second
+    // requestAnimationFrame loop that would then never be cancelled.
     const run = () => {
+      if (started) return;
+      started = true;
       const start = performance.now();
       // Total ~2.6s: 700ms fade-in + 1200ms hold/scale + 700ms fade-out
       const FADE_IN = 700;
@@ -77,29 +85,31 @@ const PortalIntro: React.FC<PortalIntroProps> = ({ children }) => {
       };
 
       id = requestAnimationFrame(tick);
-      return () => cancelAnimationFrame(id);
+      cancel = () => cancelAnimationFrame(id);
     };
 
-    // Start once logo image is ready
+    // Start once the logo image is ready, with a timer so a slow or failed
+    // image load does not leave the overlay up forever.
+    const onLoad = () => run();
     if (logo.complete && logo.naturalWidth > 0) {
-      const cleanup = run();
-      return cleanup;
+      run();
+    } else {
+      logo.addEventListener("load", onLoad);
     }
-
-    let cleanup: (() => void) | undefined;
-    const onLoad = () => { cleanup = run(); };
-    logo.addEventListener("load", onLoad);
-    const safety = setTimeout(() => { cleanup = run(); }, 400);
+    const safety = setTimeout(run, 400);
 
     return () => {
       logo.removeEventListener("load", onLoad);
       clearTimeout(safety);
-      cleanup?.();
+      cancel?.();
     };
   }, [phase]);
 
-  if (phase === "check") return null;
   if (phase === "done") return <>{children}</>;
+
+  // `children` renders in every phase, including the pre-mount "check" pass, so
+  // the page has real server-rendered HTML underneath. Returning null here
+  // instead would leave the whole document empty until hydration.
 
   return (
     <>

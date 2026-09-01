@@ -2,8 +2,7 @@
 
 import React, { CSSProperties, useEffect, useMemo, useRef } from "react";
 import { scrollManager } from "./scrollManager";
-
-type Bit = string | React.ReactElement;
+import type { Bit } from "./storyWords";
 
 type BuiltWord = {
   node: React.ReactNode;
@@ -181,8 +180,3 @@ export const StoryText: React.FC<StoryTextProps> = ({
     </Tag>
   );
 };
-
-/** Count words in a set of bits (for pre-computing offsets). */
-export function countWords(bits: Bit[]): number {
-  return buildWords(bits).count;
-}
