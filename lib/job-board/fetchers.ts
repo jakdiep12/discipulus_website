@@ -2,6 +2,11 @@ import type { ActiveCompany, Company, CompanyFetchResult, Job } from "./types";
 
 const REQUEST_TIMEOUT_MS = 20_000;
 
+// Last successful job list per company, kept for the lifetime of the server
+// instance. When an upstream board is down or returns garbage we serve the
+// previous snapshot instead of silently dropping the company's roles.
+const lastGoodJobs = new Map<string, Job[]>();
+
 interface GreenhouseJob {
   id?: string | number;
   title?: string;
@@ -45,6 +50,7 @@ interface PinpointJob {
 async function safeFetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url, {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+    cache: "no-store",
     headers: {
       Accept: "application/json",
       "User-Agent": "discipulus-jobs/1.0 (+https://discipulusventures.com)",
@@ -59,9 +65,23 @@ function expectArray<T>(value: unknown, source: string): T[] {
   return value as T[];
 }
 
-function requiredId(value: string | number | undefined, source: string): string {
-  if (value === undefined || value === "") throw new Error(`Job without an ID from ${source}`);
-  return String(value);
+/**
+ * Maps upstream records to jobs, dropping the individual records the adapter
+ * cannot make sense of. A single malformed posting must never take down the
+ * rest of the company's board.
+ */
+function collectJobs<T>(records: readonly T[], toJob: (record: T) => Job | null): Job[] {
+  const jobs: Job[] = [];
+  for (const record of records) {
+    const job = toJob(record);
+    if (job !== null) jobs.push(job);
+  }
+  return jobs;
+}
+
+function jobId(company: ActiveCompany, value: string | number | null | undefined): string | null {
+  if (value === null || value === undefined || value === "") return null;
+  return `${company.id}-${value}`;
 }
 
 function validDate(value: string | number | undefined): string | null {
@@ -71,17 +91,19 @@ function validDate(value: string | number | undefined): string | null {
 }
 
 function guessRemote(location: string): boolean {
-  return /remote/i.test(location);
+  return /remote|work from home|anywhere/i.test(location);
 }
 
 async function fetchGreenhouse(company: ActiveCompany): Promise<Job[]> {
   const data = await safeFetchJson<{ jobs?: GreenhouseJob[] }>(
     `https://boards-api.greenhouse.io/v1/boards/${company.token}/jobs?content=false`,
   );
-  return expectArray<GreenhouseJob>(data.jobs, company.name).map((job) => {
+  return collectJobs(expectArray<GreenhouseJob>(data.jobs, company.name), (job) => {
+    const id = jobId(company, job.id);
+    if (!id) return null;
     const location = job.location?.name ?? "Location TBD";
     return {
-      id: `${company.id}-${requiredId(job.id, company.name)}`,
+      id,
       title: job.title ?? "Untitled role",
       company: company.name,
       companyId: company.id,
@@ -99,10 +121,12 @@ async function fetchAshby(company: ActiveCompany): Promise<Job[]> {
   const data = await safeFetchJson<{ jobs?: AshbyJob[] }>(
     `https://api.ashbyhq.com/posting-api/job-board/${company.token}`,
   );
-  return expectArray<AshbyJob>(data.jobs, company.name).map((job) => {
+  return collectJobs(expectArray<AshbyJob>(data.jobs, company.name), (job) => {
+    const id = jobId(company, job.id);
+    if (!id) return null;
     const location = job.location ?? "Location TBD";
     return {
-      id: `${company.id}-${requiredId(job.id, company.name)}`,
+      id,
       title: job.title ?? "Untitled role",
       company: company.name,
       companyId: company.id,
@@ -120,10 +144,12 @@ async function fetchLever(company: ActiveCompany): Promise<Job[]> {
   const data = await safeFetchJson<LeverJob[]>(
     `https://api.lever.co/v0/postings/${company.token}?mode=json`,
   );
-  return expectArray<LeverJob>(data, company.name).map((job) => {
+  return collectJobs(expectArray<LeverJob>(data, company.name), (job) => {
+    const id = jobId(company, job.id);
+    if (!id) return null;
     const location = job.categories?.location ?? "Location TBD";
     return {
-      id: `${company.id}-${requiredId(job.id, company.name)}`,
+      id,
       title: job.text ?? "Untitled role",
       company: company.name,
       companyId: company.id,
@@ -141,12 +167,14 @@ async function fetchPinpoint(company: ActiveCompany): Promise<Job[]> {
   const data = await safeFetchJson<{ data?: PinpointJob[] }>(
     `https://${company.token}.pinpointhq.com/postings.json`,
   );
-  return expectArray<PinpointJob>(data.data, company.name).map((job) => {
+  return collectJobs(expectArray<PinpointJob>(data.data, company.name), (job) => {
+    const id = jobId(company, job.id);
+    if (!id) return null;
     const location = job.location
       ? [job.location.city, job.location.province].filter(Boolean).join(", ") || "Location TBD"
       : job.workplace_type_text ?? "Location TBD";
     return {
-      id: `${company.id}-${requiredId(job.id, company.name)}`,
+      id,
       title: job.title ?? "Untitled role",
       company: company.name,
       companyId: company.id,
@@ -169,12 +197,16 @@ const FETCHERS: Record<ActiveCompany["ats"], (company: ActiveCompany) => Promise
 
 async function fetchCompanyJobs(company: ActiveCompany): Promise<CompanyFetchResult> {
   try {
-    return { company, jobs: await FETCHERS[company.ats](company), ok: true };
+    const jobs = await FETCHERS[company.ats](company);
+    lastGoodJobs.set(company.id, jobs);
+    return { company, jobs, ok: true, stale: false };
   } catch (error) {
+    const cached = lastGoodJobs.get(company.id);
     return {
       company,
-      jobs: [],
+      jobs: cached ?? [],
       ok: false,
+      stale: cached !== undefined,
       error: error instanceof Error ? error.message : String(error),
     };
   }

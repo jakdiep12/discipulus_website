@@ -38,6 +38,8 @@ export interface CompanyFetchResult {
   company: ActiveCompany;
   jobs: Job[];
   ok: boolean;
+  /** True when `jobs` came from the last good snapshot rather than a live fetch. */
+  stale: boolean;
   error?: string;
 }
 
@@ -46,6 +48,7 @@ export interface JobSource {
   company: string;
   ats: AtsKind;
   ok: boolean;
+  stale: boolean;
   count: number;
   error: string | null;
 }
