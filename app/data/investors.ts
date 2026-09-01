@@ -1,14 +1,26 @@
 export const investors = [
   {
+    id: "a16z",
+    src: "/logos/a16z.png",
+    href: "https://www.a16z.com/",
+  },
+  {
     id: "palmer",
     src: "/logos/palmer.png",
     href: "https://palmerluckey.com/",
     dark: true,
   },
   {
-    id: "a16z",
-    src: "/logos/a16z.png",
-    href: "https://www.a16z.com/",
+    id: "nea",
+    src: "/logos/nea.png",
+    href: "https://www.nea.com/",
+    dark: true,
+  },
+  {
+    id: "lightspeed",
+    src: "/logos/lightspeed.png",
+    href: "https://lsvp.com/",
+    dark: true,
   },
   {
     id: "point72",
@@ -16,39 +28,9 @@ export const investors = [
     href: "https://point72.com/",
   },
   {
-    id: "championhill",
-    src: "/logos/champion.png",
-    href: "https://www.championhillventures.com/",
-    dark: true,
-  },
-  {
-    id: "lux",
-    src: "/logos/lux.png",
-    href: "https://www.luxcapital.com/",
-    dark: true,
-  },
-  {
-    id: "bedrock",
-    src: "/logos/bedrock.png",
-    href: "https://www.bedrockcap.com/",
-    dark: true,
-  },
-  {
-    id: "8090",
-    src: "/logos/8090.png",
-    href: "https://www.8090industries.com/",
-    dark: true,
-  },
-  {
-    id: "xyz",
-    src: "/logos/xyz.png",
-    href: "https://www.xyz.vc/",
-    dark: true,
-  },
-  {
-    id: "lowercarbon",
-    src: "/logos/lowercarbon.png",
-    href: "https://lowercarboncapital.com/",
+    id: "bessemer",
+    src: "/logos/bessemer.png",
+    href: "https://www.bvp.com/",
     dark: true,
   },
   {
@@ -58,9 +40,9 @@ export const investors = [
     dark: true,
   },
   {
-    id: "longjourneyventures",
-    src: "/logos/longjourneyventures.png",
-    href: "https://www.longjourney.vc/",
+    id: "lux",
+    src: "/logos/lux.png",
+    href: "https://www.luxcapital.com/",
     dark: true,
   },
   {
@@ -70,9 +52,9 @@ export const investors = [
     dark: true,
   },
   {
-    id: "steelatlas",
-    src: "/logos/steelatlas.png",
-    href: "https://steelatlas.vc/",
+    id: "lowercarbon",
+    src: "/logos/lowercarbon.png",
+    href: "https://lowercarboncapital.com/",
     dark: true,
   },
   {
@@ -82,17 +64,47 @@ export const investors = [
     dark: true,
   },
   {
-    id: "silentventures",
-    src: "/logos/silentventures.png",
-    href: "https://silentvc.com/",
-    dark: true,
-    scale: 2 / 3,
-  },
-  {
     id: "svangel",
     src: "/logos/svangel.png",
     href: "https://svangel.com/",
     dark: true,
+  },
+  {
+    id: "bedrock",
+    src: "/logos/bedrock.png",
+    href: "https://www.bedrockcap.com/",
+    dark: true,
+  },
+  {
+    id: "xyz",
+    src: "/logos/xyz.png",
+    href: "https://www.xyz.vc/",
+    dark: true,
+  },
+  {
+    id: "championhill",
+    src: "/logos/champion.png",
+    href: "https://www.championhillventures.com/",
+    dark: true,
+  },
+  {
+    id: "longjourneyventures",
+    src: "/logos/longjourneyventures.png",
+    href: "https://www.longjourney.vc/",
+    dark: true,
+  },
+  {
+    id: "steelatlas",
+    src: "/logos/steelatlas.png",
+    href: "https://steelatlas.vc/",
+    dark: true,
+  },
+  {
+    id: "rootventures",
+    src: "/logos/rootventures.png",
+    href: "https://root.vc/",
+    dark: true,
+    scale: 2 / 3,
   },
   {
     id: "humancapital",
@@ -102,10 +114,16 @@ export const investors = [
     scale: 2 / 3,
   },
   {
-    id: "rootventures",
-    src: "/logos/rootventures.png",
-    href: "https://root.vc/",
+    id: "silentventures",
+    src: "/logos/silentventures.png",
+    href: "https://silentvc.com/",
     dark: true,
     scale: 2 / 3,
+  },
+  {
+    id: "8090",
+    src: "/logos/8090.png",
+    href: "https://www.8090industries.com/",
+    dark: true,
   },
 ];
