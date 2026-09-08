@@ -14,6 +14,7 @@ interface NavbarV2Props {
 const navLinks = [
   { href: "/#about", label: "About" },
   { href: "/cohort", label: "Cohort" },
+  { href: "/outcomes", label: "Portfolio" },
   { href: "/team", label: "Team" },
   { href: "/jobs", label: "Jobs" },
 ];
@@ -109,10 +110,8 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             </Link>
           ))}
 
-          <a
-            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/apply"
             onClick={() => setMenuOpen(false)}
             className={`block w-full mt-8 bg-white text-navy px-6 py-5 text-[0.9rem] font-bold tracking-widest uppercase text-center min-h-[56px] transition-all duration-500 ease-8vc-out hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] ${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -120,7 +119,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             style={{ transitionDelay: menuOpen ? `${120 + navLinks.length * 70}ms` : "0ms" }}
           >
             Apply Now
-          </a>
+          </Link>
 
           <p
             className={`mt-auto font-mono text-[0.72rem] text-white/30 tracking-[0.16em] uppercase transition-opacity duration-500 ${
@@ -165,15 +164,13 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/apply"
             className="group relative overflow-hidden bg-white text-navy px-5 py-2 text-[0.76rem] font-bold tracking-widest uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc hidden md:inline-block"
           >
             <span className="relative z-10">Apply Now</span>
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
-          </a>
+          </Link>
 
           {/* Hamburger button — mobile only */}
           <button

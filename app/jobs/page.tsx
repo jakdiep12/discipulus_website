@@ -90,6 +90,15 @@ export default async function JobsPage({
           </>
         )}
         <p className="jobs-refresh-note">Roles refresh hourly from public company career pages.</p>
+
+        <section className="jobs-general-application">
+          <div>
+            <span className="jobs-section-number">02 / GENERAL APPLICATION</span>
+            <h2>Right mission, wrong timing?</h2>
+            <p>Join the Discipulus talent network and we’ll connect you with relevant founders when a strong fit opens up.</p>
+          </div>
+          <Link href="/talent" className="jobs-primary-button">Join the talent network <span aria-hidden>↗</span></Link>
+        </section>
       </main>
 
       <FooterV2 />

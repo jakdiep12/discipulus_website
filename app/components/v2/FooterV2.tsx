@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, WordReveal } from "./useScrollEffects";
+import ContactDialog from "../ContactDialog";
 
 const ParticlesSVG = () => (
   <svg
@@ -61,21 +62,14 @@ const FooterV2: React.FC = () => (
           >
             Explore jobs
           </Link>
-          <a
-            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/apply"
             className="group relative overflow-hidden bg-white text-navy px-7 py-4 sm:py-3 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase min-h-[52px] sm:min-h-0 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc inline-flex items-center justify-center"
           >
             <span className="relative z-10">Join us</span>
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
-          </a>
-          <a
-            href="mailto:jakob.diepenbrock@discipulusventures.com"
-            className="text-white/70 sm:text-white/60 px-7 py-4 sm:py-3 text-[0.875rem] sm:text-[0.8rem] tracking-wider border border-white/15 sm:border-white/10 min-h-[52px] sm:min-h-0 hover:text-white hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300 ease-8vc inline-flex items-center justify-center"
-          >
-            Contact us
-          </a>
+          </Link>
+          <ContactDialog />
         </div>
       </Reveal>
     </section>

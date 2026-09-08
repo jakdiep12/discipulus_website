@@ -107,6 +107,10 @@
 .jobs-pagination a { padding: 14px 18px; border: 1px solid rgba(255,255,255,.28); color: white; }
 .jobs-pagination a:hover { border-color: var(--jobs-cream); color: var(--jobs-cream); }
 .jobs-refresh-note { margin-top: 44px; color: rgba(255,255,255,.38); font-family: var(--font-jetbrains-mono), monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.jobs-general-application { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; margin-top: 88px; padding: 48px; border: 1px solid var(--jobs-line); background: linear-gradient(135deg, rgba(255,255,255,.045), rgba(255,255,255,.015)); }
+.jobs-general-application h2 { margin: 12px 0 0; font-family: freight-display-pro, Georgia, serif; font-size: clamp(36px, 4vw, 56px); font-weight: 500; letter-spacing: -.03em; line-height: 1; }
+.jobs-general-application p { max-width: 620px; margin: 20px 0 0; color: rgba(255,255,255,.55); line-height: 1.65; }
+.jobs-general-application .jobs-primary-button { flex: 0 0 auto; margin: 0; }
 
 @media (max-width: 800px) {
   .jobs-hero { min-height: 790px; padding-top: 90px; }
@@ -118,6 +122,7 @@
   .jobs-results-heading { align-items: flex-start; flex-direction: column; }
   .jobs-row { grid-template-columns: 5px minmax(0, 1fr); }
   .jobs-row-side { grid-column: 2; justify-content: space-between; }
+  .jobs-general-application { align-items: flex-start; flex-direction: column; padding: 32px; }
 }
 
 @media (max-width: 520px) {

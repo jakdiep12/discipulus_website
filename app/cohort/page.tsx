@@ -53,7 +53,7 @@ export default function CohortPage() {
                 </p>
                 <div className="mt-7">
                   <a
-                    href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+                    href="/apply"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 py-4 sm:py-3.5 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase min-h-[52px] sm:min-h-[44px] hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc"
@@ -78,7 +78,7 @@ export default function CohortPage() {
                 }}
               >
                 <Image
-                  src="/elsegundowatertower.jpg"
+                  src="/elsegundowatertower-clean.jpg"
                   alt="El Segundo water tower"
                   fill
                   className="object-cover object-center"

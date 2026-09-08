@@ -240,7 +240,7 @@ const FounderOutcomes: React.FC = () => {
             Cohort
           </p>
           <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight text-white underline-reveal mb-8 sm:mb-10">
-            Featured Cohort Founders.
+            Selected founder stories.
           </h2>
         </Reveal>
         <div className="w-full max-w-5xl mx-auto px-2 sm:px-10 md:px-16">
@@ -270,6 +270,27 @@ const FounderOutcomes: React.FC = () => {
             <CarouselPrevious className="md:-left-14 -left-2 bg-white text-navy hover:!bg-navy hover:!text-white hidden sm:flex" />
             <CarouselNext className="md:-right-14 -right-2 bg-white text-navy hover:!bg-navy hover:!text-white hidden sm:flex" />
           </Carousel>
+        </div>
+
+        <div className="mx-auto mt-24 max-w-5xl border-t border-white/10 pt-14 text-left">
+          <div className="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/45">Complete portfolio</p>
+              <h3 className="mt-3 font-freight text-4xl font-normal text-white sm:text-5xl">Companies we back.</h3>
+            </div>
+            <p className="max-w-sm text-sm leading-6 text-white/45">The full set of Discipulus-backed companies currently represented on the site.</p>
+          </div>
+          <div className="grid grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            {founders.map((founder) => (
+              <a key={founder.company} href={founder.url} target="_blank" rel="noopener noreferrer" className="group flex min-h-44 flex-col justify-between border-b border-r border-white/10 p-6 transition-colors hover:bg-white/[0.045]">
+                <Image src={founder.logo} alt="" width={150} height={42} className={`h-10 w-36 object-contain object-left${founder.logoInvert ? " brightness-0 invert" : ""}`} />
+                <div className="mt-8">
+                  <p className="text-sm font-medium text-white">{founder.company} <span aria-hidden className="ml-1 inline-block text-white/30 transition-transform group-hover:translate-x-1">↗</span></p>
+                  <p className="mt-2 text-xs leading-5 text-white/40">{founder.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

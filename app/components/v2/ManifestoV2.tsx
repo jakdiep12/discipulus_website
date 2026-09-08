@@ -45,7 +45,7 @@ const WaterTowerImage: React.FC = () => (
     }}
   >
     <Image
-      src="/elsegundowatertower.jpg"
+      src="/elsegundowatertower-clean.jpg"
       alt="El Segundo water tower"
       fill
       className="object-cover object-center"
@@ -110,7 +110,7 @@ const s2Bodies: (string | React.ReactElement)[][] = [
   [
     <a
       key="join-us-s2"
-      href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+      href="/apply"
       target="_blank"
       rel="noopener noreferrer"
       className="underline underline-offset-2 decoration-white/40 hover:decoration-white/80 transition-colors"
@@ -285,7 +285,7 @@ const ManifestoV2: React.FC = () => (
         <ManifestoImage />
         <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-5 mt-12 sm:mt-16 lg:mt-20">
           <a
-            href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
+            href="/apply"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative overflow-hidden inline-flex items-center justify-center bg-white text-navy px-7 sm:px-6 py-4 sm:py-2.5 text-[0.875rem] sm:text-[0.78rem] font-bold tracking-widest uppercase min-w-[280px] sm:min-w-[320px] min-h-[52px] sm:min-h-0 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.28)] transition-all duration-300 ease-8vc"

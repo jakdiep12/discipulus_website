@@ -7,11 +7,11 @@ import LogoMarquee from "../components/v2/LogoMarquee";
 import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
-  title: "Cohort — Discipulus Ventures",
-  description: "What happened to the founders who came through. Every company below was trained through a Discipulus Cohort.",
+  title: "Portfolio — Discipulus Ventures",
+  description: "Meet the founders and companies backed by Discipulus Ventures.",
 };
 
-export default function CohortPage() {
+export default function PortfolioPage() {
   return (
     <div className="flex flex-col bg-navy text-white/80 font-sans min-h-screen antialiased">
       <NavbarV2 />

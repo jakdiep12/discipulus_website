@@ -36,9 +36,7 @@ const Hero: React.FC = () => {
           <Reveal delay={900}>
             <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center">
               <a
-                href="https://web.miniextensions.com/Zliw55HfhOWXZnca7Q9Q"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/apply"
                 className="group relative overflow-hidden bg-white text-navy px-7 py-4 sm:py-3.5 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase text-center w-full sm:w-auto min-h-[52px] sm:min-h-[44px] flex items-center justify-center hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc"
               >
                 <span className="relative z-10">Apply now</span>
