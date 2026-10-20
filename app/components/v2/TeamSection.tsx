@@ -28,6 +28,19 @@ const principals: Member[] = [
     linkedin: "https://www.linkedin.com/in/augustus-doricko-660b20145/",
     twitter: "https://x.com/ADoricko",
   },
+  {
+    name: "Chase Caffrey",
+    role: "Investor",
+    img: "/team/chase.png",
+    linkedin: "https://www.linkedin.com/in/chase-caffrey-204aa217b/",
+    twitter: "https://x.com/Chasecaffrey",
+  },
+  {
+    name: "Kristina Dayback",
+    role: "CFO",
+    img: "/team/kristina.png",
+    linkedin: "https://www.linkedin.com/in/kristina-dayback-cma-3081863b/",
+  },
 ];
 
 const advisors: Member[] = [
@@ -198,14 +211,11 @@ const TeamSection: React.FC = () => (
         </h2>
       </Reveal>
 
-      {/* Principals */}
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-14 sm:mb-16">
+      {/* Principals — grid rather than a flex row so the roster lays out
+          evenly as it grows past the three that fit on one line. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14 sm:mb-16 max-w-[20rem] sm:max-w-none mx-auto">
         {principals.map((p, i) => (
-          <Reveal
-            key={p.name}
-            delay={i * 120}
-            className="w-full max-w-[20rem] sm:w-80"
-          >
+          <Reveal key={p.name} delay={i * 120}>
             <TeamCard member={p} size="lg" />
           </Reveal>
         ))}

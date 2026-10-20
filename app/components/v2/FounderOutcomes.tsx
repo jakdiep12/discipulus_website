@@ -24,7 +24,20 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const founders = [
+interface FeaturedCompany {
+  name: string;
+  company: string;
+  url: string;
+  headshot: string;
+  logo: string;
+  desc: string;
+  // Investment entries (rather than cohort alumni) carry no quote — the
+  // card back shows the company description in place of a testimonial.
+  testimonial?: string;
+  logoInvert?: boolean;
+}
+
+const founders: FeaturedCompany[] = [
   {
     name: "Peter Goldsborough",
     company: "Rune",
@@ -44,6 +57,31 @@ const founders = [
     desc: "Autonomous drilling for mineral discovery.",
     testimonial:
       "What an incredible experience with Discipulus last week. Alongside 9 other focused, aligned, and moral young people I propelled myself and my startup with an intensity lacking most everywhere else. Excited for what is next for Discipulus!",
+  },
+  {
+    name: "Augustus Doricko",
+    company: "Rainmaker",
+    url: "https://www.rainmaker.com/",
+    headshot: "/speakers/augustus-doricko-bw.jpg",
+    logo: "/companies/rainmaker.png",
+    desc: "Weather modification technology.",
+  },
+  {
+    name: "David Zagaynov",
+    company: "Poseidon Aerospace",
+    url: "https://poseidonaero.com/",
+    headshot: "/founders/david.jpg",
+    logo: "/companies/poseidon.png",
+    logoInvert: true,
+    desc: "Unmanned cargo aircraft for regional air freight and contested defense logistics.",
+  },
+  {
+    name: "Halen Mattison",
+    company: "General Galactic",
+    url: "https://www.gengalactic.com/",
+    headshot: "/founders/halen.png",
+    logo: "/companies/gengalactic.png",
+    desc: "Advanced spacecraft for sustained maneuver and more time on-mission.",
   },
   {
     name: "Denver Rayburn",
@@ -181,17 +219,25 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
 
         {/* Back — testimonial fills the card */}
         <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-navy-3 border border-white/10 flex flex-col p-4 sm:p-6 lg:p-7 overflow-hidden">
-          <blockquote className="relative flex-1 flex items-center justify-center min-h-0">
-            <span
-              aria-hidden
-              className="absolute -top-1 left-0 font-freight text-white/10 text-[2.25rem] sm:text-[3.5rem] leading-none select-none"
-            >
-              “
-            </span>
-            <p className="relative font-freight italic text-white text-[0.82rem] sm:text-[1.05rem] lg:text-[1.15rem] leading-[1.55] sm:leading-[1.65] tracking-tight text-center px-2 sm:px-3 max-h-full overflow-y-auto">
-              {founder.testimonial}
-            </p>
-          </blockquote>
+          {founder.testimonial ? (
+            <blockquote className="relative flex-1 flex items-center justify-center min-h-0">
+              <span
+                aria-hidden
+                className="absolute -top-1 left-0 font-freight text-white/10 text-[2.25rem] sm:text-[3.5rem] leading-none select-none"
+              >
+                “
+              </span>
+              <p className="relative font-freight italic text-white text-[0.82rem] sm:text-[1.05rem] lg:text-[1.15rem] leading-[1.55] sm:leading-[1.65] tracking-tight text-center px-2 sm:px-3 max-h-full overflow-y-auto">
+                {founder.testimonial}
+              </p>
+            </blockquote>
+          ) : (
+            <div className="relative flex-1 flex items-center justify-center min-h-0">
+              <p className="font-freight text-white text-[0.9rem] sm:text-[1.1rem] lg:text-[1.2rem] leading-[1.55] sm:leading-[1.65] tracking-tight text-center px-2 sm:px-3 max-h-full overflow-y-auto">
+                {founder.desc}
+              </p>
+            </div>
+          )}
           <div className="mt-2 pt-2 sm:mt-3 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2 text-[0.62rem] sm:text-[0.72rem]">
             <span className="font-mono text-white/65 tracking-[0.12em] uppercase truncate">
               {founder.name} · {founder.company}
@@ -225,7 +271,12 @@ const FounderOutcomes: React.FC = () => {
   }, []);
 
   return (
-    <section id="outcomes" className="relative py-20 sm:py-24 text-white bg-navy overflow-hidden">
+    // scroll-mt offsets the sticky navbar (which grows with the logo at
+    // each breakpoint) so #outcomes jumps land below it, not under it.
+    <section
+      id="outcomes"
+      className="relative py-20 sm:py-24 text-white bg-navy overflow-hidden scroll-mt-[74px] sm:scroll-mt-[92px] md:scroll-mt-[116px] lg:scroll-mt-[150px]"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
@@ -236,11 +287,8 @@ const FounderOutcomes: React.FC = () => {
       />
       <div className="relative max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 text-center">
         <Reveal>
-          <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
-            Cohort
-          </p>
           <h2 className="font-freight text-[1.75rem] sm:text-[2.1rem] font-normal leading-tight text-white underline-reveal mb-8 sm:mb-10">
-            Featured Cohort Founders.
+            Featured Investments.
           </h2>
         </Reveal>
         <div className="w-full max-w-5xl mx-auto px-2 sm:px-10 md:px-16">
