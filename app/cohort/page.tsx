@@ -40,16 +40,13 @@ export default function CohortPage() {
             <Reveal>
               <div className="text-center md:text-left">
                 <p className="font-mono text-[0.75rem] text-white/60 tracking-[0.14em] uppercase mb-3">
-                  Fall 2026 Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
+                  Spring Cohort · <span className="el-segundo">El&nbsp;Segundo</span>, CA
                 </p>
                 <h1 className="font-freight text-[clamp(1.75rem,5vw,4rem)] font-normal leading-[1.1] text-white max-w-[700px] mx-auto md:mx-0 mb-5">
                   Discipulus Cohort
                 </h1>
                 <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto md:mx-0 leading-[1.65]">
                   Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the Western interest.
-                </p>
-                <p className="text-[0.8125rem] text-white/45 mt-3 font-bold">
-                  September 29th &ndash; October 8th, 2026
                 </p>
                 <div className="mt-7">
                   <a

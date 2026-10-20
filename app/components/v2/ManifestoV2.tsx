@@ -299,7 +299,7 @@ const ManifestoV2: React.FC = () => (
             speed={30}
             className="font-mono text-[0.72rem] text-white/60 tracking-[0.16em] uppercase font-medium flex items-center gap-2"
           >
-            Applications open now for Fall Cohort
+            Applications open now for Spring Cohort
           </WordReveal>
         </div>
       </div>

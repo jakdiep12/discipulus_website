@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
                 rel="noopener noreferrer"
                 className="group relative overflow-hidden bg-white text-navy px-7 py-4 sm:py-3.5 text-[0.875rem] sm:text-[0.8rem] font-semibold tracking-widest uppercase text-center w-full sm:w-auto min-h-[52px] sm:min-h-[44px] flex items-center justify-center hover:scale-[1.02] sm:hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300 ease-8vc"
               >
-                <span className="relative z-10">Apply now</span>
+                <span className="relative z-10">Apply to the Spring Cohort</span>
                 <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
               </a>
               <a
