@@ -54,6 +54,7 @@ const speakers: Speaker[] = [
   { name: "Michael Gibson", title: "General Partner at 1517 Fund", company: "1517 Fund", topic: "", img: "/speakers/michael-gibson-bw.jpeg", url: "https://www.1517fund.com/", logo: "/logos/1517.svg" },
   { name: "Bryon Hargis", title: "Founder of Castelion", company: "Castelion", topic: "", img: "/speakers/bryon-hargis.webp", url: "https://www.castelion.com/", logo: "/logos/castelion.png", logoClass: "w-[90px] sm:w-[110px] h-[30px] sm:h-[38px]" },
   { name: "Josh Manchester", title: "Founder of Champion Hill", company: "Champion Hill", topic: "", img: "/speakers/josh-manchester-bw.jpg", url: "https://www.championhillventures.com/", logo: "/logos/champion-hill.svg" },
+  { name: "Jim Belosic", title: "Founder of SendCutSend", company: "SendCutSend", topic: "", img: "/speakers/jim-belosic.jpg", url: "https://sendcutsend.com/", logo: "/logos/sendcutsend.svg" },
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker }> = ({ speaker }) => {
