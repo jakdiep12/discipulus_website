@@ -27,12 +27,13 @@ import {
 interface FeaturedCompany {
   name: string;
   company: string;
-  url: string;
-  headshot: string;
-  logo: string;
   desc: string;
-  // Investment entries (rather than cohort alumni) carry no quote — the
-  // card back shows the company description in place of a testimonial.
+  // Everything below is optional so an investment can be listed with
+  // whatever assets exist yet. The card front degrades photo → logo →
+  // wordmark text, and the back shows `desc` when there's no quote.
+  url?: string;
+  headshot?: string;
+  logo?: string;
   testimonial?: string;
   logoInvert?: boolean;
 }
@@ -165,6 +166,102 @@ const founders: FeaturedCompany[] = [
     testimonial:
       "Discipulus gave us the highest ROI of any accelerator I have ever participated in. Jakob and his team worked diligently to help us craft the messaging of our highly technical business that ultimately led to a seed round that far exceeded what we had projected. If you are building something ambitious, I cannot recommend Discipulus enough.",
   },
+  {
+    name: "Garrow Geer",
+    company: "Indigo Ethylene",
+    url: "https://indigoethylene.com/",
+    headshot: "/founders/garrow.jpg",
+    logo: "/companies/indigo-ethylene.png",
+    desc: "Producing ethylene 30% cheaper and 60% greener than anyone else on Earth.",
+  },
+  {
+    name: "Ulys Sorok",
+    company: "GRAM",
+    url: "https://gram.sr/",
+    headshot: "/founders/ulys.png",
+    logo: "/companies/gram.png",
+    desc: "Self-replicating insectoid robots for heavy industry and space.",
+  },
+  {
+    name: "Ruairi McLoughlin",
+    company: "Anaula",
+    url: "https://anaula.bio/",
+    headshot: "/founders/ruairi.png",
+    logo: "/companies/anaula.png",
+    desc: "Autonomous bioreactors for pharmaceutical and biological production.",
+  },
+  {
+    name: "Allen Cheng",
+    company: "Altered Systems",
+    url: "https://altered.systems/",
+    headshot: "/founders/allen.jpg",
+    logo: "/companies/altered-systems.png",
+    desc: "Automated apparel handling.",
+  },
+  {
+    name: "Blake Mouser",
+    company: "Autofac",
+    url: "https://autofacind.com/",
+    headshot: "/founders/blake.jpg",
+    logo: "/companies/autofac.png",
+    desc: "Automated fluid lines for launch vehicles and spacecraft, from quote to delivered part.",
+  },
+  {
+    name: "Caleb Ho",
+    company: "Blitzpanel",
+    url: "https://blitzpanel.com/",
+    headshot: "/founders/caleb.jpg",
+    logo: "/companies/blitzpanel.png",
+    desc: "The default way industrial control panels are built, with 10x faster lead times.",
+  },
+  {
+    name: "Robert Karklinsh",
+    company: "Elastium",
+    url: "https://elastium.io/",
+    headshot: "/founders/robert-karklinsh.jpg",
+    logo: "/companies/elastium.png",
+    desc: "Autonomous footwear factories in America.",
+  },
+  {
+    name: "JR Miller",
+    company: "Hedges",
+    url: "https://hedge.build/",
+    headshot: "/founders/jr-miller.jpg",
+    logo: "/companies/hedges.png",
+    desc: "Procurement intelligence that helps general contractors cut cost and risk.",
+  },
+  {
+    name: "Kai Dougan",
+    company: "Lark Aeronautics",
+    url: "https://lark.aero/",
+    headshot: "/founders/kai.jpg",
+    logo: "/companies/lark.png",
+    desc: "Automated SOSA test tools for defense avionics.",
+  },
+  {
+    name: "Nico Bisso",
+    company: "Laurus",
+    url: "https://laurusag.tech/",
+    headshot: "/founders/nico.jpg",
+    logo: "/companies/laurus.png",
+    desc: "Reinventing urban farming to bring hyper-local, affordable fresh food to cities.",
+  },
+  {
+    name: "Miguel Arratia",
+    company: "NanduX",
+    url: "https://nandux.net/",
+    headshot: "/founders/miguel.jpg",
+    logo: "/companies/nandux.png",
+    desc: "Subterranean sensing that finds mineral deposits before the drilling starts.",
+  },
+  {
+    name: "Aaron Goodman",
+    company: "Petra Power",
+    url: "https://petrapower.com/",
+    headshot: "/founders/aaron.jpg",
+    logo: "/companies/petra-power.png",
+    desc: "Hyper-efficient, fuel-flexible solid oxide fuel cells for data centers and defense.",
+  },
 ];
 
 const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }) => {
@@ -188,33 +285,59 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
           isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
       >
-        {/* Front — photo + company logo + founder name */}
+        {/* Front — founder photo when we have one; otherwise the company
+            logo centred on the card, falling back to a wordmark in type. */}
         <div className="absolute inset-0 [backface-visibility:hidden] overflow-hidden border border-white/10">
-          <Image
-            src={founder.headshot}
-            alt={founder.name}
-            fill
-            sizes="(max-width: 768px) 90vw, 600px"
-            className="object-cover grayscale"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
-          <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
-            <Image
-              src={founder.logo}
-              alt={`${founder.company} logo`}
-              width={180}
-              height={42}
-              sizes="180px"
-              className={`w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]${
-                founder.logoInvert ? " brightness-0 invert" : ""
-              }`}
-            />
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-            <div className="font-freight text-[1.4rem] sm:text-[1.6rem] font-normal tracking-tight text-white leading-tight">
-              {founder.name}
+          {founder.headshot ? (
+            <>
+              <Image
+                src={founder.headshot}
+                alt={founder.name}
+                fill
+                sizes="(max-width: 768px) 90vw, 600px"
+                className="object-cover grayscale"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none" />
+              {founder.logo && (
+                <div className="absolute top-5 sm:top-7 left-5 sm:left-7 right-5 sm:right-7 flex items-center">
+                  <Image
+                    src={founder.logo}
+                    alt={`${founder.company} logo`}
+                    width={180}
+                    height={42}
+                    sizes="180px"
+                    className={`w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left grayscale drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]${
+                      founder.logoInvert ? " brightness-0 invert" : ""
+                    }`}
+                  />
+                </div>
+              )}
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                <div className="font-freight text-[1.4rem] sm:text-[1.6rem] font-normal tracking-tight text-white leading-tight">
+                  {founder.name}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="absolute inset-0 bg-navy-3 flex items-center justify-center p-8 sm:p-10">
+              {founder.logo ? (
+                <Image
+                  src={founder.logo}
+                  alt={`${founder.company} logo`}
+                  width={340}
+                  height={80}
+                  sizes="340px"
+                  className={`w-full max-w-[200px] sm:max-w-[260px] h-auto object-contain grayscale${
+                    founder.logoInvert ? " brightness-0 invert" : ""
+                  }`}
+                />
+              ) : (
+                <span className="font-freight text-[1.5rem] sm:text-[1.85rem] font-normal tracking-tight text-white/90 text-center leading-tight">
+                  {founder.company}
+                </span>
+              )}
             </div>
-          </div>
+          )}
         </div>
 
         {/* Back — testimonial fills the card */}
@@ -240,19 +363,23 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
           )}
           <div className="mt-2 pt-2 sm:mt-3 sm:pt-3 border-t border-white/10 flex items-center justify-between gap-2 text-[0.62rem] sm:text-[0.72rem]">
             <span className="font-mono text-white/65 tracking-[0.12em] uppercase truncate">
-              {founder.name} · {founder.company}
+              {founder.name === founder.company
+                ? founder.company
+                : `${founder.name} · ${founder.company}`}
             </span>
-            <a
-              href={founder.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 font-mono text-white/65 tracking-[0.12em] uppercase hover:text-white focus-visible:outline-none focus-visible:text-[#f7e3b5] transition-colors"
-              onClick={(e) => e.stopPropagation()}
-              onFocus={() => setFocusFlipped(true)}
-              onBlur={() => setFocusFlipped(false)}
-            >
-              Visit →
-            </a>
+            {founder.url && (
+              <a
+                href={founder.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 font-mono text-white/65 tracking-[0.12em] uppercase hover:text-white focus-visible:outline-none focus-visible:text-[#f7e3b5] transition-colors"
+                onClick={(e) => e.stopPropagation()}
+                onFocus={() => setFocusFlipped(true)}
+                onBlur={() => setFocusFlipped(false)}
+              >
+                Visit →
+              </a>
+            )}
           </div>
         </div>
       </div>
