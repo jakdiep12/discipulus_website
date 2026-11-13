@@ -225,10 +225,10 @@ const founders: FeaturedCompany[] = [
   {
     name: "JR Miller",
     company: "Hedges",
-    url: "https://hedge.build/",
+    url: "https://hedges.app/",
     headshot: "/founders/jr-miller.jpg",
     logo: "/companies/hedges.png",
-    desc: "Procurement intelligence that helps general contractors cut cost and risk.",
+    desc: "Fuel price hedging that turns volatile commodity costs into a fixed line item.",
   },
   {
     name: "Kai Dougan",
