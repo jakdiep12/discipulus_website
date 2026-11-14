@@ -36,6 +36,9 @@ interface FeaturedCompany {
   logo?: string;
   testimonial?: string;
   logoInvert?: boolean;
+  // Tailwind size override for the corner logo. Square or tall lockups
+  // render tiny in the default wordmark-shaped box, so they set their own.
+  logoClass?: string;
 }
 
 const founders: FeaturedCompany[] = [
@@ -130,6 +133,8 @@ const founders: FeaturedCompany[] = [
     url: "https://tex.pro/",
     headshot: "/founders/fed.png",
     logo: "/companies/tex.png",
+    logoInvert: true,
+    logoClass: "w-[52px] sm:w-[62px] h-[52px] sm:h-[62px]",
     desc: "Intelligence for equipment procurement & sales.",
     testimonial:
       "From day one, Discipulus brought together founders who were deeply mission-aligned and serious about building enduring American companies. That alignment created trust, speed, and an uncommon sense of purpose. It's rare to find a program that pushes this hard while staying true to first principles.",
@@ -162,6 +167,8 @@ const founders: FeaturedCompany[] = [
     url: "https://www.actinideinc.com/",
     headshot: "/founders/eric.png",
     logo: "/companies/actinide.png",
+    logoInvert: true,
+    logoClass: "w-[200px] sm:w-[225px] h-[38px] sm:h-[46px]",
     desc: "Building America's scalable, U.S.-owned isotope separation platform.",
     testimonial:
       "Discipulus gave us the highest ROI of any accelerator I have ever participated in. Jakob and his team worked diligently to help us craft the messaging of our highly technical business that ultimately led to a seed round that far exceeded what we had projected. If you are building something ambitious, I cannot recommend Discipulus enough.",
@@ -228,6 +235,7 @@ const founders: FeaturedCompany[] = [
     url: "https://hedges.app/",
     headshot: "/founders/jr-miller.jpg",
     logo: "/companies/hedges.png",
+    logoClass: "w-[64px] sm:w-[74px] h-[56px] sm:h-[66px]",
     desc: "Fuel price hedging that turns volatile commodity costs into a fixed line item.",
   },
   {
@@ -306,7 +314,7 @@ const FounderCard: React.FC<{ founder: typeof founders[number] }> = ({ founder }
                     width={180}
                     height={42}
                     sizes="180px"
-                    className={`w-[160px] sm:w-[180px] h-[34px] sm:h-[42px] object-contain object-left grayscale drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]${
+                    className={`${founder.logoClass ?? "w-[160px] sm:w-[180px] h-[34px] sm:h-[42px]"} object-contain object-left grayscale drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]${
                       founder.logoInvert ? " brightness-0 invert" : ""
                     }`}
                   />
