@@ -193,7 +193,7 @@ const founders: FeaturedCompany[] = [
     name: "Ruairi McLoughlin",
     company: "Anaula",
     url: "https://anaula.bio/",
-    headshot: "/founders/ruairi.png",
+    headshot: "/founders/ruairi.jpg",
     logo: "/companies/anaula.png",
     desc: "Autonomous bioreactors for pharmaceutical and biological production.",
   },
