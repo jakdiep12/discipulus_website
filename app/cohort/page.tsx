@@ -58,8 +58,8 @@ export default function CohortPage() {
                     <span className="relative z-10">Apply now</span>
                     <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#e8dcc8]/60 to-transparent group-hover:translate-x-full transition-transform [transition-duration:900ms] ease-8vc-out" />
                   </a>
-                  <p className="text-[0.8125rem] text-white/50 mt-3">
-                    Includes a <span className="text-[#f7e3b5] font-semibold">$175,000</span> investment alongside your acceptance.
+                  <p className="text-[0.9375rem] sm:text-[1.0625rem] text-white/65 mt-3">
+                    Includes a <span className="text-[#f7e3b5] font-semibold">$305,000</span> investment alongside your acceptance.
                   </p>
                 </div>
               </div>

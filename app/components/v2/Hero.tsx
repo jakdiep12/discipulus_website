@@ -82,9 +82,9 @@ const Hero: React.FC = () => {
             as="h1"
             speed={55}
             delay={200}
-            className="font-freight text-[clamp(2rem,5.5vw,4.6rem)] font-normal leading-[1.15] sm:leading-[1.1] text-white max-w-[900px] mx-auto mb-7 sm:mb-5 tracking-tight"
+            className="font-freight text-[clamp(1.75rem,4.8vw,4rem)] font-normal leading-[1.15] sm:leading-[1.1] text-white max-w-[900px] mx-auto mb-7 sm:mb-5 tracking-tight"
           >
-            {"Cultivating a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
+            {"Cultivating and funding a visionary vanguard of founders solving America\u2019s hardest problems in El Segundo."}
           </WordReveal>
 
           <Reveal delay={900}>

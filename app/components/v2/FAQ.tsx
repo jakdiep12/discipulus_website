@@ -5,6 +5,10 @@ import { Reveal, WordReveal } from "./useScrollEffects";
 
 const faqs = [
   {
+    q: "Does the Cohort come with an investment?",
+    a: "Yes. Every accepted company receives a $305,000 investment alongside their acceptance.",
+  },
+  {
     q: "Who is the Cohort for?",
     a: "We welcome founders in the early stages of building or seriously exploring building hard tech and software for the Western interest. We seek individuals driven by a unique set of values that motivates them to solve the West's hardest problems and attracts them to the culture of El Segundo. We've worked with student founders, full-time founders, and those balancing full-time jobs, so we don't exclude any particular persona.",
   },
