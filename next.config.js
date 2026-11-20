@@ -17,6 +17,13 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      // The standalone /team page was folded into the cohort page; keep the
+      // old URL working for existing links and search results.
+      { source: '/team', destination: '/cohort#team', permanent: true },
+    ]
+  },
 }
 
 module.exports = nextConfig

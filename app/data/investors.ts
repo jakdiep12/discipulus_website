@@ -1,5 +1,10 @@
 export const investors = [
   {
+    id: "foundersfund",
+    src: "/logos/foundersfund.png",
+    href: "https://foundersfund.com/",
+  },
+  {
     id: "a16z",
     src: "/logos/a16z.png",
     href: "https://www.a16z.com/",
@@ -26,6 +31,11 @@ export const investors = [
     id: "point72",
     src: "/logos/point72.svg",
     href: "https://point72.com/",
+  },
+  {
+    id: "bcapital",
+    src: "/logos/bcapital.png",
+    href: "https://b.capital/",
   },
   {
     id: "bessemer",
@@ -82,6 +92,11 @@ export const investors = [
     dark: true,
   },
   {
+    id: "riot",
+    src: "/logos/riot.png",
+    href: "https://riot.vc/",
+  },
+  {
     id: "championhill",
     src: "/logos/champion.png",
     href: "https://www.championhillventures.com/",
@@ -92,6 +107,11 @@ export const investors = [
     src: "/logos/longjourneyventures.png",
     href: "https://www.longjourney.vc/",
     dark: true,
+  },
+  {
+    id: "shadowventures",
+    src: "/logos/shadowventures.png",
+    href: "https://shadow.vc/",
   },
   {
     id: "steelatlas",

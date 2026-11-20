@@ -15,7 +15,7 @@ const navLinks = [
   { href: "/#about", label: "About" },
   { href: "/cohort", label: "Cohort" },
   { href: "/cohort#outcomes", label: "Investments" },
-  { href: "/team", label: "Team" },
+  { href: "/cohort#team", label: "Team" },
 ];
 
 const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {

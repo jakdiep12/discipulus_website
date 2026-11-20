@@ -194,7 +194,11 @@ const AdvisorMobileCarousel: React.FC = () => {
 };
 
 const TeamSection: React.FC = () => (
-  <section id="team" className="relative py-20 sm:py-24 overflow-hidden">
+  // scroll-mt offsets the sticky navbar so #team jumps land below it.
+  <section
+    id="team"
+    className="relative py-20 sm:py-24 overflow-hidden scroll-mt-[74px] sm:scroll-mt-[92px] md:scroll-mt-[116px] lg:scroll-mt-[150px]"
+  >
     {/* Splotch — dark teal atmospheric wash */}
     <div
       aria-hidden
