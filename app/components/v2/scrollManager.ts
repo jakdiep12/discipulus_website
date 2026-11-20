@@ -3,9 +3,10 @@
 type StoryItem = {
   el: HTMLElement;
   totalWords: number;
-  /** How many viewport-heights of runway to use for the reveal range. */
-  runway: number;
 };
+
+/** Fraction of viewport height at which words flip from hidden to shown. */
+const REVEAL_LINE = 0.62;
 
 class ScrollManager {
   private storyItems = new Set<StoryItem>();
@@ -61,34 +62,36 @@ class ScrollManager {
     reads.forEach(({ item, rect }) => {
       if (rect.bottom < 0 || rect.top > vh) {
         // Fully off screen — snap to end state so it stays readable when back-scrolling.
-        const finished = rect.bottom < 0 ? item.totalWords : 0;
-        item.el.style.setProperty("--reveal-count", String(finished));
+        item.el.style.setProperty("--p", rect.bottom < 0 ? "1" : "0");
         return;
       }
       // StorySection handles mobile directly with a time-based reveal,
       // so nothing registers here on mobile.
       if (isMobile) return;
-      // Start revealing when the top of the section reaches 85% of viewport,
-      // finish by the time the section has scrolled (runway) viewports past.
-      const start = vh * 0.85;
-      const end = -vh * (item.runway - 0.85);
-      const raw = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
-      // Front-load the reveal: 60% of the words in the first 40% of scroll,
-      // so headlines land immediately and the last few words trail at the end.
-      const eased = raw < 0.4 ? raw * 1.5 : 0.6 + (raw - 0.4) * (2 / 3);
-      item.el.style.setProperty("--reveal-count", String(eased * item.totalWords));
+      // Reveal is tied to where the words actually sit on screen: everything
+      // above the reveal line is shown, everything below is still hidden. A
+      // word at relative depth p through the section reveals exactly as that
+      // point crosses the line, so the pace always matches the scroll.
+      //
+      // Driving this off section-scroll progress over a fixed runway (the
+      // previous approach) decoupled the two: the words' on-screen position
+      // and their reveal moment drifted apart, which read as the top running
+      // faster than the bottom.
+      const line = vh * REVEAL_LINE;
+      const raw = Math.max(0, Math.min(1, (line - rect.top) / Math.max(1, rect.height)));
+      item.el.style.setProperty("--p", raw.toFixed(4));
     });
   };
 
-  registerStory(el: HTMLElement, totalWords: number, runway = 1.3): () => void {
+  registerStory(el: HTMLElement, totalWords: number): () => void {
     this.ensureInit();
-    el.style.setProperty("--reveal-count", "0");
-    const item: StoryItem = { el, totalWords, runway };
+    el.style.setProperty("--p", "0");
+    const item: StoryItem = { el, totalWords };
     this.storyItems.add(item);
     this.schedule();
     return () => {
       this.storyItems.delete(item);
-      el.style.removeProperty("--reveal-count");
+      el.style.removeProperty("--p");
     };
   }
 }

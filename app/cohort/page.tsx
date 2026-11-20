@@ -86,12 +86,12 @@ export default function CohortPage() {
           </div>
         </div>
       </section>
-      <CohortVideo />
       <FounderOutcomes />
       <Speakers />
       <AfterProgram />
       <Schedule />
       <TeamSection />
+      <CohortVideo />
       <FAQ />
       <CohortCarousel />
       </main>

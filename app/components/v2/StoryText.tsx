@@ -58,24 +58,61 @@ interface StorySectionProps {
   children: React.ReactNode;
   /** Total word count across all StoryText children inside this section. */
   totalWords: number;
-  /** Scroll runway in viewport heights (how long the reveal takes). */
-  runway?: number;
   className?: string;
   id?: string;
 }
 
 /**
- * Container for a generative story-scroll section. Registers with scrollManager
- * to update --reveal-count based on scroll progress through the section.
+ * Container for a generative story-scroll section. Measures each word's
+ * position, then lets scrollManager drive --p as the section scrolls.
  */
 export const StorySection: React.FC<StorySectionProps> = ({
   children,
   totalWords,
-  runway = 1.3,
   className = "",
   id,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
+  // Stamp every word with --y: its own vertical depth through the section
+  // (0 = top, 1 = bottom). CSS reveals a word when the section's --p passes
+  // its --y, so the reveal follows the text's real position rather than its
+  // word index -- indexes run ahead wherever text is sparse, like headlines.
+  // Re-measured on resize and after webfonts swap, since both reflow the text.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof window === "undefined") return;
+
+    const measure = () => {
+      const words = el.querySelectorAll<HTMLElement>(".story-word");
+      if (!words.length) return;
+      const top = el.getBoundingClientRect().top;
+      const height = el.offsetHeight || 1;
+      // Read every rect first, then write, so we don't thrash layout.
+      const depths = Array.from(words, (w) => {
+        const r = w.getBoundingClientRect();
+        return (r.top + r.height / 2 - top) / height;
+      });
+      words.forEach((w, i) => w.style.setProperty("--y", depths[i].toFixed(4)));
+    };
+
+    measure();
+
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const remeasure = () => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(measure, 150);
+    };
+    const ro = new ResizeObserver(remeasure);
+    ro.observe(el);
+    document.fonts?.ready.then(measure).catch(() => {});
+
+    return () => {
+      ro.disconnect();
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -83,15 +120,15 @@ export const StorySection: React.FC<StorySectionProps> = ({
     if (typeof window === "undefined") return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      el.style.setProperty("--reveal-count", String(totalWords));
+      el.style.setProperty("--p", "1");
       return;
     }
 
-    // Mobile: time-based word-by-word generation on viewport entry.
-    // Desktop: scroll-paced reveal via scrollManager.
+    // Mobile: time-based reveal on viewport entry, sweeping the same line
+    // down the section. Desktop: scroll-paced reveal via scrollManager.
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
     if (!isMobile) {
-      return scrollManager.registerStory(el, totalWords, runway);
+      return scrollManager.registerStory(el, totalWords);
     }
 
     let rafId: number | null = null;
@@ -100,10 +137,10 @@ export const StorySection: React.FC<StorySectionProps> = ({
         if (!e.isIntersecting) return;
         obs.disconnect();
         const start = performance.now();
-        const duration = Math.max(900, totalWords * 45);
+        const duration = Math.max(1300, totalWords * 65);
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / duration);
-          el.style.setProperty("--reveal-count", String(t * totalWords));
+          el.style.setProperty("--p", t.toFixed(4));
           if (t < 1) rafId = requestAnimationFrame(tick);
         };
         rafId = requestAnimationFrame(tick);
@@ -115,14 +152,14 @@ export const StorySection: React.FC<StorySectionProps> = ({
       obs.disconnect();
       if (rafId !== null) cancelAnimationFrame(rafId);
     };
-  }, [totalWords, runway]);
+  }, [totalWords]);
 
   return (
     <div
       ref={ref}
       id={id}
       className={`story-section ${className}`}
-      style={{ "--reveal-count": "0" } as CSSProperties}
+      style={{ "--p": "0" } as CSSProperties}
     >
       {children}
     </div>
@@ -140,8 +177,8 @@ interface StoryTextProps {
 
 /**
  * Renders text split into word-spans for scroll-driven reveal.
- * Each word carries its global index via --i; parent StorySection updates
- * --reveal-count; CSS computes opacity from the difference.
+ * Each word carries its global index via --i and, once measured, its vertical
+ * depth via --y; CSS fades it in as the section's --p passes --y.
  */
 export const StoryText: React.FC<StoryTextProps> = ({
   bits,

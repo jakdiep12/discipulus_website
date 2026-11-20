@@ -153,7 +153,6 @@ const ManifestoV2: React.FC = () => (
     {/* Section 1 */}
     <StorySection
       totalWords={s1TotalWords}
-      runway={0.9}
       className={sectionClass}
     >
       {/* Splotch — deep blue atmospheric wash */}
@@ -199,7 +198,6 @@ const ManifestoV2: React.FC = () => (
     {/* Section 2 */}
     <StorySection
       totalWords={s2TotalWords}
-      runway={0.8}
       className={sectionClass}
     >
       {/* Splotch — muted purple atmospheric wash */}
@@ -235,7 +233,6 @@ const ManifestoV2: React.FC = () => (
     {/* Section 3 — full-bleed image fills empty space */}
     <StorySection
       totalWords={s3TotalWords}
-      runway={0.9}
       className="relative overflow-hidden sm:min-h-[60vh] pb-32 sm:pb-40 lg:pb-48"
     >
       {/* Splotch — dark teal atmospheric wash */}

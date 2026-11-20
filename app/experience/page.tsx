@@ -9,7 +9,7 @@ import FooterV2 from "../components/v2/FooterV2";
 
 export const metadata: Metadata = {
   title: "Experience — Discipulus Ventures",
-  description: "10 days of intensive founder training in El Segundo. Daily sessions with unicorn founders, investor office hours, and a Demo Day in front of 100+ investors.",
+  description: "10 days of intensive founder training in El Segundo. Daily sessions with unicorn founders, investor office hours, and a Demo Day in front of 400+ investors.",
 };
 
 export default function ExperiencePage() {
@@ -25,7 +25,7 @@ export default function ExperiencePage() {
           10 days that change the trajectory of your company.
         </h1>
         <p className="text-[0.95rem] text-white/60 max-w-[520px] leading-relaxed font-light mb-12">
-          An intensive in-person residency in <span className="el-segundo">El&nbsp;Segundo</span> — daily sessions with unicorn founders, investor office hours, peer accountability, and a Demo Day in front of 100+ investors.
+          An intensive in-person residency in <span className="el-segundo">El&nbsp;Segundo</span> — daily sessions with unicorn founders, investor office hours, peer accountability, and a Demo Day in front of 400+ investors.
         </p>
       </div>
       <PhotoStrip />
