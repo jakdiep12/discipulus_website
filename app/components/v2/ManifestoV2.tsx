@@ -77,7 +77,7 @@ const s1Bodies: (string | React.ReactElement)[][] = [
     "A major cause of this diversion is the loss of popularity of ideals that once spurred innovation and societal growth, ideals like ",
     <span
       key="kw1"
-      className="keyword-highlight font-semibold text-[#e8dcc8]"
+      className="font-bold"
     >
       religion, patriotism, and family
     </span>,
@@ -263,7 +263,7 @@ const ManifestoV2: React.FC = () => (
                 bits={[
                   <span
                     key={`arch-${a.title}`}
-                    className="keyword-highlight inline-block"
+                    className="inline-block"
                   >
                     {a.title}
                   </span>,

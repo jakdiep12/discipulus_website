@@ -28,37 +28,10 @@ body::before {
   box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 30px 80px -20px rgba(0,0,0,0.7), inset 0 0 120px rgba(0,0,0,0.45);
 }
 
-/* "El Segundo" — emphasized proper noun everywhere on the site.
-   Brightness baked into the color value: filter: brightness(1.5) on
-   #ead8bc clips every channel to 255 (pure white) and the cream the
-   text-shadow tries to halo around it gets read as plain white on
-   desktop. Picking a directly-bright cream gives the same lift
-   without losing the warm tint. */
+/* "El Segundo" and other emphasized phrases — plain bold, no glow. */
 .el-segundo {
-  color: #f7e3b5;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
-  text-shadow:
-    0 0 6px rgba(247, 227, 181, 0.32),
-    0 0 14px rgba(247, 227, 181, 0.18);
-  filter: drop-shadow(0 0 0.35em rgba(247, 227, 181, 0.24));
-  animation: el-segundo-glow 4s ease-in-out infinite;
-}
-
-@keyframes el-segundo-glow {
-  0%, 100% {
-    text-shadow:
-      0 0 6px rgba(247, 227, 181, 0.32),
-      0 0 14px rgba(247, 227, 181, 0.18);
-    filter: drop-shadow(0 0 0.35em rgba(247, 227, 181, 0.24));
-  }
-  50% {
-    text-shadow:
-      0 0 9px rgba(247, 227, 181, 0.46),
-      0 0 22px rgba(247, 227, 181, 0.28),
-      0 0 34px rgba(247, 227, 181, 0.16);
-    filter: drop-shadow(0 0 0.58em rgba(247, 227, 181, 0.34));
-  }
 }
 
 /* Scrollbar styling */
@@ -118,25 +91,6 @@ body::before {
 .story-word {
   opacity: clamp(0, calc((var(--p, 0) - var(--y, 2)) * 30), 1);
   will-change: opacity;
-}
-
-/* Highlight sweep — pulses a soft cream gradient across a bold keyword
-   once its parent reveal becomes visible. */
-.keyword-highlight {
-  background-image: linear-gradient(90deg, transparent 0%, rgba(232,220,200,0.22) 50%, transparent 100%);
-  background-size: 220% 100%;
-  background-position: -120% 0;
-  background-repeat: no-repeat;
-  padding: 0.05em 0.12em;
-  margin: 0 -0.12em;
-  border-radius: 2px;
-}
-.keyword-highlight.revealed {
-  animation: keyword-sweep 1.2s cubic-bezier(.19,1,.22,1) 0.15s forwards;
-}
-@keyframes keyword-sweep {
-  0%   { background-position: -120% 0; }
-  100% { background-position:  220% 0; }
 }
 
 /* Shimmer effect */
@@ -231,8 +185,7 @@ body::before {
   .animate-investor-scroll,
   .animate-photo-scroll,
   .breath-glow,
-  .caret-blink::after,
-  .el-segundo {
+  .caret-blink::after {
     animation: none !important;
   }
 }

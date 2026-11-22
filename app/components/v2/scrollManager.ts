@@ -5,8 +5,10 @@ type StoryItem = {
   totalWords: number;
 };
 
-/** Fraction of viewport height at which words flip from hidden to shown. */
+/** Fraction of viewport height at which words flip from hidden to shown.
+ *  Lower on phones so text is already readable by the time it's mid-screen. */
 const REVEAL_LINE = 0.62;
+const REVEAL_LINE_MOBILE = 0.85;
 
 class ScrollManager {
   private storyItems = new Set<StoryItem>();
@@ -65,9 +67,6 @@ class ScrollManager {
         item.el.style.setProperty("--p", rect.bottom < 0 ? "1" : "0");
         return;
       }
-      // StorySection handles mobile directly with a time-based reveal,
-      // so nothing registers here on mobile.
-      if (isMobile) return;
       // Reveal is tied to where the words actually sit on screen: everything
       // above the reveal line is shown, everything below is still hidden. A
       // word at relative depth p through the section reveals exactly as that
@@ -77,7 +76,7 @@ class ScrollManager {
       // previous approach) decoupled the two: the words' on-screen position
       // and their reveal moment drifted apart, which read as the top running
       // faster than the bottom.
-      const line = vh * REVEAL_LINE;
+      const line = vh * (isMobile ? REVEAL_LINE_MOBILE : REVEAL_LINE);
       const raw = Math.max(0, Math.min(1, (line - rect.top) / Math.max(1, rect.height)));
       item.el.style.setProperty("--p", raw.toFixed(4));
     });

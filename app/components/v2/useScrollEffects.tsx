@@ -55,7 +55,7 @@ export const Reveal: React.FC<{
   // Add 'revealed' class to decorative children that hook into it.
   useEffect(() => {
     if (visible && ref.current) {
-      const els = ref.current.querySelectorAll('.underline-reveal, .keyword-highlight');
+      const els = ref.current.querySelectorAll('.underline-reveal');
       els.forEach(el => el.classList.add('revealed'));
     }
   }, [visible, ref]);

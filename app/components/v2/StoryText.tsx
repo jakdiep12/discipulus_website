@@ -124,34 +124,10 @@ export const StorySection: React.FC<StorySectionProps> = ({
       return;
     }
 
-    // Mobile: time-based reveal on viewport entry, sweeping the same line
-    // down the section. Desktop: scroll-paced reveal via scrollManager.
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    if (!isMobile) {
-      return scrollManager.registerStory(el, totalWords);
-    }
-
-    let rafId: number | null = null;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
-        obs.disconnect();
-        const start = performance.now();
-        const duration = Math.max(1300, totalWords * 65);
-        const tick = (now: number) => {
-          const t = Math.min(1, (now - start) / duration);
-          el.style.setProperty("--p", t.toFixed(4));
-          if (t < 1) rafId = requestAnimationFrame(tick);
-        };
-        rafId = requestAnimationFrame(tick);
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-    );
-    obs.observe(el);
-    return () => {
-      obs.disconnect();
-      if (rafId !== null) cancelAnimationFrame(rafId);
-    };
+    // Scroll-paced reveal on every screen size: words appear as they cross
+    // the reveal line, so the text moves with the finger instead of trailing
+    // behind on a timer.
+    return scrollManager.registerStory(el, totalWords);
   }, [totalWords]);
 
   return (
