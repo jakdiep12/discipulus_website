@@ -128,7 +128,7 @@ const NavbarV2: React.FC<NavbarV2Props> = ({ transparent = false }) => {
             }`}
             style={{ transitionDelay: menuOpen ? "500ms" : "0ms" }}
           >
-            10-Day Founder Residency · <span className="el-segundo">El&nbsp;Segundo</span>, CA
+            Founder Residency · <span className="el-segundo">El&nbsp;Segundo</span>, CA
           </p>
         </nav>
       </div>

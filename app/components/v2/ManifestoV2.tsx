@@ -106,7 +106,7 @@ const s2Headline: (string | React.ReactElement)[] = [
 ];
 const s2Bodies: (string | React.ReactElement)[][] = [
   [
-    "We are building an exclusive, tight-knit network of the West\u2019s smartest, most value-driven individuals and giving them a home to build solutions to our nation\u2019s most important problems, surrounded by people who can greatly accelerate their impact.",
+    "We are building an exclusive, tight-knit network of America\u2019s smartest, most value-driven individuals and giving them a home to build solutions to our nation\u2019s most important problems, surrounded by people who can greatly accelerate their impact.",
   ],
   [
     <a

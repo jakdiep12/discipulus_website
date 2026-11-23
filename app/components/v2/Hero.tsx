@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
             speed={30}
             className="font-mono text-[0.75rem] sm:text-[0.72rem] text-white/60 tracking-[0.14em] uppercase mb-3"
           >
-            {"10-Day Founder Residency \u00B7 El Segundo, CA"}
+            {"Founder Residency \u00B7 El Segundo, CA"}
           </WordReveal>
 
           <WordReveal

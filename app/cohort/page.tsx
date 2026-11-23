@@ -46,7 +46,7 @@ export default function CohortPage() {
                   Discipulus Cohort
                 </h1>
                 <p className="text-[0.9375rem] sm:text-[1rem] text-white/65 max-w-[640px] mx-auto md:mx-0 leading-[1.65]">
-                  Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the Western interest.
+                  Two week residency in <span className="el-segundo">El&nbsp;Segundo</span> with 10 other early-stage, value-aligned founders building hard tech and software for the American interest.
                 </p>
                 <div className="mt-7">
                   <a
