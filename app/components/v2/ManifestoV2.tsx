@@ -75,12 +75,15 @@ const s1Bodies: (string | React.ReactElement)[][] = [
   ],
   [
     "A major cause of this diversion is the loss of popularity of ideals that once spurred innovation and societal growth, ideals like ",
-    <span
+    <a
       key="kw1"
-      className="font-bold"
+      href="https://www.wsj.com/articles/americans-pull-back-from-values-that-once-defined-u-s-wsj-norc-poll-finds-df8534cd"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-bold underline underline-offset-2 decoration-white/40 hover:decoration-white/80 transition-colors"
     >
-      religion, patriotism, and family
-    </span>,
+      patriotism, religion, having children, and community involvement
+    </a>,
     ", within our nation\u2019s most important institutions and ecosystems. These ideals, and the companies they inspired, led to some of the most monumental successes in our history. Ford Motor Company\u2019s affordable automobiles and good wages that transformed manufacturing, Boeing\u2019s patriotic drive that built the aircrafts that won WWII, and NASA\u2019s Apollo Program that put a man on the moon.",
   ],
   [
